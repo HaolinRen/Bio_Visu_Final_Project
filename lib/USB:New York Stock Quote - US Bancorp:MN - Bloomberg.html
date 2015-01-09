@@ -1,0 +1,2619 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+
+<script type="text/javascript">
+//<![CDATA[
+  if(defaultSectionCookie = document.cookie.match(/defaultSection=(\S+)\;/)){
+    if(document.location.pathname === '/' && defaultSectionCookie[1] !== '' && document.referrer === ''){
+      window.location = defaultSectionCookie[1];
+    }
+  }
+
+//]]>
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8"/>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-5.newrelic.com","errorBeacon":"bam.nr-data.net","licenseKey":"32a39e099b","applicationID":"1368463","transactionName":"JVwPEhAJDlRSQ0tUBxRYBBIRSRNNWEUBFg8IVwQe","queueTime":237,"applicationTime":19,"ttGuid":"","agentToken":null,"agent":"js-agent.newrelic.com/nr-476.min.js"}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VgMEUVZACQAGXFVUBA=="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(5),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(f){"stack"in f&&(t(1),t(4),"addEventListener"in window&&t(2),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(3),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:8,2:5,3:9,4:7,5:20,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(2);t("loader").features.stn=!0,t(1),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:6,2:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:20,2:21,ee:"QJf3ax",gos:"7eSDFh"}],6:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:21,2:20,ee:"QJf3ax"}],7:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:21,2:20,ee:"QJf3ax"}],8:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:21,2:20,ee:"QJf3ax"}],9:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),f=s(a),u=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new u(t);try{i.emit("new-xhr",[],e),f.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=u.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:5,2:21,ee:"QJf3ax"}],10:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=e(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=e(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var u=0;c>u;u++)n.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:11,3:9,4:5,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],11:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){p.proto="https"===d.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=c.createElement("script");e.src=p.proto+t.agent,c.body.appendChild(e)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=window,c=s.document,f="addEventListener",u="attachEvent",d=(""+location).split("?")[0],p=e.exports={offset:i(),origin:d,features:{}};c[f]?(c[f]("DOMContentLoaded",o,!1),s[f]("load",n,!1)):(c[u]("onreadystatechange",r),s[u]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}],20:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],21:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:20,ee:"QJf3ax"}]},{},["G9z0Bl",3,10,4]);</script>
+<title>USB:New York Stock Quote - US Bancorp/MN - Bloomberg</title>
+    <meta name="keywords" content="US Bancorp/MN, US Bancorp/MN stock, US Bancorp/MN stock price, US Bancorp/MN stock charts,
+                          USB price quote, USB quote, US Bancorp/MN news, USB,
+                          USB stock, USB stock price, USB stock charts, stock, stock price, stock charts" />
+
+<meta name="description" content="Stock analysis for US Bancorp/MN (USB:New York) including stock price, stock chart, company news, key statistics, fundamentals and company profile." />
+<meta property="fb:admins" content="1502271052,1617206,500566238,616620419,18776,1396618572,501161086,100001111898866,1223836"/>
+<meta property="og:title" content="USB:New York Stock Quote - US Bancorp/MN"/>
+<meta property="og:site_name" content="Bloomberg"/>
+<meta property="og:description" content="Stock analysis for US Bancorp/MN (USB:New York) including stock price, stock chart, company news, key statistics, fundamentals and company profile." />
+
+
+    <meta property="og:image" content="http://cdn.gotraffic.net/v/20141217_100804/images/marketdata-quoteshare-image.png" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="@business"/>
+<meta name="twitter:creator" content="@business"/>
+<meta property="og:url" content="http://www.bloomberg.com/quote/USB:US"/>
+<meta content='Company' property='og:type' />
+<meta content='USB:US' property='og:company:ticker' />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+
+            <link href="http://cdn.gotraffic.net/v/20141217_100804/stylesheets/main-min-v3_1.css" media="all" rel="stylesheet" type="text/css" />        <link href="http://cdn.gotraffic.net/v/20141217_100804/stylesheets/main-min-v3_2.css" media="all" rel="stylesheet" type="text/css" />        <link href="http://cdn.gotraffic.net/v/20141217_100804/stylesheets/compiled/reskin/site.css" media="all" rel="stylesheet" type="text/css" />    
+<!--[if IE 6]>
+                  <link href="http://cdn.gotraffic.net/v/20141217_100804/stylesheets/ie6-all-v2-min.css" media="all" rel="stylesheet" type="text/css" />                <![endif]-->
+<!--[if lt IE 8]>
+                  <link href="http://cdn.gotraffic.net/v/20141217_100804/stylesheets/blocks_ltie8-min.css" media="all" rel="stylesheet" type="text/css" />                <![endif]-->
+<!--[if lt IE 9]>
+        <link href="http://cdn.gotraffic.net/v/20141217_100804/stylesheets/compiled/reskin/site_ie8.css" media="all" rel="stylesheet" type="text/css" />        <![endif]-->
+  <link href="http://cdn.gotraffic.net/v/20141217_100804/stylesheets/markets/main-min.css" media="all" rel="stylesheet" type="text/css" />
+<link href="http://cdn.gotraffic.net/v/20141217_100804/stylesheets/compiled/recent_tickers.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="http://cdn.gotraffic.net/v/20141217_100804/stylesheets/compiled/datepicker.css" media="screen" rel="stylesheet" type="text/css" />
+  
+      <link href="http://cdn.gotraffic.net/v/20141217_100804/stylesheets/compiled/reskin/markets/markets_all.css" media="all" rel="stylesheet" type="text/css" />  
+
+      <link href="http://fonts.gotraffic.net/k/bnj8lwv-d.css?3bb2a6e53c9684ffdc9a9bf4135b2a625d2f4b913c6083f29a411497d8b4eac39ad4819781f1eca20753dbd17073ba609b8e0f1a465859937e32d67cedf7f7dcf30a1f705d91f3da53fc6487d459dc3be571c10d1f0a4df5e89172ff28d158d59a1a457f5d36f64eb37907cfa914606662a47a9f90bc066eb670e86d96dd857c5e" media="screen" rel="stylesheet" />
+<link href="http://cdn.gotraffic.net/q/v/20141204_165640/stylesheets/q_reskin-min.css" media="screen" rel="stylesheet" />
+<link href="http://cdn.gotraffic.net/assets/application-dfc808d1af72c1984a89aa0efe012bc2.css" media="all" rel="stylesheet" />
+<!--[if lt IE 9]>
+<link href="http://cdn.gotraffic.net/assets/adaptive/full/global/global-9141b52305d4da688c95aa6c92e16896.css" media="all" rel="stylesheet" />
+
+<link href="http://cdn.gotraffic.net/assets/site_ie8-0e298567581c8559894998d473fe6499.css" media="all" rel="stylesheet" />
+<![endif]-->
+<!--[if lte IE 7]>
+<link href="http://cdn.gotraffic.net/assets/site_ie7-c0df5a017d976d4cb1b5d734bd4a954b.css" media="all" rel="stylesheet" />
+<![endif]-->
+<!--[if lte IE 9]>
+<link href="http://cdn.gotraffic.net/assets/site_ie9-e58e94cd4d8259a8807e59850b31e319.css" media="all" rel="stylesheet" />
+<![endif]-->
+<!--[if gte IE 9]>
+<link href="http://cdn.gotraffic.net/assets/adaptive/full/global/global-9141b52305d4da688c95aa6c92e16896.css" media="all" rel="stylesheet" />
+
+
+<script src="//fonts.gotraffic.net/bnj8lwv.js"></script>
+<script>
+  try{Typekit.load();}catch(e){}
+</script>
+
+<link href="http://cdn.gotraffic.net/assets/adaptive/desktop/global/global/ie_drop_nav-32bdae7a8df2b2b4176fc8ff604507fd.css" media="all" rel="stylesheet" />
+<![endif]-->
+<!--[if !IE]> -->
+<link href="http://cdn.gotraffic.net/assets/adaptive/full/global/global-9141b52305d4da688c95aa6c92e16896.css" media="all" rel="stylesheet" />
+
+
+<script src="//fonts.gotraffic.net/bnj8lwv.js"></script>
+<script>
+  try{Typekit.load();}catch(e){}
+</script>
+
+<!-- <![endif]-->
+
+<link href="http://cdn.gotraffic.net/assets/site_full-5a4320df1934312e1f0a2010263ac297.css" media="all" rel="stylesheet" />
+
+    <style type='text/css'>
+  /*<![CDATA[*/
+    .home.has_video_module .video_module .cassette .track .share_container{top: 31px;}.home.has_video_module .video_module .cassette .track.first .share_container{top: 35px;}
+    #hot_dog_social.custom_top_box_content .custom_content_meta{width:100%;}
+    body.home.has_video_module .video_module{z-index:1;position:relative;}
+    
+    .promoted_event .details .title, #comments .title{font-size:16px}
+    .promoted_event .with_discussion{overflow-y:hidden;}
+    #ifc_bottom{width:620px;}
+    
+    body #fancybox-wrap{z-index:100000005;}
+    
+    #story .byline{ position:static !important; }
+    
+    .view_article #story_content .assets{margin-right:10px}
+    .politics-home #primary_content hr{clear:left;}
+    #wide_tout_container.on_article_page .wide_tout img{margin-left:0;}
+    .bw_most_popular_news{border-bottom:2px solid #6b7b84;}
+    .podcast #footer_container_v3 .subsection.premium {padding: 0;text-transform: none;padding-left: 10px;margin: 0;font-size: 13px;}
+    
+    #wide_tout_container.on_article_page .wide_tout img{height:auto;}
+    #wide_tout_container{margin-bottom:0}
+    #wide_tout_container .wide_tout .custom_content_text{bottom:10px;}
+    .call_tout_with_hot_dog_container{margin-bottom:0;padding-bottom:0;margin-top:0;}
+    #taboola-autosized-1h-homepage { margin-top: 10px; }
+    
+    body.v2_style #primary_content h3 {text-transform: none !important;}
+    
+    body.view_section #container #content #primary_content .stories .story.imaged .art { overflow: hidden !important; }
+    
+    .european_debt_crisis .primary_taboola_container { float: left; }
+    body.home #backgroundInterstitial{z-index:9999;}
+    
+    body.home #ifc_top_right_rail{float:left;}
+    body.home .dfp_ad_box.ad_box.new_ad_box{float:left;width:100%}
+    #ext_navigation.eye_brow_nav_reskin_wrapper {margin: 0 auto;}
+  /*]]>*/
+</style>
+
+  <noscript>
+  <style>
+    #noscript {
+      background-color: #fff;
+      font-weight: bold;
+      line-height: 30px;
+      text-align: center;
+    }
+    .reskin .footer_nav_contain {
+      max-height: none;
+    }
+    .reskin .footer_nav_toggle {
+      display: none;
+    }
+    .reskin .section_nav ul.top_level li a {
+      font-size: 13.4px;
+    }
+  </style>
+</noscript>
+  <script src="/rapi/js_config.js" type="text/javascript"></script>
+
+
+  <script type="text/javascript">
+//<![CDATA[
+    BLOOMBERG.global_var.enable_reskin = true;
+    BLOOMBERG.global_var.reskin_global = true;
+  
+//]]>
+</script>
+      <script>
+  window.BcomServerVars = window.BcomServerVars || {};
+  (function(h){
+    h.asset_host = "http://cdn.gotraffic.net/";
+    h.ad_test_domain = "bb20ad";
+    h.bregUrl = "https://login.bloomberg.com";
+    h.chartCloseButton = "http://cdn.gotraffic.net/assets/chart/x-button-39393ad61195a7cd0e330b147a51c229.png"
+    h.chartStoryMarker = "http://cdn.gotraffic.net/assets/chart/story-marker-a93071dfe2cf24b829fff07e5214dd36.png"
+    h.forceTrusteConsentBar = false;
+    h.pageName = "snippet_page";
+    h.qRegCssJs = ["http://cdn.gotraffic.net/q/v/20141204_165640/stylesheets/q_reskin-min.css"].concat(["http://cdn.gotraffic.net/r/v/20141202_141927/javascripts/breg-min.js"], ["http://cdn.gotraffic.net/q/v/20141204_165640/javascripts/q_reskin-min.js"]);
+    h.qUrl = "https://q.bloomberg.com";
+    h.symautocompleteUrl = "http://www.bloomberg.com/apps/data?pid=symautocomplete&Query=";
+    h.utcOffset = -18000000;
+    h.watchlistUrl = "http://www.bloomberg.com/markets/watchlist";
+    h.watchlistSslProxyUrl = "https://login.bloomberg.com/watchlist/markets/watchlist/proxy";
+    h.refreshIfOriginChanged = false;
+    h.bucketRange = {"start":0,"end":0};
+    h.update_api_version = "20150107_131946";
+    h.mediaVoicePropertyId = "NA-BLOOCOM-11236026";
+    h.mediaVoicePlacementSwitch = "nativewell1 nativewell2 nativedata nativelead";
+    h.contentSegment = "";
+  
+    if(true) {
+      h.disableAnalytics = false;
+      h.deviceType = "full";
+      delete h.qRegCssJs;
+    }
+  })(window.BcomServerVars);
+  
+  window.mobileIOS = function(){
+    return (/(iPhone|iPad)/i).test(navigator.userAgent);
+  }
+</script>
+
+<script src="http://cdn.gotraffic.net/assets/snippet/application_snippet-ad64a536d20c181c5718997ec318b0db.js"></script>
+<script src="http://cdn.gotraffic.net/r/v/20141202_141927/javascripts/breg-min.js"></script>
+<script src="http://cdn.gotraffic.net/q/v/20141204_165640/javascripts/q_reskin-min.js"></script>
+<noscript>
+<style>
+  #bcom_homepage_headlines_top_news {
+    display: block;
+    margin-top: 12px;
+  }
+  .article_content .container {
+    margin-top: 0;
+  }
+  
+  .adsense,
+  .advertisements,
+  .article_interaction .save,
+  .footer_nav_toggle,
+  .headlines .filter,
+  .related_links,
+  .search_container,
+  .sidebar_panel_trigger {
+    display: none;
+  }
+  .b_nav {
+    cursor: default;
+  }
+  .footer_nav_contain {
+    max-height: none;
+  }
+  .homepage_content {
+    overflow: visible;
+  }
+  .mini_player,
+  .on_btv_now {
+    display: none;
+  }
+  .top_nav .drop_arrow {
+    display: none !important;
+  }
+  .quick_view nav .change_menu {
+    cursor: default;
+  }
+  .quick_view nav .change_menu h2:after {
+    content: '';
+  }
+  .quick_view nav .change_menu h2:hover {
+    color: #0c0c0c;
+  }
+  
+  @media screen and (min-width: 600px) {
+    .related_links {
+      display: block;
+    }
+  
+    .footer_nav .mobile_apps .mobile_icon {
+      background-image: url("http://cdn.gotraffic.net/assets/mobile-sprites-9ef274b94bbd974cc13cbf921bc0e56a.png");
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    .article_interaction .save {
+      display: block;
+    }
+    .article_interaction .save .icon {
+      color: transparent;
+      cursor: default;
+    }
+    .article_interaction .save .icon:after {
+      background: none;
+    }
+    .article_interaction .save:hover .icon {
+      background-color: #545454;
+    }
+  }
+  
+  @media screen and (min-width: 970px) {
+    .section_nav ul.top_level li a {
+      font-size: 13.4px;
+    }
+  }
+  
+  @media screen and (min-width: 1366px) {
+    .section_nav ul.top_level li a {
+      font-size: 16px;
+    }
+  }
+</style>
+</noscript>
+
+
+  
+        <script src="http://cdn.gotraffic.net/v/20141217_100804/javascripts/main_f-min-v2-jq1.7.2.js" type="text/javascript"></script>    <script type='text/javascript'>
+  //<![CDATA[
+    window.Krux||((Krux=function(){Krux.q.push(arguments)}).q=[]);
+    (function(){
+      var k=document.createElement('script');k.type='text/javascript';k.async=true;
+      var m,src=(m=location.href.match(/\bkxsrc=([^&]+)/))&&decodeURIComponent(m[1]);
+      k.src = /^https?:\/\/([^\/]+\.)?krxd\.net(:\d{1,5})?\//i.test(src) ? src : src === "disable" ? "" :
+              (location.protocol==="https:"?"https:":"http:")+"//cdn.krxd.net/controltag?confid=IDeZBlqQ";
+      var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(k,s);
+    
+      //  see https://gist.github.com/dbrans/351e23af05a35a887039
+      function retrieve(n){
+        var m, k='kx'+n;
+    
+        var myLocalStorage;
+        try {
+          myLocalStorage = window.localStorage;
+        } catch (e) {
+        }
+    
+        if (myLocalStorage) {
+            return myLocalStorage[k] || "";
+        } else if (navigator.cookieEnabled) {
+            m = document.cookie.match(k+'=([^;]*)');
+            return (m && unescape(m[1])) || "";
+        } else {
+            return '';
+        }
+      }
+    
+      Krux.retrieve = retrieve;
+    
+      Krux.user = retrieve('user');
+    
+      Krux.segments = retrieve('segs') ? retrieve('segs').split(',') : [];
+    
+      Krux.injectDartKeyValues = function(url) {
+        // 1a. inject kuid as "kx" sub-parameter of "u" parameter after the "sz" sub-parameter,
+        var dfpp = [];
+    
+        if(Krux.user) {
+          dfpp.push('khost=' + encodeURIComponent(location.hostname));
+          dfpp.push('kuid=' + Krux.user)
+        }
+    
+        for (var i = 0; i < Krux.segments.length; i++){
+          dfpp.push('ksg=' + Krux.segments[i])
+        }
+        Krux.dfppKeyValues = dfpp.length ? ';' + dfpp.join(';') : '';
+    
+        url = url.replace(/(;u=)/i, Krux.dfppKeyValues + "$1");
+        return url;
+      };
+    
+      Krux.params = function() {
+        var params = {};
+        params['khost'] = encodeURIComponent(location.hostname);
+        params['kuid']  = Krux.user;
+        params['ksg'] = Krux.segments;
+        return params;
+      }
+    
+    })();
+  //]]>
+</script>
+
+  <script type="text/javascript">
+//<![CDATA[
+    var reg_enabled = true || (BLOOMBERG.util.Cookie.get('reg_enabled') == 'true');
+    var q_enabled = true || (BLOOMBERG.util.Cookie.get('q_enabled') == 'true');
+  
+//]]>
+</script>
+  
+        
+      <script src="http://cdn.gotraffic.net/v/20141217_100804/javascripts/foresee/foresee-alive.js" type="text/javascript"></script>    <script type="text/javascript">
+      //<![CDATA[
+                      //]]>
+  </script>
+
+    <script type="text/javascript">
+          //<![CDATA[
+        //For omniture
+        Description = "blp.persfin/research/quote/us";
+        // Setup for surround session
+        var adid="";
+        var surroundTagVal = "";
+        var surroundTag=BLOOMBERG.util.Cookie.get("surroundId"); // Get surround session id from the cookie
+        if(surroundTag == "undefined" || surroundTag == null || surroundTag == ""){ // check if there was a surround session id in the cookie
+            surroundTag="";
+        }else{
+            surroundTagVal="srnd="+surroundTag+";"; // finish setting up the key-value for the ad tags
+        }
+
+        if (typeof surroundTagVal == "undefined" || surroundTagVal == "null") surroundTagVal = "";
+
+        //Market status
+        if (typeof gblvlty == "undefined"){ var gblvlty = 0; }
+        market_status_val = "status=marketstatus" + gblvlty;
+        HCat = "";
+
+        //Setting topic value for topic pages(Lingospot)
+        var topic_referrer = BLOOMBERG.referrer.topic_referrer();
+        if(topic_referrer != null && topic_referrer != ""){
+            topic_refer_key = "topic=" + topic_referrer + ";";
+            topic_refer_name = "blp.news/topic/" + topic_referrer;
+        }else{
+            topic_refer_key = "";
+            topic_refer_name = "blp.news/topic;";
+        }
+
+        sponsor_key = "";
+        var sponsor = BLOOMBERG.referrer.sponsor_referrer();
+        if(sponsor != null && sponsor != ""){
+            sponsor_key = "sponsor=" + sponsor + ";";
+        }
+        var ticker_key = ''
+                    ticker_key += 'ticker=USB%3AUS;';
+            BLOOMBERG.global_var.ticker_for_ad = "USB:US";
+        
+
+        //Page URL to pass url to ad call
+        var page_url = window.location.pathname;
+        //Getting sumdomain for test site
+        var host_name_list = window.location.hostname.split('.');
+        var sub_domain_name= host_name_list[0];
+
+        HCat = HCat + topic_refer_key + sponsor_key + ticker_key; //Value to be passed to the ad call
+        var no_dfp_interstitial = false;
+                            //]]>
+    </script>
+
+    
+    
+
+    <script type="text/javascript">
+          //<![CDATA[
+        var _sf_startpt=(new Date()).getTime()
+    //]]></script>
+<script src="http://cdn.gotraffic.net/v/20141217_100804/angular/app/lib/angular.min.js" type="text/javascript"></script>
+<script src="http://cdn.gotraffic.net/v/20141217_100804/javascripts/markets/watchlist_all-min.js" type="text/javascript"></script>
+<script src="http://cdn.gotraffic.net/v/20141217_100804/javascripts/jquery-ui-1.8.16.autocomplete.min.js" type="text/javascript"></script>
+
+
+<script type='text/javascript'>
+  //<![CDATA[
+    $(document).ready(function () {
+      var id = setInterval(function () {
+        var $ac = $('.ui-autocomplete');
+        if ($ac.length > 0) {
+          var $body = $(document.body);
+          if ($body.hasClass('quote_snapshot') || $body.hasClass('watchlist')) {
+            $('#container').after($ac.detach());
+          }
+          clearInterval(id);
+        }
+      }, 500);
+    });
+  //]]>
+</script>
+
+<!--[if lt IE 9]>
+  <script src="http://cdn.gotraffic.net/v/20141217_100804/javascripts/polyfills/html5shiv.js" type="text/javascript"></script><![endif]-->
+
+
+
+</head>
+<body class="quote quote_snapshot reskin reskin_global">
+
+    <div class='reskin' id='global_header_reskin'>
+<div class='desktop header_contain'>
+<script>
+  if(window.mobileIOS()){
+    $('.header_contain').removeClass('desktop');
+  }
+</script>
+<header class='global' role='banner'>
+<div class='hidden_container'></div>
+<div class='consent-track'>
+This site uses cookies. By continuing to browse the site you are agreeing to our use of cookies.
+<a class='close-consent-track' href='#closeConsentTrack'>X</a>
+<span id='consent-track-image'></span>
+</div>
+<noscript>
+<div id='noscript'>
+Bloomberg is best experienced with JavaScript enabled.
+</div>
+</noscript>
+<!--[if lte IE 7]>
+<div id='browser_upgrade'>
+Please upgrade your browser for a better user experience.
+</div>
+<![endif]-->
+<section class='main_head'>
+<nav class='top_nav'>
+<div class='container'>
+<ul class='top_sub no_small'>
+<li class='home_nav lg_hide'>
+<a href="/">Bloomberg.com</a>
+</li>
+<li class='region_nav mid_hide'>
+<a class='region_menu_trigger' href='#'><span class='text'>GLOBAL EDITION</span><span class='drop_arrow'></span>
+</a>
+<ul class='region_menu'></ul>
+</li>
+<li class='mid_hide'>
+<a href="http://www.businessweek.com">Businessweek.com</a>
+</li>
+<li>
+<a class='company_menu_trigger' href='#'>
+Company
+<span class='drop_arrow'></span>
+</a>
+<ul class='company_menu'>
+<li class='nav_hat_item'>
+<a href="http://www.bloomberg.com/company/">About</a>
+</li>
+<li class='nav_hat_item'>
+<a href="http://www.bloomberg.com/now">Blog</a>
+</li>
+<li class='nav_hat_item'>
+<a href="http://jobs.bloomberg.com">Careers</a>
+</li>
+<li class='nav_hat_item'>
+<a href="http://www.bloomberg.com/diversity-inclusion">Diversity &amp; Inclusion</a>
+</li>
+<li class='nav_hat_item'>
+<a href="http://www.bloomberg.com/now/bloomberg-news-mission-statement/">News Mission</a>
+</li>
+<li class='nav_hat_item'>
+<a href="http://www.bloomberg.com/philanthropy">Philanthropy &amp; Engagement</a>
+</li>
+<li class='nav_hat_item'>
+<a href="http://www.bloomberg.com/now/press-releases/">Press Room</a>
+</li>
+<li class='nav_hat_item'>
+<a href="http://www.bloomberg.com/bsustainable/">Sustainability</a>
+</li>
+</ul>
+<li>
+<a class='products_menu_trigger' href='#'>
+Products
+<span class='drop_arrow'></span>
+</a>
+<ul class='products_menu'>
+<li class='link_head'>
+Financial Products
+</li>
+<li class='nav_hat_item'>
+<a href="http://www.bloomberg.com/professional/">Bloomberg Professional Service</a>
+</li>
+<li class='nav_hat_item'>
+<a href="http://www.bloombergtradebook.com">Bloomberg Tradebook</a>
+</li>
+<li class='nav_hat_item'>
+<a href="http://www.bloombergbriefs.com">Bloomberg Briefs</a>
+</li>
+<li class='nav_hat_item'>
+<a href="http://www.bloombergindexes.com">Bloomberg Indexes</a>
+</li>
+<li class='nav_hat_item'>
+<a href="http://www.bloombergsef.com">Bloomberg SEF</a>
+</li>
+<li class='nav_hat_item'>
+<a href="https://service.bloomberg.com/">Service Center</a>
+</li>
+<li class='nav_hat_item'>
+<a href="http://www.bloomberg.com/professional/systems-support/customer-support/">Customer Support</a>
+</li>
+<li class='link_head'>
+Enterprise Products
+</li>
+<li class='nav_hat_item'>
+<a href="http://www.bloomberg.com/enterprise/">Enterprise Solutions</a>
+</li>
+<li class='nav_hat_item'>
+<a href="http://www.bloomberg.com/trading-solutions/">Trading Solutions</a>
+</li>
+<li class='link_head'>
+Industry Products
+</li>
+<li class='nav_hat_item'>
+<a href="http://www.bna.com/">Bloomberg BNA</a>
+</li>
+<li class='nav_hat_item'>
+<a href="http://about.bgov.com/">Bloomberg Government</a>
+</li>
+<li class='nav_hat_item'>
+<a href="http://about.bloomberglaw.com/">Bloomberg Law</a>
+</li>
+<li class='nav_hat_item'>
+<a href="http://www.bloomberglink.com/">Bloomberg Link</a>
+</li>
+<li class='nav_hat_item'>
+<a href="http://about.bnef.com">Bloomberg New Energy Finance</a>
+</li>
+<li class='nav_hat_item'>
+<a href="https://www.bloombergsports.com/">Bloomberg Sports</a>
+</li>
+<li class='nav_hat_item'>
+<a href="http://www.bloomberg.com/content-licensing">Content Licensing</a>
+</li>
+</ul>
+</li>
+</li>
+<li class='bba'>
+<a href="https://bba.bloomberg.net">Bloomberg Anywhere</a>
+</li>
+</ul>
+<ul class='top_social no_small'>
+<li>
+<a class="facebook-icon" href="http://www.facebook.com/bloombergnews"><img alt="Like us on Facebook" src="http://cdn.gotraffic.net/assets/icons/facebook-db49bc202f5c8c63a2783f99f4942090.svg" /></a>
+</li>
+<li>
+<a class="twitter-icon" href="http://www.twitter.com/business"><img alt="Follow us on Twitter" src="http://cdn.gotraffic.net/assets/icons/twitter-2856bf711fa6245418bf232c7655dc5f.svg" /></a>
+</li>
+</ul>
+<div class='search_container' role='search'>
+<input autocomplete='off' id='symac_keyword_reskin' name='q' placeholder='Search for News and Quotes' type='text'>
+<button id='search'>
+<span></span>
+</button>
+<div id='symac_suggest'></div>
+</div>
+<ul class='top_utility'>
+<li class='sm_hide'>
+<a class='sign_in' href='https://login.bloomberg.com' id='sign_in_button'>
+Sign In
+<span class='drop_arrow'></span>
+</a>
+<div class='first' id='login_navigation_item'>
+<a class='login_placeholder' href='#'></a>
+</div>
+</li>
+<li class='search_toggle mid_hide' href='#'>
+<a class='search' href='//search1.bloomberg.com/search/?content_type=all&amp;page=1&amp;q=bloomberg'>Search</a>
+</li>
+</ul>
+</div>
+</nav>
+<div class='container'>
+<nav class='logo_nav'>
+<div class='b_nav'></div>
+<a class="logo" href="/"></a>
+</nav>
+<nav class='section_nav search_contain search_open'>
+<div class='container'>
+<ul class='top_level'>
+<li>
+<a class='news' href='/news/'>News</a>
+<ul class='news'>
+<li>
+<a href="/news/">Top Headlines</a>
+<a href="/popular/">Most Popular</a>
+<a href="/news/exclusive/">Exclusive</a>
+<a href="/news/law/">Law</a>
+<a href="/entrepreneurs/">Entrepreneurs</a>
+<a href="/leaders/">Leaders</a>
+<a href="/news/economy/">Economy</a>
+<a href="/news/environment/">Environment</a>
+<a href="/news/science/">Science</a>
+<a href="/sports/">Sports</a>
+<a href="/markets-magazine/">Markets Magazine</a>
+<a href="http://topics.bloomberg.com/bloomberg-pursuits/">Pursuits Magazine</a>
+<a href="/visual-data/">Bloomberg Visual Data</a>
+<a href="/visual-data/best-and-worst/">Bloomberg Best (and Worst)</a>
+<a class="contact_us" href="/help.html#contact-our-editors">For comments or complaints about news coverage click here</a>
+</li>
+<li>
+<a class="main" href="/news/regions/">Regions</a>
+<a href="/news/us/">U.S.</a>
+<a href="/news/china/">China</a>
+<a href="/news/europe/">Europe</a>
+<a href="/news/asia/">Asia</a>
+<a href="/news/uk-ireland/">U.K. &amp; Ireland</a>
+<a href="/news/australia-newzealand/">Australia &amp; New Zealand</a>
+<a href="/news/canada/">Canada</a>
+<a href="/news/india-pakistan/">India &amp; Pakistan</a>
+<a href="/news/japan/">Japan</a>
+<a href="/news/africa/">Africa</a>
+<a href="/news/eastern-europe/">Eastern Europe</a>
+<a href="/news/latin-america/">Latin America</a>
+<a href="/news/middle-east/">Middle East</a>
+</li>
+<li>
+<a class="main" href="/news/markets/">Markets</a>
+<a href="/news/commodities/">Commodities</a>
+<a href="/news/currencies/">Currencies</a>
+<a href="/news/bonds/">Bonds</a>
+<a href="/news/stocks/">Stocks</a>
+<a href="/news/energy-markets/">Energy Markets</a>
+<a href="/news/municipal-bonds/">Municipal Bonds</a>
+<a href="/news/emerging-markets/">Emerging Markets</a>
+<a href="/news/funds/">Funds</a>
+<a href="http://topics.bloomberg.com/islamic-finance/">Islamic Finance</a>
+</li>
+<li>
+<a class="main" href="/news/industries/">Industries</a>
+<a href="/news/energy/">Energy</a>
+<a href="/news/technology/">Technology</a>
+<a href="/news/real-estate/">Real Estate</a>
+<a href="/news/finance/">Finance</a>
+<a href="/news/health-care/">Health Care</a>
+<a href="/news/transportation/">Transportation</a>
+<a href="/news/insurance/">Insurance</a>
+<a href="/news/retail/">Retail</a>
+<a href="/news/media/">Media</a>
+<a href="/news/manufacturing/">Manufacturing</a>
+</li>
+</ul>
+</li>
+<li>
+<a class='quick' href='/quickview/'>Quick</a>
+</li>
+<li>
+<a class='markets' href='/markets/'>Markets</a>
+<ul class='market-data'>
+<li>
+<a class="main" href="/markets/stocks/">Stocks</a>
+<a href="/markets/stocks/futures/">Stock Futures</a>
+<a href="/markets/stocks/world-indexes/">World Indexes</a>
+<a href="/markets/stocks/world-indexes/americas">Americas</a>
+<a href="/markets/stocks/world-indexes/europe-africa-middle-east">Europe, Middle East, &amp; Africa</a>
+<a href="/markets/stocks/world-indexes/asia-pacific">Asia-Pacific</a>
+<a href="/markets/stocks/movers/dow/">Gainers &amp; Losers</a>
+<a href="/apps/ecal?c=US">Earnings Calendar</a>
+<a href="/visual-data/industries/">Industry Leaders</a>
+<a class="main sep" href="/markets/currencies/">Currencies</a>
+<a href="/markets/currencies/americas/">Americas</a>
+<a href="/markets/currencies/europe-africa-middle-east/">Europe, Middle East, &amp; Africa</a>
+<a href="/markets/currencies/asia-pacific/">Asia-Pacific</a>
+<a href="/markets/currencies/cross-rates/">Foreign Exchange Cross Rates</a>
+<a href="/markets/currencies/fx-fixings/">FX Fixings</a>
+<a href="/markets/currencies/currency-converter/">Currency Converter</a>
+<a href="/video/forex-trading">Forex Trading Videos</a>
+</li>
+<li>
+<a class="main" href="/markets/commodities/futures/">Commodities</a>
+<a href="/energy/">Energy Prices</a>
+<a href="/markets/commodities/futures/metals/">Metals Prices</a>
+<a href="/markets/commodities/futures/agriculture/">Agricultural Prices</a>
+<a class="main sep" href="/markets/rates-bonds/">Rates &amp; Bonds</a>
+<a href="/markets/rates-bonds/government-bonds/us/">US Treasuries</a>
+<a href="/markets/rates-bonds/government-bonds/uk/">UK Gilts</a>
+<a href="/markets/rates-bonds/government-bonds/germany/">Germany Bunds</a>
+<a href="/markets/rates-bonds/government-bonds/japan/">Japan Bonds</a>
+<a href="/markets/rates-bonds/government-bonds/australia/">Australia Bonds</a>
+<a href="/markets/rates-bonds/benchmark-bond-indexes/">Bloomberg Bond Indexes</a>
+<a href="/markets/rates-bonds/corporate-bonds/">Corporate Bonds</a>
+<a href="/markets/rates-bonds/consumer-interest-rates/">Consumer Rates</a>
+<a class="main sep" href="/markets/economic-calendar/">Economic Calendar</a>
+<a class="main" href="/markets/watchlist/">Watchlist</a>
+<a class="main" href="/markets/european-debt-crisis/">European Debt Crisis</a>
+<a class="main" href="/markets/symbolsearch/">Symbol Search</a>
+<a class="main" href="http://go.bloomberg.com/market-now/">The Market Now</a>
+</li>
+</ul>
+</li>
+<li>
+<a class='personal-finance' href='/personal-finance/'>Personal Finance</a>
+<ul class='personal-finance'>
+<li>
+<a href="/personal-finance/">Top Headlines</a>
+<a href="/personal-finance/saving-and-investing/">Saving &amp; Investing</a>
+<a href="/personal-finance/real-estate/">Real Estate</a>
+<a href="/personal-finance/retirement-planning/">Retirement Planning</a>
+<a href="/personal-finance/financial-advisers/">Financial Advisers</a>
+<a href="/personal-finance/taxes/">Taxes</a>
+<a href="/blogs/personal_finance/ventured-gained/">Blog: Ventured &amp; Gained</a>
+<a href="/personal-finance/consumer-spending/">Real Cost Of</a>
+<a href="/personal-finance/money-gallery/">Money Gallery</a>
+<a href="/personal-finance/calculators/">Calculators</a>
+<a href="/markets/watchlist/">Watchlist (Portfolio Tracker)</a>
+</li>
+</ul>
+</li>
+<li>
+<a class='tech' href='/technology/'>Tech</a>
+<ul class='tech'>
+<li>
+<a href="/technology/">Top Headlines</a>
+<a href="/technology/social-media/">Social Media</a>
+<a href="/technology/mobile-wireless/">Mobile &amp; Wireless</a>
+<a href="/technology/web/">Web</a>
+<a href="/technology/enterprise-tech/">Enterprise Tech</a>
+<a href="/technology/tv-games-movies/">TV, Games &amp; Movies</a>
+<a href="/technology/apple/">Apple</a>
+<a href="http://go.bloomberg.com/tech-deals/">Tech Deals</a>
+<a href="/blogs/technology/global-tech/">Global Tech</a>
+<a href="/technology/slideshows/">Slideshows</a>
+<a href="/video/technology/">Videos</a>
+</li>
+</ul>
+</li>
+<li>
+<a class='us-politics' href='/politics/'>U.S. Politics</a>
+</li>
+<li>
+<a class='sustainability' href='/sustainability/'>Sustainability</a>
+<ul class='sustainability'>
+<li>
+<a href="/sustainability/">Top Headlines</a>
+<a href="/sustainability/energy/">Energy</a>
+<a href="/sustainability/corporate/">Corporate Sustainability</a>
+<a href="/sustainability/policy/">Policy</a>
+<a href="/sustainability/natural-resources/">Natural Resources</a>
+<a href="/sustainability/health-population/">Health &amp; Population</a>
+<a href="/sustainability/slideshows/">Slideshows</a>
+<a href="/video/sustainability/">Videos</a>
+<a href="/blogs/sustainability/the-grid/">Blog: The Grid</a>
+</li>
+</ul>
+</li>
+<li>
+<a class='luxury' href='/luxury/'>Luxury</a>
+<ul class='luxury'>
+<li>
+<a href="/luxury/">Top Headlines</a>
+<a href="/luxury/autos/">Autos</a>
+<a href="/billionaires/">Billionaires</a>
+<a href="/luxury/living/">Living</a>
+<a href="/luxury/property/">Property</a>
+<a href="/luxury/travel/">Travel</a>
+<a href="/luxury/well-spent/">Well Spent</a>
+<a href="/blogs/luxury/loot/">Loot Blog</a>
+<a href="http://topics.bloomberg.com/bloomberg-pursuits/">Pursuits Magazine</a>
+<a href="/video/luxury/">Videos</a>
+</li>
+</ul>
+</li>
+<li>
+<a class='video' href='/video/'>Video</a>
+<ul class='video'>
+<li>
+<a href="/video/">Must See</a>
+<a href="/video/latest/">Latest</a>
+<a href="/tv/">Live TV</a>
+<a href="/tv/shows/">Shows</a>
+<a href="/playlist/">Playlist</a>
+</li>
+</ul>
+</li>
+<li>
+<a class='radio' href='/radio/'>Radio</a>
+<ul class='radio'>
+<li>
+<a href="/radio/">Live Radio</a>
+<a href="/radio/shows/">Shows</a>
+<a href="/radio/schedule/">Schedule</a>
+<a href="/personalities/">Personalities</a>
+<a class="main sep" href="/podcasts/">Podcasts</a>
+<a href="/podcasts/bloomberg-brief/">Bloomberg Brief</a>
+<a href="/podcasts/featured/">Featured Podcasts and New Shows</a>
+<a href="/podcasts/bloombergview/">Bloomberg View</a>
+<a href="/podcasts/masters-in-business/">Masters in Business</a>
+<a href="/podcasts/first-word/">First Word</a>
+<a href="/podcasts/surveillance/">Surveillance</a>
+<a href="/podcasts/hays-advantage/">Bloomberg Advantage</a>
+<a href="/podcasts/in_the_loop/">In the Loop</a>
+<a href="/podcasts/law/">Bloomberg Law</a>
+<a href="/podcasts/taking-stock/">Taking Stock</a>
+<a href="/podcasts/bloomberg-best/">Bloomberg Best</a>
+<a href="/podcasts/">More Podcasts</a>
+</li>
+</ul>
+</li>
+<li>
+<a class='opinion' href='http://bloombergview.com/?cmpid=bb_primarynav'>Opinion</a>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+</section>
+</header>
+</div>
+
+<script>
+  Bcom.currentPage = new Bcom.Pages.Snippet();
+</script>
+
+<div class='clearfix' id='header_bottom'>
+<div class='eye_brow_nav_reskin_wrapper' id='ext_navigation'>
+
+</div>
+<script type='text/javascript'>
+  //<![CDATA[
+    if ("true" !== "true") {
+      BLOOMBERG.register_ext_nav_events();
+    } else {
+      // using code from BCOM and depends on snippet svc being on
+      BLOOMBERG.setup_ext_nav_tracking();
+    }
+  //]]>
+</script>
+
+
+</div>
+<div class='reskin' id='leader_board_container'>
+<div id='leader_board'>
+
+
+
+
+
+
+
+      <div class="gpt_ad top " id="gpt-ad-top"><script type="text/javascript">
+//<![CDATA[
+BLOOMBERG.gpt.render({"ad_description":"blp.persfin/research//quote//us","position":"top","size":[[728,90],[970,66],[970,90],[1,1]],"tile":2,"el_classes":"","id":"gpt-ad-top"});
+//]]>
+</script></div>
+  
+
+
+</div>
+</div>
+</div>
+
+    <div id="container" class="module">
+            
+            
+      
+      <div id="content" class="clearfix ">
+                        <div id="primary_content">
+          <script type='text/javascript'>
+  //<![CDATA[
+    (function(){
+      var queryParams = BLOOMBERG.querystring.getParams();
+      if ('oven_ab' in queryParams) {
+        BLOOMBERG.util.Cookie.set('oven_charts_bucket', queryParams['oven_ab'], Date.nextYear().toGMTString(), '/', 'bloomberg.com');
+      }
+    
+      if (BLOOMBERG.global_var.bucketedForOvenAB()) {
+        $('#primary_content').addClass('oven_interactive_ab');
+      }
+    })();
+  //]]>
+</script>
+
+<div class="clearfix quote_scoreboard">
+  <div class="exchange_type">
+    
+        <ul>
+          <li>
+            <span class="l">Exchange:</span>
+            <span itemprop="exchange">New York
+            </span>
+          </li>
+          <li>
+            <span class="l">Sector:</span>
+            <span>Financials
+            </span>
+          </li>
+          <li>
+            <span class="l">Industry:</span>
+            <span>Banking
+                
+            </span>
+          </li>
+          <li>
+            <span class="l">Sub-Industry:</span>
+            <span>Banks
+            </span>
+          </li>
+        </ul>
+    
+  </div>
+  
+
+
+<div class="ticker_header" itemscope="itemscope" itemtype="http://schema.org/intangible/financialquote">
+  <div class="ticker_header_top clearfix">
+    <h2 itemprop="name">US Bancorp/MN</h2>
+    
+      <span class="add_to_watchlist" ng-app="addToWatchlistApp" ng-controller="addToWatchlistCtrl">
+        <a class="add grey_button" ng-click="$broadcast('addToWatchlist')">
+          <span class="add">+</span>
+          Add to Watchlist
+        </a>
+        <div id="add_ticker_to_watchlist" add-ticker-to-watchlist symbol="USB:US" name="US Bancorp/MN"></div>
+      </span>
+    
+  </div>
+  <h3 class=""><span itemprop="tickersymbol">USB</span>:US </h3>
+
+  
+      <span class=" price">
+        <meta itemprop="price" content="44.1150" />
+        44.1150
+        
+            <span itemprop="priceCurrency"> USD</span>
+        
+      </span>
+  
+  
+
+  
+      <meta itemprop="priceChange" content="0.5650" />
+      <meta itemprop="priceChangePercent" content="1.30" />
+      
+          <span class=" trending_up up">0.5650 <span>1.30%</span></span>
+
+      
+  
+  
+  <div class='selected share_button_container' style='z-index:299;'>
+<div class='action'>
+<div class='share'>
+<span class='arrow'></span>
+Share
+</div>
+</div>
+<div class='share_container'>
+<h5>Share this quote:</h5>
+<div class='row seperator clearfix'>
+<div class='text'>Post this quote on one of these sites:</div>
+<ul class='social_share_icons'>
+<li class='facebook_icon'>
+<a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.bloomberg.com%2Fquote%2FUSB%3AUS&amp;t=Latest+quote+for+%24USB" onclick="window.open(this.href,'facebookpopup','height=400,width=660,scrollbars=1'); event.returnValue=false; return false;" rel="nofollow" title="Share this on Facebook">Facebook Share</a>
+</li>
+<li class='twitter_icon'>
+<a href="https://twitter.com/share?url=http%3A%2F%2Fwww.bloomberg.com%2Fquote%2FUSB%3AUS&amp;counturl=http%3A%2F%2Fwww.bloomberg.com%2Fquote%2FUSB%3AUS&amp;text=Latest+quote+for+%24USB&amp;via=business" onclick="window.open(this.href,'twitterpopup','height=360,width=600,scrollbars=1'); event.returnValue=false; return false;" rel="nofollow" title="Tweet this"></a>
+</li>
+<li class='linkedin_icon'>
+<a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fwww.bloomberg.com%2Fquote%2FUSB%3AUS&amp;title=Latest+quote+for+%24USB&amp;summary=Stock+analysis+for+US+Bancorp%2FMN+%28USB%3ANew+York%29+including+stock+price%2C+stock+chart%2C+company+news%2C%0A++++++++++++++++++++++key+statistics%2C+fundamentals+and+company+profile.&amp;source=Bloomberg.com" onclick="window.open(this.href,'linkedinpopup','height=420,width=1000,scrollbars=1'); event.returnValue=false; return false;" rel="nofollow" title="Share this via LinkedIn">LinkedIn</a>
+</li>
+<li class='googleplus_icon'>
+<a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.bloomberg.com%2Fquote%2FUSB%3AUS" alt="Share on Google+" onclick="javascript:window.open(this.href, '','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=640,width=900');return false;" rel="nofollow" title="Share on Google+">Google +1</a>
+</li>
+</ul>
+</div>
+<div class='row clearfix'>
+<label for="permanent_url">Copy permanent URL</label>
+<input id="permanent_url" name="permanent_url" read_only="true" type="text" value="http://www.bloomberg.com/quote/USB:US" />
+</div>
+</div>
+
+</div>
+
+  
+  <p class="fine_print">
+    
+        
+        As of
+        
+            15:04:31 ET on
+            <meta itemprop="quoteTime" content="2015-01-08T15:04:31-0500" />
+        
+        01/08/2015.
+    
+
+    
+  </p>
+</div>
+
+
+</div>
+
+<div class='quote_panel clearfix'>
+<div class='quote_navigation_container'>
+<div class='quote_navigation' id='quote_navigation'>
+<div id='header'>
+More on USB
+</div>
+<ul>
+<li><a href="/quote/USB:US" class="active">Snapshot</a></li>
+<li><a href="/quote/USB:US/news" class="false">News & Press Releases</a></li>
+<li><a href="/quote/USB:US/chart" class="false">Stock Chart</a></li>
+<li><a href="/profiles/companies/USB:US-us-bancorp/mn">Company Profile</a></li>
+</ul>
+</div>
+</div>
+
+<div class='quote_content'>
+<div class='snapshot'>
+<h1>
+Snapshot for US Bancorp/MN (USB)
+</h1>
+<table class='snapshot_table'>
+<tr>
+<th>Open:</th>
+<td>43.9650</td>
+<th>Day's Range:</th>
+<td>43.7900 - 44.1600</td>
+<th class='last'>Volume:</th>
+<td class='last'>6,829,560</td>
+</tr>
+<tr class='bottom'>
+<th>Previous Close:</th>
+<td>43.5500</td>
+<th>52wk Range:</th>
+<td>38.1000 - 46.1000</td>
+<th class='last'>1-Yr Rtn: <td class="last up">+9.86%</td></th>
+</tr>
+</table>
+</div>
+<div class='clearfix' id='quote_main_panel'>
+<div class='quote_content_main'>
+<div class='market_data_section clearfix'>
+<div class='stock_chart'>
+<h2>
+<a href="/quote/USB:US/chart" class="to_subpage">Stock Chart for USB</a>
+</h2>
+
+<script type="text/javascript">
+    //<![CDATA[
+    if(!BLOOMBERG.global_var.bucketedForOvenAB() || false) {
+      $(function(){
+        var chart = new BLOOMBERG.charts.QuoteChart($("#container_quote_chart"),
+                                                    "USB:US",
+                                                    BLOOMBERG.global_var.QuoteChartData["container_quote_chart"]);
+        	      new BLOOMBERG.charts.AutoComplete(chart);
+	      });
+    }
+    //]]>
+</script>
+
+<div id="container_quote_chart" class="quote_chart">
+  <div class="loading_overlay"></div>
+  <div class="no_chart_data_overlay">
+    <div class="no_data_text">No chart data available.</div>
+  </div>
+  <div class="quote_chart_legend clearfix">
+    <ul class="chart_legend_left">
+      <li class="first">
+        <span class="ticker">
+          <em>USB:US</em>
+          <span class="ticker_data">44.1450</span>
+        </span>
+	  </li>
+    </ul>
+  </div>
+
+  <div class="chart_view_options">
+        <input class="chart_compare"
+           onblur="$(this).data('AutoComplete').handleBlur();"
+           onfocus="$(this).data('AutoComplete').handleFocus();"
+           type="text" value="Compare"/>
+        <ul>
+                <li class="day selected">1D</li>
+                <li class="month ">1M</li>
+        <li class="year ">1Y</li>
+    </ul>
+    </div>
+  <div class="quote_chart"></div>
+  <div class="quote_chart_reporting">
+    <div class="plotline_marker"><span class="arrow"></span><span class="plotline_data">43.5500</span></div>    <div class="reporting_x"></div>
+    <div class="reporting_y" data-name="USB:US"><span class="arrow"></span><span class="reporting_y_data"></span></div>  </div>
+
+      <a href="/quote/USB:US/chart" class="more">Interactive USB Chart</a>
+  
+  <div class="prev_close_legend"><span>&hellip;</span><p>Previous Close</p></div>
+  <div class="error_message_overlay"></div>
+  <div class="error_message">
+    <a class="close_error_message" href="javascript:;">✕</a>
+    <div class="message"></div>
+  </div>
+</div>
+
+<div class='quote_chart oven_quote_chart' id='oven-container_quote_chart'>
+<div class='loading_overlay'></div>
+<div class='no_chart_data_overlay'>
+<div class='no_data_text'>No chart data available.</div>
+</div>
+<div class='quote_chart_toolbar'>
+<div class='interactive_chart_button'>Interactive Chart</div>
+<ul class='line_types'><li class='line selected'></li><li class='ohlc'></li><li class='candle'></li></ul>
+<ul class='timeframes'>
+<li class='selected'>1D</li>
+<li class='interactive'>1W</li>
+<li class=''>1M</li>
+<li class='interactive'>YTD</li>
+<li class=''>1Y</li>
+<li class='interactive'>3Y</li>
+<li class='interactive'>5Y</li>
+</ul>
+<div class='chart_comparison'>
+<input />
+</div>
+</div>
+<div class='series_tracker'>
+<div class='time'></div>
+Close:
+<div class='close'></div>
+<div class='ohlc'>
+Open:
+<div class='open'></div>
+High:
+<div class='high'></div>
+Low:
+<div class='low'></div>
+</div>
+Volume:
+<div class='volume'></div>
+</div>
+<div class='chart_comparison_container'></div>
+<div class='chart_container'></div>
+</div>
+<script type='text/javascript'>
+  //<![CDATA[
+    if (BLOOMBERG.global_var.bucketedForOvenAB()) {
+      document.write(unescape('%3Cscript src="http://cdn.gotraffic.net/v/20141217_100804/javascripts/lib/chart.oven.min.js">%3C/script>'));
+    }
+  //]]>
+</script>
+
+<script type='text/javascript'>
+  //<![CDATA[
+    if(BLOOMBERG.global_var.bucketedForOvenAB()){
+      $("#container_quote_chart").hide();
+      $("#oven-container_quote_chart").show();
+      $(function(){
+        var chart = new BLOOMBERG.charts.OVENQuoteChart(
+          $("#oven-container_quote_chart"),
+          "USB:US",
+          BLOOMBERG.global_var.QuoteChartData["container_quote_chart"],
+          -18000000);
+    
+        if (true) {
+          chart.setupAutocomplete($('.chart_comparison input'));
+        }
+      });
+    }
+  //]]>
+</script>
+
+
+<script type='text/javascript'>
+  //<![CDATA[
+    BLOOMBERG.global_var.QuoteChartData = BLOOMBERG.global_var.QuoteChartData || {};
+    BLOOMBERG.global_var.QuoteChartData["container_quote_chart"] = {"precision":4,"prev_close":43.55,"data_values":[[1420709400000,43.965],[1420709460000,43.9],[1420709520000,43.99],[1420709580000,43.96],[1420709640000,43.94],[1420709700000,43.98],[1420709760000,43.92],[1420709820000,43.95],[1420709880000,43.94],[1420709940000,43.95],[1420710000000,43.93],[1420710060000,43.98],[1420710120000,43.95],[1420710180000,43.97],[1420710240000,43.97],[1420710300000,43.98],[1420710360000,43.95],[1420710420000,43.98],[1420710480000,43.94],[1420710540000,43.91],[1420710600000,43.92],[1420710660000,43.92],[1420710720000,43.89],[1420710780000,43.9],[1420710840000,43.91],[1420710900000,43.92],[1420710960000,43.89],[1420711020000,43.89],[1420711080000,43.88],[1420711140000,43.88],[1420711200000,43.95],[1420711260000,43.96],[1420711320000,43.96],[1420711380000,43.99],[1420711440000,43.95],[1420711500000,43.96],[1420711560000,43.99],[1420711620000,43.98],[1420711680000,43.92],[1420711740000,43.89],[1420711800000,43.88],[1420711860000,43.855],[1420711920000,43.85],[1420711980000,43.84],[1420712040000,43.87],[1420712100000,43.9],[1420712160000,43.86],[1420712220000,43.83],[1420712280000,43.84],[1420712340000,43.82],[1420712400000,43.84],[1420712460000,43.865],[1420712520000,43.9],[1420712580000,43.85],[1420712640000,43.85],[1420712700000,43.875],[1420712760000,43.895],[1420712820000,43.86],[1420712880000,43.84],[1420712940000,43.84],[1420713000000,43.87],[1420713060000,43.87],[1420713120000,43.86],[1420713180000,43.86],[1420713240000,43.86],[1420713300000,43.86],[1420713360000,43.83],[1420713420000,43.8],[1420713480000,43.81],[1420713540000,43.84],[1420713600000,43.84],[1420713660000,43.83],[1420713720000,43.8301],[1420713780000,43.845],[1420713840000,43.845],[1420713900000,43.85],[1420713960000,43.87],[1420714020000,43.88],[1420714080000,43.86],[1420714140000,43.875],[1420714200000,43.88],[1420714260000,43.86],[1420714320000,43.875],[1420714380000,43.88],[1420714440000,43.88],[1420714500000,43.885],[1420714560000,43.9],[1420714620000,43.91],[1420714680000,43.93],[1420714740000,44.01],[1420714800000,44.025],[1420714860000,44.03],[1420714920000,44.05],[1420714980000,44.07],[1420715040000,44.07],[1420715100000,44.055],[1420715160000,44.0601],[1420715220000,44.055],[1420715280000,44.07],[1420715340000,44.07],[1420715400000,44.055],[1420715460000,44.01],[1420715520000,44.0],[1420715580000,43.9732],[1420715640000,43.995],[1420715700000,43.99],[1420715760000,44.0],[1420715820000,44.0],[1420715880000,44.0035],[1420715940000,44.03],[1420716000000,44.03],[1420716060000,44.03],[1420716120000,44.035],[1420716180000,44.035],[1420716240000,44.035],[1420716300000,44.01],[1420716360000,44.02],[1420716420000,44.005],[1420716480000,44.01],[1420716540000,44.0179],[1420716600000,44.02],[1420716660000,44.03],[1420716720000,43.99],[1420716780000,43.99],[1420716840000,43.971],[1420716900000,43.95],[1420716960000,43.925],[1420717020000,43.93],[1420717080000,43.945],[1420717140000,43.941],[1420717200000,43.96],[1420717260000,43.96],[1420717320000,43.94],[1420717380000,43.955],[1420717440000,43.96],[1420717500000,43.96],[1420717560000,43.985],[1420717620000,43.98],[1420717680000,43.99],[1420717740000,43.99],[1420717800000,43.985],[1420717860000,43.985],[1420717920000,43.98],[1420717980000,43.97],[1420718040000,43.96],[1420718100000,43.98],[1420718160000,43.97],[1420718220000,43.99],[1420718280000,43.985],[1420718340000,43.985],[1420718400000,43.99],[1420718460000,43.99],[1420718520000,43.99],[1420718580000,43.99],[1420718640000,43.99],[1420718700000,44.0],[1420718760000,43.99],[1420718820000,43.99],[1420718880000,43.98],[1420718940000,43.96],[1420719000000,43.965],[1420719060000,43.94],[1420719120000,43.91],[1420719180000,43.89],[1420719240000,43.8799],[1420719300000,43.89],[1420719360000,43.89],[1420719420000,43.88],[1420719480000,43.875],[1420719540000,43.88],[1420719600000,43.88],[1420719660000,43.88],[1420719720000,43.885],[1420719780000,43.89],[1420719840000,43.89],[1420719900000,43.89],[1420719960000,43.9],[1420720020000,43.92],[1420720080000,43.915],[1420720140000,43.95],[1420720200000,43.96],[1420720260000,43.97],[1420720320000,43.95],[1420720380000,43.95],[1420720440000,43.94],[1420720500000,43.96],[1420720560000,43.96],[1420720620000,43.96],[1420720680000,43.97],[1420720740000,43.95],[1420720800000,43.955],[1420720860000,43.97],[1420720920000,43.97],[1420720980000,43.97],[1420721040000,43.975],[1420721100000,43.98],[1420721160000,43.96],[1420721220000,43.98],[1420721280000,43.98],[1420721340000,43.975],[1420721400000,43.985],[1420721460000,43.99],[1420721520000,43.97],[1420721580000,43.98],[1420721640000,43.98],[1420721700000,43.99],[1420721760000,43.99],[1420721820000,43.9856],[1420721880000,43.98],[1420721940000,44.0],[1420722000000,43.99],[1420722060000,43.9799],[1420722120000,43.98],[1420722180000,43.98],[1420722240000,43.97],[1420722300000,43.97],[1420722360000,43.96],[1420722420000,43.96],[1420722480000,43.97],[1420722540000,44.005],[1420722600000,44.04],[1420722660000,44.04],[1420722720000,44.035],[1420722780000,44.04],[1420722840000,44.05],[1420722900000,44.01],[1420722960000,44.03],[1420723020000,44.04],[1420723080000,44.04],[1420723140000,44.04],[1420723200000,44.05],[1420723260000,44.045],[1420723320000,44.045],[1420723380000,44.05],[1420723440000,44.045],[1420723500000,44.05],[1420723560000,44.03],[1420723620000,44.05],[1420723680000,44.035],[1420723740000,44.04],[1420723800000,44.045],[1420723860000,44.0499],[1420723920000,44.035],[1420723980000,44.04],[1420724040000,44.02],[1420724100000,44.025],[1420724160000,44.025],[1420724220000,44.025],[1420724280000,44.03],[1420724340000,44.03],[1420724400000,44.03],[1420724460000,44.025],[1420724520000,44.04],[1420724580000,44.04],[1420724640000,44.0301],[1420724700000,44.04],[1420724760000,44.04],[1420724820000,44.03],[1420724880000,44.04],[1420724940000,44.0],[1420725000000,44.0],[1420725060000,44.01],[1420725120000,44.01],[1420725180000,44.01],[1420725240000,44.01],[1420725300000,44.0],[1420725360000,44.0],[1420725420000,43.95],[1420725480000,43.95],[1420725540000,43.925],[1420725600000,43.95],[1420725660000,43.95],[1420725720000,43.94],[1420725780000,43.96],[1420725840000,43.95],[1420725900000,43.929],[1420725960000,43.965],[1420726020000,43.985],[1420726080000,43.97],[1420726140000,43.98],[1420726200000,43.98],[1420726260000,43.985],[1420726320000,43.9736],[1420726380000,43.985],[1420726440000,43.96],[1420726500000,43.97],[1420726560000,43.98],[1420726620000,43.975],[1420726680000,43.98],[1420726740000,43.995],[1420726800000,43.98],[1420726860000,44.0],[1420726920000,44.0],[1420726980000,43.985],[1420727040000,43.98],[1420727100000,44.0],[1420727160000,43.99],[1420727220000,44.0],[1420727280000,44.0],[1420727340000,43.99],[1420727400000,44.0],[1420727460000,44.01],[1420727520000,44.02],[1420727580000,44.05],[1420727640000,44.06],[1420727700000,44.075],[1420727760000,44.085],[1420727820000,44.1],[1420727880000,44.065],[1420727940000,44.08],[1420728000000,44.1],[1420728060000,44.1126],[1420728120000,44.14],[1420728180000,44.15],[1420728240000,44.15],[1420728300000,44.12],[1420728360000,44.12],[1420728420000,44.1001],[1420728480000,44.08],[1420728540000,44.09],[1420728600000,44.1],[1420728660000,44.1],[1420728720000,44.11],[1420728780000,44.1001],[1420728840000,44.115],[1420728900000,44.12],[1420728960000,44.135],[1420729020000,44.13],[1420729080000,44.14],[1420729140000,44.1117],[1420729200000,44.09],[1420729260000,44.135],[1420729320000,44.15],[1420729380000,44.145]],"exch_open_time":1420709400000,"exch_close_time":1420734600000,"show_1D":true,"selectedPeriod":"1D"};
+  //]]>
+</script>
+
+
+</div>
+<div id='quote_page_recent_tickers_module' ng-cloak='' ng-controller='recentTickersCtrl' ng-show='recentTickers.length &gt; 0'>
+<div class='title'>Recently Viewed Symbols</div>
+<ul>
+<li class='ticker clearfix' ng-repeat='ticker in recentTickers'>
+<div class='symbol'>
+<a ng-bind='ticker' ng-href='/quote/{{ticker}}' onclick="BLOOMBERG.WATCHLIST.trackEvent('Quote link - Recent quotes module - Quotes page');"></a>
+</div>
+<div class='data'>
+<span class='last_price' ng-bind='recentTickersData[ticker].last_price|formatValueDataPoint:2'></span>
+<span class='pct_chge' ng-bind='recentTickersData[ticker].pct_chge_1D|formatPercentDataPoint' ng-class='recentTickersData[ticker].pct_chge_1D|addTrendBasedOnValue'></span>
+</div>
+</li>
+</ul>
+<div>
+<a class='add' ng-click='saveAsWatchlist()'>Save as Watchlist</a>
+<div ng-show='inProgress'>Saving as watchlist...</div>
+<div class='error' ng-bind='errorMsg'></div>
+</div>
+</div>
+
+<div class='key_stat'>
+<h2>Key Statistics for USB</h2>
+<table class='key_stat_data'>
+<tr>
+<th>Current P/E Ratio (ttm)</th>
+<td class='company_stat'>14.4164</td>
+</tr>
+<tr>
+<th>Estimated P/E(12/2014)</th>
+<td class='company_stat'>14.3632</td>
+</tr>
+<tr>
+<th>
+Relative P/E vs.
+<a href="/quote/SPX:IND">SPX</a>
+</th>
+<td class='company_stat'>0.8054</td>
+</tr>
+<tr>
+<th>Earnings Per Share (USD) (ttm)</th>
+<td class='company_stat'>3.0500</td>
+</tr>
+<tr>
+<th>Est. EPS (USD) (12/2014)</th>
+<td class='company_stat'>3.0620</td>
+</tr>
+<tr>
+<th>Est. PEG Ratio</th>
+<td class='company_stat'>1.7689</td>
+</tr>
+<tr>
+<th>Market Cap (M USD)</th>
+<td class='company_stat'>78,679.32</td>
+</tr>
+<tr>
+<th>Shares Outstanding (M)</th>
+<td class='company_stat'>1,789.39</td>
+</tr>
+<tr>
+<th>30 Day Average Volume</th>
+<td class='company_stat'>6,360,620</td>
+</tr>
+<tr>
+<th>Price/Book (mrq)</th>
+<td class='company_stat'>2.0642</td>
+</tr>
+<tr>
+<th>Price/Sale (ttm)</th>
+<td class='company_stat'>3.7829</td>
+</tr>
+<tr>
+<th>Dividend Indicated Gross Yield</th>
+<td class='company_stat'>2.23%</td>
+</tr>
+<tr>
+<th>Cash Dividend (USD)</th>
+<td class='company_stat'>0.2450</td>
+</tr>
+<tr>
+<th>Dividend Ex-Date</th>
+<td class='company_stat'>12/29/2014</td>
+</tr>
+<tr>
+<th>5 Year Dividend Growth</th>
+<td class='company_stat'>36.99%</td>
+</tr>
+<tr>
+<th>Next Earnings Announcement</th>
+<td class='company_stat'>01/21/2015</td>
+</tr>
+</table>
+<div class='more_disclaimer'>
+<span class='disclaimer'>mrq = Most Recent Quarter; ttm = Trailing Twelve Months</span>
+</div>
+</div>
+<div class='financials'>
+<h2>Income Statement for USB</h2>
+
+<div class="chart_container">
+  <div class="bar_chart_legend">
+    <ul class="chart_legend_left">
+      <li class="first"><span><em>Revenue</em></span></li>
+      <li class="second"><span><em>Net Income (M/USD)</em></span></li>
+    </ul>
+    <ul class="chart_legend_right">
+      <li class="circle"><span><em>Profit Margin (%)</em></span></li>
+    </ul>
+  </div>
+  <div class="chart" id="income_statement_chart"></div>
+  <div class="reporting"><span class="arrow"></span><span class="reporting_data"></span></div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    $(function(){
+        create_income_statement_chart('income_statement_chart',
+            ["Dec 2013","Mar 2014","Jun 2014","Sep 2014"],
+            [1456.0,1397.0,1495.0,1471.0],
+            [5224.0,5130.0,5491.0,5299.0],
+            [30.1262,29.3611,29.1253,29.8135]);
+    });
+
+//]]>
+</script>
+<script src="http://cdn.gotraffic.net/v/20141217_100804/javascripts/markets/financials_chart-min.js" type="text/javascript"></script>
+
+</div>
+<div class='profile_executive clearfix' itemscope='itemscope' itemtype='http://schema.org/Corporation'>
+<meta content='US Bancorp/MN' itemprop='name' />
+<h2>
+<a href="/quote/USB:US/profile" class="to_subpage">Company Profile & Key Executives for USB</a>
+</h2>
+<p class='profile' itemprop='description'>U.S. Bancorp is a diversified financial services company that provides lending and depository services, cash management, foreign exchange and trust and investment management services.  The Company also provides credit card services, mortgage banking, insurance, brokerage, and leasing.  U.S Bancorp operates in the Midwest and Western United States.</p>
+<table class="executives_two_cols"><tr><td><span itemprop="employee" itemscope="itemscope" itemtype="http://schema.org/Person"><span class="name" itemprop="name">Richard K Davis</span><span class="title" itemprop="jobTitle">Chairman/President/CEO</span></span></td><td><span itemprop="employee" itemscope="itemscope" itemtype="http://schema.org/Person"><span class="name" itemprop="name">Andrew J Cecere &quot;Andy&quot;</span><span class="title" itemprop="jobTitle">Co-Vice Chairman/CFO</span></span></td></tr><tr><td><span itemprop="employee" itemscope="itemscope" itemtype="http://schema.org/Person"><span class="name" itemprop="name">P W Parker &quot;Bill&quot;</span><span class="title" itemprop="jobTitle">Co-Vice Chairman/Chief Risk Ofcr</span></span></td><td><span itemprop="employee" itemscope="itemscope" itemtype="http://schema.org/Person"><span class="name" itemprop="name">Pamela A Joseph &quot;Pam&quot;</span><span class="title" itemprop="jobTitle">Vice Chairman:Payment Services</span></span></td></tr></table>
+<a href="/quote/USB:US/profile" class="more">More Company Profile & Key Executives for USB</a>
+</div>
+
+<div class="market_bottom_item">
+  
+      <p>Quotes delayed, except where indicated otherwise. All prices in local currency. Time is ET.</p>
+  
+</div>
+</div>
+<div class='non_market_data_container'>
+
+  
+
+  
+
+  <div class="primary_taboola_container">
+    
+
+      <div id='taboola-thumbs-2r'></div>
+      <script type="text/javascript">
+        BLOOMBERG.taboola.pushTaboola({mode:'thumbs-2r', container:'taboola-thumbs-2r', placement:'quote:well-4x2'});
+      </script>
+
+    
+
+    
+
+      <div id='taboola-text-links-2c'></div>
+      <script type="text/javascript">
+        BLOOMBERG.taboola.pushTaboola({mode:'texts-links-2-columns', container:'taboola-text-links-2c', placement:'quote:well-text-links-hybrid', target_type:'mix'});
+      </script>
+
+    
+  </div>
+
+
+<div class='dianomi clearfix'>
+</div>
+<iframe class='dianomi_iframe' frameborder='0' height='120' hspace='0' marginheight='0' marginwidth='0' scrolling='NO' src='http://www.smartlinks.dianomi.com/smartads.epl?id=1675' valign='middle' vspace='0' width='621'></iframe>
+
+<div class='bottom_ads'>
+<div class='forex_ad_links'>
+<script type='text/javascript'>
+  //<![CDATA[
+    adblade_cid="5934-1726727572";
+    adblade_ad_width="620";
+    adblade_ad_height="220";
+    adblade_ad_host="web.industrybrains.com";
+    adblade_tag_type="1";
+  //]]>
+</script>
+<script src="http://web.industrybrains.com/js/ads/show.js" type="text/javascript"></script>
+</div>
+<div class='clearfix'></div>
+
+<div class='text_ad dfp_ad_box ad_box'>
+<div class='ad_box_title'>Sponsored Link</div>
+
+
+
+
+      <div class="gpt_ad textlinks " id="gpt-ad-textlinks"><script type="text/javascript">
+//<![CDATA[
+BLOOMBERG.gpt.render({"ad_description":"blp.persfin/research//quote//us","position":"textlinks","size":[[300,200]],"tile":9,"el_classes":"","id":"gpt-ad-textlinks"});
+//]]>
+</script></div>
+  
+
+</div>
+
+</div>
+</div>
+</div>
+<div class='quote_content_secondary'>
+<div class='symbol_search_widget'>
+<input aria-autocomplete='list' aria-haspopup='true' autocomplete='off' class='ui-autocomplete-input symbol_search_entry' role='textbox' type='text' />
+<div class='search_icon'></div>
+<div class='recommended_symbols'>
+<div class='title'>Recommended Symbols:</div>
+<div class='symbols'></div>
+</div>
+</div>
+<script type='text/javascript'>
+  //<![CDATA[
+    BLOOMBERG.MARKETS.initializeSymbolSearchWidget($('.symbol_search_widget'), 4, 'USB:US');
+  //]]>
+</script>
+
+
+
+
+<div class="dfp_ad_box ad_box ">
+  <div class="ad_box_title">Advertisement</div>
+  
+
+
+
+      <div class="gpt_ad right2 " id="gpt-ad-right2"><script type="text/javascript">
+//<![CDATA[
+BLOOMBERG.gpt.render({"ad_description":"blp.persfin/research//quote//us","position":"right2","size":[[300,250],[300,600]],"tile":3,"el_classes":"","current_resource":"Company|USB:US","id":"gpt-ad-right2"});
+//]]>
+</script></div>
+  
+ </div>
+
+
+<div class='generic_tabbed_module' id='generic_tabs_8cc94865ca'>
+<ul class='generic_tabs clearfix' data-cookie-name='' data-lock-tab-cookie-name=''>
+<li class='clearfix'>
+<h2 class='tab'>USB News</h2>
+</li>
+<li class='clearfix'>
+<h2 class='tab'>Industry News</h2>
+</li>
+</ul>
+<div class='panes'>
+<div>
+<ul class='news_group right_rail_news'>
+
+<li class=" ">
+  <div class="news_item  clearfix bar">
+          <a href="/news/2013-08-05/family-offices-chasing-wealthy-s-46-trillion-in-assets.html" class="q story_link bar black" data-id="MR2J0P0YHQ0X01" data-type="Story" suid="MR2J0P0YHQ0X01">Family Offices Chasing Wealthy’s $46 Trillion in Assets</a>              <span class="props">
+          <span class="timestamp inline">Updated Aug 05, 2013</span>
+        </span>
+                </div>
+</li>
+
+
+<li class=" ">
+  <div class="news_item  clearfix bar">
+          <a href="/news/2014-11-21/u-s-bancorp-plans-to-add-about-4-500-jobs-by-2015-davis-says.html" class="q story_link bar black" data-id="NFE4NE6TTDSR01" data-type="Story" suid="NFE4NE6TTDSR01">U.S. Bancorp Plans to Add About 4,500 Jobs by 2015, Davis Says</a>              <span class="props">
+          <span class="timestamp inline">Updated Nov 21, 2014</span>
+        </span>
+                </div>
+</li>
+
+
+<li class=" ">
+  <div class="news_item  clearfix bar">
+          <a href="/news/2014-11-07/bofa-us-bancorp-settle-mortgage-bond-suit-for-69-million-1-.html" class="q story_link bar black" data-id="NEOOQP6JIJV101" data-type="Story" suid="NEOOQP6JIJV101">BofA, US Bancorp Settle Mortgage-Bond Suit for $69 Million</a>              <span class="props">
+          <span class="timestamp inline">Updated Nov 07, 2014</span>
+        </span>
+                </div>
+</li>
+
+
+<li class=" last">
+  <div class="news_item  clearfix bar">
+          <a href="/news/2013-11-20/u-s-bancorp-agrees-to-buy-hedge-fund-firm-quintillion.html" class="q story_link bar black" data-id="MWKBMX6TTDTA01" data-type="Story" suid="MWKBMX6TTDTA01">U.S. Bancorp Agrees to Buy Hedge-Fund Firm Quintillion</a>              <span class="props">
+          <span class="timestamp inline">Updated Nov 20, 2013</span>
+        </span>
+                </div>
+</li>
+
+</ul>
+<div class='more'>
+<a href="/quote/USB:US/news#news_tab_company_news" class="more_url">More USB News</a>
+</div>
+
+</div>
+<div>
+<ul class='news_group right_rail_news related_industry_tabbed_news'>
+
+<li class=" ">
+  <div class="news_item  clearfix bar">
+          <a href="/news/2015-01-08/u-s-retail-sales-obama-golden-globes-week-ahead-jan-10-17.html" class="q story_link bar black" data-id="NHVBXM6S972R01" data-type="Story" suid="NHVBXM6S972R01">U.S. Retail Sales, Obama, Golden Globes: Week Ahead Jan. 10-17</a>              <span class="props">
+          <span class="timestamp inline">Updated 1 hour ago</span>
+        </span>
+                </div>
+</li>
+
+
+<li class=" ">
+  <div class="news_item  clearfix bar">
+          <a href="/news/2015-01-06/how-the-bear-market-in-crude-oil-has-polluted-non-energy-stocks.html" class="q story_link bar black" data-id="NHRLY96VDKHV01" data-type="Story" suid="NHRLY96VDKHV01">How the Bear Market in Crude Oil Has Polluted Non-Energy Stocks</a>              <span class="props">
+          <span class="timestamp inline">Updated Jan 06, 2015</span>
+        </span>
+                </div>
+</li>
+
+
+<li class=" ">
+  <div class="news_item  clearfix bar">
+          <a href="/news/2015-01-05/suntrust-to-have-145-million-mortgage-related-legal-expense.html" class="q story_link bar black" data-id="NHPHSV6S972S01" data-type="Story" suid="NHPHSV6S972S01">SunTrust Falls Most Since October on Mortgage-Related Legal Cost</a>              <span class="props">
+          <span class="timestamp inline">Updated Jan 05, 2015</span>
+        </span>
+                </div>
+</li>
+
+
+<li class=" ">
+  <div class="news_item  clearfix bar">
+          <a href="/video/s-p-s-erik-oja-on-outlook-for-u-s-banks-in-2015-gjeW5004ReKCWEKd2daBXg.html" class="q story_link bar black" data-id="gjeW5004ReKCWEKd2daBXg" data-type="Video" suid="gjeW5004ReKCWEKd2daBXg">Citigroup to `Significantly' Raise Dividend in 2015: Oja<span class="camera"></span></a>              <span class="props">
+          <span class="timestamp inline">Updated Dec 31, 2014</span>
+        </span>
+                </div>
+</li>
+
+
+<li class=" last">
+  <div class="news_item  clearfix bar">
+          <a href="/news/2014-12-31/abi-protects-its-own-on-fees-restricts-lenders-bankruptcy.html" class="q story_link bar black" data-id="NHEYTJ6VDKHU01" data-type="Story" suid="NHEYTJ6VDKHU01">ABI Protects Its Own on Fees; Restricts Lenders: Bankruptcy</a>              <span class="props">
+          <span class="timestamp inline">Updated Dec 31, 2014</span>
+        </span>
+                </div>
+</li>
+
+</ul>
+<div class='more'>
+<a href="/quote/USB:US/news#news_tab_industry_news" class="more_url">More Industry News</a>
+</div>
+
+</div>
+</div>
+</div>
+<script type='text/javascript'>
+  //<![CDATA[
+    BLOOMBERG.util.GenericTabs($("#generic_tabs_8cc94865ca"),  0);
+  //]]>
+</script>
+
+
+<div class='secondary_taboola_container'>
+<div style='margin-bottom: 20px;'>
+<div id='taboola-rightrail'></div>
+<script type='text/javascript'>
+  //<![CDATA[
+    BLOOMBERG.taboola.pushTaboola({mode:'grid-2r', container:'taboola-rightrail', placement:'quote:right-rail-2x2'});
+  //]]>
+</script>
+</div>
+</div>
+
+<div id='quote_press_release_panel'>
+<h3 class='news_panel_header'>
+Press Releases for USB
+</h3>
+<ul class='news_group right_rail_news'>
+<li class=''>
+<div class='news_item clearfix bar'>
+<a href="/article/2014-12-22/aGgJmbBWDpX8.html">U.S. Bank Recognized by Industry Research Firm for Cash Management Services </a>
+<span class='props'>
+<span class='timestamp inline'>Published Dec 22, 2014</span>
+</span>
+</div>
+</li>
+<li class=''>
+<div class='news_item clearfix bar'>
+<a href="/article/2014-12-16/aJg9BbxWGODQ.html">Elavon and Union Bank Extend Alliance Relationship </a>
+<span class='props'>
+<span class='timestamp inline'>Published Dec 16, 2014</span>
+</span>
+</div>
+</li>
+<li class=''>
+<div class='news_item clearfix bar'>
+<a href="/article/2014-12-09/alxUXszA3ebY.html">U.S. Bancorp Announces Quarterly Dividends </a>
+<span class='props'>
+<span class='timestamp inline'>Published Dec 09, 2014</span>
+</span>
+</div>
+</li>
+<li class='last'>
+<div class='news_item clearfix bar'>
+<a href="/article/2014-12-04/au22hBiV1aI0.html">Elavon and Bank of the West Extend 21-Year Marketing Alliance </a>
+<span class='props'>
+<span class='timestamp inline'>Published Dec 04, 2014</span>
+</span>
+</div>
+</li>
+</ul>
+<div class='more'>
+<a href="/quote/USB:US/news#news_tab_press_release" class="more_url">More USB Press Release</a>
+</div>
+</div>
+
+
+<div class="dfp_ad_box ad_box ">
+  <div class="ad_box_title">Advertisement</div>
+  
+
+
+
+      <div class="gpt_ad right3 " id="gpt-ad-right3"><script type="text/javascript">
+//<![CDATA[
+BLOOMBERG.gpt.render({"ad_description":"blp.persfin/research//quote//us","position":"right3","size":[[300,250],[1,1]],"tile":8,"el_classes":"","current_resource":"Company|USB:US","id":"gpt-ad-right3"});
+//]]>
+</script></div>
+  
+ </div>
+
+
+<div class="ad_box "><div class="ad_box_title">Sponsored Links</div>
+    <div class="FPO_medium_rectangle_ad" id="right_google_1">
+    <script type="text/javascript"><!--
+        google_ad_client = "ca-pub-1979187633561026";
+        google_ad_slot = "7597199020";
+        google_ad_width = 300;
+        google_ad_height = 250;
+        //-->
+    </script>
+    <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+    </script>
+    </div>
+</div>
+
+<div class="dfp_ad_box ad_box ">
+    <div class="ad_box_title">Advertisements</div>
+    <div class="micro_bar_content">
+    <div class="micro_bar_ad micro_bar_space" id="SideBar_micro_1">
+        
+
+
+
+      <div class="gpt_ad tradebar01 " id="gpt-ad-tradebar01"><script type="text/javascript">
+//<![CDATA[
+BLOOMBERG.gpt.render({"ad_description":"blp.persfin/research//quote//us","position":"tradebar01","size":[[88,31]],"tile":4,"el_classes":"","id":"gpt-ad-tradebar01"});
+//]]>
+</script></div>
+  
+    </div>
+
+          <div class="micro_bar_ad micro_bar_space" id="SideBar_micro_2">
+        
+
+
+
+      <div class="gpt_ad tradebar02 " id="gpt-ad-tradebar02"><script type="text/javascript">
+//<![CDATA[
+BLOOMBERG.gpt.render({"ad_description":"blp.persfin/research//quote//us","position":"tradebar02","size":[[88,31]],"tile":5,"el_classes":"","id":"gpt-ad-tradebar02"});
+//]]>
+</script></div>
+  
+      </div>
+      
+
+    <div class="micro_bar_ad micro_bar_space" id="SideBar_micro_4">
+        
+
+
+
+      <div class="gpt_ad tradebar03 " id="gpt-ad-tradebar03"><script type="text/javascript">
+//<![CDATA[
+BLOOMBERG.gpt.render({"ad_description":"blp.persfin/research//quote//us","position":"tradebar03","size":[[88,31]],"tile":6,"el_classes":"","id":"gpt-ad-tradebar03"});
+//]]>
+</script></div>
+  
+    </div>
+
+      
+          <div class="micro_bar_ad micro_bar_space" id="SideBar_micro_5">
+              
+
+
+
+      <div class="gpt_ad tradebar04 " id="gpt-ad-tradebar04"><script type="text/javascript">
+//<![CDATA[
+BLOOMBERG.gpt.render({"ad_description":"blp.persfin/research//quote//us","position":"tradebar04","size":[[88,31]],"tile":7,"el_classes":"","id":"gpt-ad-tradebar04"});
+//]]>
+</script></div>
+  
+          </div>
+      
+
+      
+
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+<script type='text/javascript'>
+  //<![CDATA[
+    if (BLOOMBERG.global_var.bucketedForOvenAB()) {
+      $('.interactive_chart_button').click(function(){
+        var $quoteMainPanel = $('#quote_main_panel');
+        $quoteMainPanel.toggleClass('oven_interactive_on');
+        var $this = $(this);
+        var chart = $this.closest('.quote_chart').data('QuoteChart');
+        var buttonText = $this.text();
+        if (buttonText === 'Interactive Chart') {
+          $this.text('Basic Chart');
+          chart.enable_interactions();
+    
+        } else {
+          $this.text('Interactive Chart');
+          chart.disable_interactions();
+        }
+    
+        // @todo IE resize
+        // $this.parent('.quote_chart').data('QuoteChart').resize();
+      });
+    }
+  //]]>
+</script>
+        </div>
+        <div id="secondary_content">
+          
+sec ||= nil
+<script type='text/javascript'>
+  //<![CDATA[
+    //add this ticker as recently viewed &
+    //refresh the local cache data for the same
+    (function(){
+      $("#content").attr("ng-app","watchlistApp");
+      BLOOMBERG.util.recentTickers().add("USB:US");
+      var cache = new BLOOMBERG.b_persist.Cache('recentTickers-');
+      cache.set_object("USB:US", {"symbol":"USB:US","disp_name":"US Bancorp/MN","last_price":"44.1150","time_of_last_updt":"15:04:31","pct_chge_1D":"1.30"}, 300);
+    }());
+  //]]>
+</script>
+
+
+        </div>
+        
+      </div>
+            
+      <div id="symac_suggest" class="reskin"></div>
+    </div>
+    <script type='text/javascript'>
+  //<![CDATA[
+    var ga_page_name = ((typeof(Description) != 'undefined') ? Description : '').replace(/\//g,":");
+    Bcom.Tracker.Page.setDescription(ga_page_name);
+  //]]>
+</script>
+<div class='reskin'>
+<script>
+  Bcom.currentPage = new Bcom.Pages.Snippet();
+  if(Bcom.Tracker.Page.getDescription() == '') {
+    Bcom.Tracker.Page.setDescription('');
+  }
+</script>
+<footer class='footer' id='global_footer' role='contentinfo'>
+<div class='container'>
+<div class='footer_logo icon-bloomberg'></div>
+<a class="social_icon facebook-icon" href="http://www.facebook.com/bloombergnews" rel="external"><img alt="Like us on Facebook" src="http://cdn.gotraffic.net/assets/icons/facebook-f-c72270aa8eec607d56964794bd1ded8d.svg" /></a>
+<a class="social_icon twitter-icon" href="http://twitter.com/business" rel="external"><img alt="Follow us on Twitter" src="http://cdn.gotraffic.net/assets/icons/twitter-bird-f9cf64d3b45040f12c5dc12ab3365b8a.svg" /></a>
+<a class="social_icon linkedin-icon" href="http://www.linkedin.com/today/bloomberg.com?trk=tod-src-tnav-1000020-0" rel="external"><img alt="Connect with us on LinkedIn" src="http://cdn.gotraffic.net/assets/icons/linkedin-in-c9df0a8ebcef72130728276f152926b4.svg" /></a>
+<a class="social_icon google-plus-icon" href="https://plus.google.com/b/101169269861152216375/101169269861152216375/posts" rel="external"><img alt="Connect with us on Google Plus" src="http://cdn.gotraffic.net/assets/icons/google-plus-g-8b5a303fe34110145a9553283bdf2c49.svg" /></a>
+<h4 class='footer_nav_toggle'><span class='more'>More</span>
+<span class='less'>Less</span>
+Content</h4>
+<div class='footer_nav_contain'>
+<nav class='footer_nav'>
+<div class='col_2'>
+<div class='col_3 first_col'>
+<ul class='footer_links'>
+<li class='item_1'>
+<a class='footer_nav_trigger' href='#'>Company</a>
+<ul>
+<li>
+<a href="http://www.bloomberg.com/company/">About</a>
+</li>
+<li>
+<a href="http://www.bloomberg.com/now">Blog</a>
+</li>
+<li>
+<a href="http://jobs.bloomberg.com">Careers</a>
+</li>
+<li>
+<a href="http://www.bloomberg.com/diversity-inclusion">Diversity &amp; Inclusion</a>
+</li>
+<li>
+<a href="http://www.bloomberg.com/philanthropy">Philanthropy &amp; Engagement</a>
+</li>
+<li>
+<a href="http://www.bloomberg.com/now/press-releases/">Press Room</a>
+</li>
+<li>
+<a href="http://www.bloomberg.com/procurement/">Procurement</a>
+</li>
+<li>
+<a href="http://www.bloomberg.com/bsustainable/">Sustainability</a>
+</li>
+</ul>
+</li>
+<li class='item_2'>
+<a class='footer_nav_trigger' href='#'>Support & Contact</a>
+<ul>
+<li class=''>
+<a href="http://www.bloomberg.com/now/contacts/">Customer Support</a>
+</li>
+<li class=''>
+<a href="https://service.bloomberg.com/">Service Center</a>
+</li>
+<li class=''>
+<a href="http://www.bloomberg.com/feedback">Website Feedback</a>
+</li>
+<li class=''>
+<a href="http://www.bloomberg.com/help.html">Help</a>
+</li>
+<li class=''>
+<a href="http://www.bloomberg.com/sitemap/">Sitemap</a>
+</li>
+<li class='multi_line'>
+<a href="/help.html#contact-our-editors">For comments or complaints about news coverage click here</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class='col_3'>
+<ul class='footer_links'>
+<li class='item_3'>
+<a class='footer_nav_trigger' href='#'>Bloomberg Network</a>
+<ul>
+<li class=''>
+<a href="http://www.bloomberg.com/now">Bloomberg Blog</a>
+</li>
+<li class=''>
+<a href="http://www.wiley.com/WileyCDA/Section/id-404407.html">Bloomberg Books</a>
+</li>
+<li class=''>
+<a href="http://www.businessweek.com/">Bloomberg Businessweek</a>
+</li>
+<li class=''>
+<a href="http://www.bloomberg.co.jp/">Bloomberg.co.jp</a>
+</li>
+<li class=''>
+<a href="http://www.bloomberg.com.br/">Bloomberg in Brazil</a>
+</li>
+<li class=''>
+<a href="http://www.bloomberg.in">Bloomberg in India</a>
+</li>
+<li class=''>
+<a href="http://about.bloomberg.co.jp/">Bloomberg in Japan</a>
+</li>
+<li class=''>
+<a href="http://www.bloomberg.co.kr">Bloomberg in Korea</a>
+</li>
+<li class=''>
+<a href="http://www.bloomberg.com.mx">Bloomberg in Mexico</a>
+</li>
+<li class=''>
+<a href="https://www.bloomberginstitute.com/bat/start/">Bloomberg Institute</a>
+</li>
+<li class=''>
+<a href="http://www.bloomberg.com/markets-magazine/">Bloomberg Markets Magazine</a>
+</li>
+<li class=''>
+<a href="http://open.bloomberg.com/">Open Bloomberg</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class='col_2'>
+<div class='col_3 last_col'>
+<ul class='footer_links'>
+<li>
+<a class='footer_nav_trigger' href='#'>
+Financial Products
+</a>
+<ul>
+<li>
+<a href="http://www.bloomberg.com/professional/">Bloomberg Professional Service</a>
+</li>
+<li>
+<a href="https://bba.bloomberg.net/">Bloomberg Anywhere</a>
+</li>
+<li>
+<a href="http://www.bloombergtradebook.com">Bloomberg Tradebook</a>
+</li>
+<li>
+<a href="http://www.bloombergbriefs.com">Bloomberg Briefs</a>
+</li>
+<li>
+<a href="http://www.bloombergindexes.com">Bloomberg Indexes</a>
+</li>
+<li>
+<a href="http://www.bloombergsef.com">Bloomberg SEF</a>
+</li>
+<li>
+<a href="https://service.bloomberg.com/">Service Center</a>
+</li>
+<li>
+<a href="http://www.bloomberg.com/professional/systems-support/customer-support/">Customer Support</a>
+</li>
+</ul>
+</li>
+<li>
+<a class='footer_nav_trigger' href='#'>
+Enterprise Products
+</a>
+<ul>
+<li>
+<a href="http://www.bloomberg.com/enterprise/">Enterprise Solutions</a>
+</li>
+<li>
+<a href="http://www.bloomberg.com/trading-solutions/">Trading Solutions</a>
+</li>
+</ul>
+</li>
+<li>
+<a class='footer_nav_trigger' href='#'>
+Industry Products
+</a>
+<ul>
+<li>
+<a href="http://www.bna.com/">Bloomberg BNA</a>
+</li>
+<li>
+<a href="http://about.bgov.com/">Bloomberg Government</a>
+</li>
+<li>
+<a href="http://about.bloomberglaw.com/">Bloomberg Law</a>
+</li>
+<li>
+<a href="http://www.bloomberglink.com/">Bloomberg Link</a>
+</li>
+<li>
+<a href="http://about.bnef.com">Bloomberg New Energy Finance</a>
+</li>
+<li>
+<a href="https://www.bloombergsports.com/">Bloomberg Sports</a>
+</li>
+<li>
+<a href="http://www.bloomberg.com/content-licensing">Content Licensing</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class='mobile_apps'>
+<ul class='footer_links'>
+<li class='item_6'>
+<a class='footer_nav_trigger' href='#'>Mobile Apps</a>
+<ul>
+<li>
+<a href="http://www.bloomberg.com/mobile/bloomberg/"><div class='mobile_icon icon_bloomberg'></div>
+<span class='one_line'>Bloomberg</span>
+</a></li>
+<li>
+<a href="http://www.bloomberg.com/mobile/radio/"><div class='mobile_icon icon_radio'></div>
+<span class='multi_line'>Bloomberg</span>
+<span>Radio+</span>
+</a></li>
+<li>
+<a href="http://www.bloomberg.com/mobile/tv/"><div class='mobile_icon icon_tv'></div>
+<span class='multi_line'>Bloomberg</span>
+<span>TV+</span>
+</a></li>
+<li>
+<a href="http://www.bloomberg.com/mobile/businessweek/"><div class='mobile_icon icon_businessweek'></div>
+<span class='multi_line'>Bloomberg</span>
+<span>Businessweek+</span>
+</a></li>
+<li>
+<a href="http://www.bloomberg.com/mobile/marketsmagazine/"><div class='mobile_icon icon_markets'></div>
+<span class='multi_line'>Bloomberg</span>
+<span>Markets+</span>
+</a></li>
+<li>
+<a href="http://www.bloomberg.com/professional/bloomberg_anywhere/"><div class='mobile_icon icon_anywhere'></div>
+<span class='multi_line'>Bloomberg</span>
+<span>Professional</span>
+</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+<section class='footer_copyright'>
+<ul>
+<li class='' rel=''>
+<a href="http://www.bloomberg.com/trademarks">Trademarks</a>
+</li>
+<li class='' rel=''>
+<a href="http://www.bloomberg.com/tos">Terms of Service</a>
+</li>
+<li class='' rel=''>
+<a href="http://www.bloomberg.com/privacy">Privacy Policy</a>
+</li>
+<li class='' rel=''>
+<a href="http://jobs.bloomberg.com">Bloomberg Careers</a>
+</li>
+<li class='' rel=''>
+<a href="http://jobsearch.bloomberg.com/">Jobs by Indeed</a>
+</li>
+<li class='' rel=''>
+<a href="http://nytm.org/made-in-nyc">Made in NYC</a>
+</li>
+<li class='ad_choices' rel='nofollow external'>
+<a href="http://www.bloomberg.com/privacy#advertisements">Ad Choices</a>
+</li>
+</ul>
+<p>©2015 Bloomberg L.P. All Rights Reserved</p>
+</section>
+</div>
+</footer>
+
+<div class='ham_nav_container'>
+<div class='drop_nav_container' role='navigation'>
+<div class='logo_nav_contain'>
+<div class='region_menu'></div>
+<div class='nav_container'>
+<ul class='drop_nav'>
+<li>
+<a href="/">Home</a>
+</li>
+<li>
+<a class="has_submenu" href="/news/">News</a>
+<ul class='news'>
+<li>
+<a class="" href="/news/">Top Headlines</a>
+<a class="" href="/popular/">Most Popular</a>
+<a class="" href="/news/exclusive/">Exclusive</a>
+<a class="" href="/news/law/">Law</a>
+<a class="" href="/entrepreneurs/">Entrepreneurs</a>
+<a class="" href="/leaders/">Leaders</a>
+<a class="" href="/news/economy/">Economy</a>
+<a class="" href="/news/environment/">Environment</a>
+<a class="" href="/news/science/">Science</a>
+<a class="" href="/sports/">Sports</a>
+<a class="" href="/markets-magazine/">Markets Magazine</a>
+<a class="" href="http://topics.bloomberg.com/bloomberg-pursuits/">Pursuits Magazine</a>
+<a class="" href="/visual-data/">Bloomberg Visual Data</a>
+<a class="" href="/visual-data/best-and-worst/">Bloomberg Best (and Worst)</a>
+<a class="" href="/help.html#contact-our-editors">For comments or complaints about news coverage click here</a>
+</li>
+<li>
+<a class="main" href="/news/regions/">Regions</a>
+<a href="/news/us/">U.S.</a>
+<a href="/news/china/">China</a>
+<a href="/news/europe/">Europe</a>
+<a href="/news/asia/">Asia</a>
+<a href="/news/uk-ireland/">U.K. &amp; Ireland</a>
+<a href="/news/australia-newzealand/">Australia &amp; New Zealand</a>
+<a href="/news/canada/">Canada</a>
+<a href="/news/india-pakistan/">India &amp; Pakistan</a>
+<a href="/news/japan/">Japan</a>
+<a href="/news/africa/">Africa</a>
+<a href="/news/eastern-europe/">Eastern Europe</a>
+<a href="/news/latin-america/">Latin America</a>
+<a href="/news/middle-east/">Middle East</a>
+<a class="main" href="/news/markets/">Markets</a>
+<a href="/news/commodities/">Commodities</a>
+<a href="/news/currencies/">Currencies</a>
+<a href="/news/bonds/">Bonds</a>
+<a href="/news/stocks/">Stocks</a>
+<a href="/news/energy-markets/">Energy Markets</a>
+<a href="/news/municipal-bonds/">Municipal Bonds</a>
+<a href="/news/emerging-markets/">Emerging Markets</a>
+<a href="/news/funds/">Funds</a>
+<a href="http://topics.bloomberg.com/islamic-finance/">Islamic Finance</a>
+<a class="main" href="/news/industries/">Industries</a>
+<a href="/news/energy/">Energy</a>
+<a href="/news/technology/">Technology</a>
+<a href="/news/real-estate/">Real Estate</a>
+<a href="/news/finance/">Finance</a>
+<a href="/news/health-care/">Health Care</a>
+<a href="/news/transportation/">Transportation</a>
+<a href="/news/insurance/">Insurance</a>
+<a href="/news/retail/">Retail</a>
+<a href="/news/media/">Media</a>
+<a href="/news/manufacturing/">Manufacturing</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/quickview/">Quick</a>
+</li>
+<li>
+<a class="has_submenu" href="/markets/">Market Data</a>
+<ul class='market-data'>
+<li>
+<a class="main" href="/markets/stocks/">Stocks</a>
+<a href="/markets/stocks/futures/">Stock Futures</a>
+<a href="/markets/stocks/world-indexes/">World Indexes</a>
+<a href="/markets/stocks/world-indexes/americas">Americas</a>
+<a href="/markets/stocks/world-indexes/europe-africa-middle-east">Europe, Middle East, &amp; Africa</a>
+<a href="/markets/stocks/world-indexes/asia-pacific">Asia-Pacific</a>
+<a href="/markets/stocks/movers/dow/">Gainers &amp; Losers</a>
+<a href="/apps/ecal?c=US">Earnings Calendar</a>
+<a href="/visual-data/industries/">Industry Leaders</a>
+<a class="main" href="/markets/currencies/">Currencies</a>
+<a href="/markets/currencies/americas/">Americas</a>
+<a href="/markets/currencies/europe-africa-middle-east/">Europe, Middle East, &amp; Africa</a>
+<a href="/markets/currencies/asia-pacific/">Asia-Pacific</a>
+<a href="/markets/currencies/cross-rates/">Foreign Exchange Cross Rates</a>
+<a href="/markets/currencies/fx-fixings/">FX Fixings</a>
+<a href="/markets/currencies/currency-converter/">Currency Converter</a>
+<a href="/video/forex-trading">Forex Trading Videos</a>
+<a class="main" href="/markets/commodities/futures/">Commodities</a>
+<a href="/energy/">Energy Prices</a>
+<a href="/markets/commodities/futures/metals/">Metals Prices</a>
+<a href="/markets/commodities/futures/agriculture/">Agricultural Prices</a>
+</li>
+<li>
+<a class="main" href="/markets/rates-bonds/">Rates &amp; Bonds</a>
+<a href="/markets/rates-bonds/government-bonds/us/">US Treasuries</a>
+<a href="/markets/rates-bonds/government-bonds/uk/">UK Gilts</a>
+<a href="/markets/rates-bonds/government-bonds/germany/">Germany Bunds</a>
+<a href="/markets/rates-bonds/government-bonds/japan/">Japan Bonds</a>
+<a href="/markets/rates-bonds/government-bonds/australia/">Australia Bonds</a>
+<a href="/markets/rates-bonds/benchmark-bond-indexes/">Bloomberg Bond Indexes</a>
+<a href="/markets/rates-bonds/corporate-bonds/">Corporate Bonds</a>
+<a href="/markets/rates-bonds/consumer-interest-rates/">Consumer Rates</a>
+<a class="" href="/markets/economic-calendar/">Economic Calendar</a>
+<a class="" href="/markets/watchlist/">Watchlist</a>
+<a class="" href="/markets/european-debt-crisis/">European Debt Crisis</a>
+<a class="" href="/markets/symbolsearch/">Symbol Search</a>
+<a class="" href="http://go.bloomberg.com/market-now/">The Market Now</a>
+</li>
+</ul>
+</li>
+<li>
+<a class="has_submenu" href="/personal-finance/">Personal Finance</a>
+<ul class='personal-finance'>
+<li>
+<a class="" href="/personal-finance/">Top Headlines</a>
+<a class="" href="/personal-finance/saving-and-investing/">Saving &amp; Investing</a>
+<a class="" href="/personal-finance/real-estate/">Real Estate</a>
+<a class="" href="/personal-finance/retirement-planning/">Retirement Planning</a>
+<a class="" href="/personal-finance/financial-advisers/">Financial Advisers</a>
+<a class="" href="/personal-finance/taxes/">Taxes</a>
+<a class="" href="/blogs/personal_finance/ventured-gained/">Blog: Ventured &amp; Gained</a>
+<a class="" href="/personal-finance/consumer-spending/">Real Cost Of</a>
+<a class="" href="/personal-finance/money-gallery/">Money Gallery</a>
+<a class="" href="/personal-finance/calculators/">Calculators</a>
+<a class="" href="/markets/watchlist/">Watchlist (Portfolio Tracker)</a>
+</li>
+</ul>
+</li>
+<li>
+<a class="has_submenu" href="/technology/">Tech</a>
+<ul class='tech'>
+<li>
+<a class="" href="/technology/">Top Headlines</a>
+<a class="" href="/technology/social-media/">Social Media</a>
+<a class="" href="/technology/mobile-wireless/">Mobile &amp; Wireless</a>
+<a class="" href="/technology/web/">Web</a>
+<a class="" href="/technology/enterprise-tech/">Enterprise Tech</a>
+<a class="" href="/technology/tv-games-movies/">TV, Games &amp; Movies</a>
+<a class="" href="/technology/apple/">Apple</a>
+<a class="" href="http://go.bloomberg.com/tech-deals/">Tech Deals</a>
+<a class="" href="/blogs/technology/global-tech/">Global Tech</a>
+<a class="" href="/technology/slideshows/">Slideshows</a>
+<a class="" href="/video/technology/">Videos</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/politics/">U.S. Politics</a>
+</li>
+<li>
+<a class="has_submenu" href="/sustainability/">Sustainability</a>
+<ul class='sustainability'>
+<li>
+<a class="" href="/sustainability/">Top Headlines</a>
+<a class="" href="/sustainability/energy/">Energy</a>
+<a class="" href="/sustainability/corporate/">Corporate Sustainability</a>
+<a class="" href="/sustainability/policy/">Policy</a>
+<a class="" href="/sustainability/natural-resources/">Natural Resources</a>
+<a class="" href="/sustainability/health-population/">Health &amp; Population</a>
+<a class="" href="/sustainability/slideshows/">Slideshows</a>
+<a class="" href="/video/sustainability/">Videos</a>
+<a class="" href="/blogs/sustainability/the-grid/">Blog: The Grid</a>
+</li>
+</ul>
+</li>
+<li>
+<a class="has_submenu" href="/luxury/">Luxury</a>
+<ul class='luxury'>
+<li>
+<a class="" href="/luxury/">Top Headlines</a>
+<a class="" href="/luxury/autos/">Autos</a>
+<a class="" href="/billionaires/">Billionaires</a>
+<a class="" href="/luxury/living/">Living</a>
+<a class="" href="/luxury/property/">Property</a>
+<a class="" href="/luxury/travel/">Travel</a>
+<a class="" href="/luxury/well-spent/">Well Spent</a>
+<a class="" href="/blogs/luxury/loot/">Loot Blog</a>
+<a class="" href="http://topics.bloomberg.com/bloomberg-pursuits/">Pursuits Magazine</a>
+<a class="" href="/video/luxury/">Videos</a>
+</li>
+</ul>
+</li>
+<li>
+<a class="has_submenu" href="/tv/">TV</a>
+<ul class='tv'>
+<li>
+<a class="" href="/tv/">Live TV</a>
+<a class="" href="/tv/channel-finder/">Channel Finder</a>
+<a class="" href="/personalities/">Personalities</a>
+<a class="" href="/tv/appletv/">Apple TV</a>
+<a class="" href="/mobile/tv/">iPad App</a>
+<a class="main" href="/tv/schedule/">Schedule</a>
+<a href="/tv/schedule/">U.S.</a>
+<a href="/tv/schedule/asia/">Asia</a>
+<a href="/tv/schedule/europe/">Europe</a>
+</li>
+<li>
+<a class="main" href="/tv/shows/">Shows</a>
+<a href="/video/bloomberg-surveillance/">Surveillance</a>
+<a href="/video/market-makers/">Market Makers</a>
+<a href="/video/lunch-money">Lunch Money</a>
+<a href="/video/street-smart/">Street Smart</a>
+<a href="/video/bloomberg-west/">Bloomberg West</a>
+<a href="/video/game-changers/">Game Changers</a>
+</li>
+</ul>
+</li>
+<li>
+<a class="has_submenu" href="/video/">Video</a>
+<ul class='video'>
+<li>
+<a class="" href="/video/">Must See</a>
+<a class="" href="/video/latest/">Latest</a>
+<a class="" href="/tv/">Live TV</a>
+<a class="" href="/tv/shows/">Shows</a>
+<a class="" href="/playlist/">Playlist</a>
+</li>
+</ul>
+</li>
+<li>
+<a class="has_submenu" href="/radio/">Radio</a>
+<ul class='radio'>
+<li>
+<a class="" href="/radio/">Live Radio</a>
+<a class="" href="/radio/shows/">Shows</a>
+<a class="" href="/radio/schedule/">Schedule</a>
+<a class="" href="/personalities/">Personalities</a>
+<a class="main" href="/podcasts/">Podcasts</a>
+<a href="/podcasts/bloomberg-brief/">Bloomberg Brief</a>
+<a href="/podcasts/featured/">Featured Podcasts and New Shows</a>
+<a href="/podcasts/bloombergview/">Bloomberg View</a>
+<a href="/podcasts/masters-in-business/">Masters in Business</a>
+<a href="/podcasts/first-word/">First Word</a>
+<a href="/podcasts/surveillance/">Surveillance</a>
+<a href="/podcasts/hays-advantage/">Bloomberg Advantage</a>
+<a href="/podcasts/in_the_loop/">In the Loop</a>
+<a href="/podcasts/law/">Bloomberg Law</a>
+<a href="/podcasts/taking-stock/">Taking Stock</a>
+<a href="/podcasts/bloomberg-best/">Bloomberg Best</a>
+<a href="/podcasts/">More Podcasts</a>
+</li>
+</ul>
+</li>
+<li>
+<a class="has_submenu" href="#">Blogs</a>
+<ul class='blogs'>
+<li>
+<a class="" href="/blogs/technology/global-tech/">Global Tech</a>
+<a class="" href="/blogs/sustainability/the-grid/">The Grid</a>
+<a class="" href="/blogs/luxury/loot/">Loot</a>
+<a class="" href="http://go.bloomberg.com/market-now/">The Market Now</a>
+<a class="" href="http://go.bloomberg.com/political-economy/">Political Capital</a>
+<a class="" href="http://go.bloomberg.com/tech-deals/">Tech Deals</a>
+<a class="" href="/blogs/personal_finance/ventured-gained/">Ventured and Gained</a>
+</li>
+</ul>
+</li>
+<li class='nav_view'>
+<a href="http://bloombergview.com/?cmpid=bb_primarynav">Opinion</a>
+</li>
+</ul>
+<ul class='sub_drop_nav'>
+<li class='my_saved'>
+<a href="/q">My Saved
+<span class='saved_count'></span>
+</a></li>
+<li>
+<a href="https://login.bloomberg.com/register">Registration
+
+</a></li>
+<li>
+<a href="https://login.bloomberg.com/login">Sign In
+
+</a></li>
+<li>
+<a href="http://www.bloomberg.com">Bloomberg.com
+
+</a></li>
+<li>
+<a href="http://www.businessweek.com">Businessweek.com
+
+</a></li>
+<li>
+<a class="has_submenu" href="http://www.bloomberg.com/company">Company
+
+</a><ul>
+<li>
+<a href="http://www.bloomberg.com/company/">About</a>
+<a href="http://www.bloomberg.com/now">Blog</a>
+<a href="http://jobs.bloomberg.com">Careers</a>
+<a href="http://www.bloomberg.com/diversity-inclusion">Diversity & Inclusion</a>
+<a href="http://www.bloomberg.com/now/bloomberg-news-mission-statement/">News Mission</a>
+<a href="http://www.bloomberg.com/philanthropy">Philanthropy & Engagement</a>
+<a href="http://www.bloomberg.com/now/press-releases/">Press Room</a>
+<a href="http://www.bloomberg.com/procurement/">Procurement</a>
+<a href="http://www.bloomberg.com/bsustainable/">Sustainability</a>
+</li>
+</ul>
+</li>
+<li>
+<a class="has_submenu" href="http://www.bloomberg.com/professional/">Products
+
+</a><ul>
+<li>
+<a class="main no-link" href="javascript:void(0);">Financial Products</a>
+<a href="http://www.bloomberg.com/professional/">Bloomberg Professional Service</a>
+<a href="https://bba.bloomberg.net/">Bloomberg Anywhere</a>
+<a href="http://www.bloombergtradebook.com">Bloomberg Tradebook</a>
+<a href="http://www.bloombergbriefs.com">Bloomberg Briefs</a>
+<a href="http://www.bloombergindexes.com">Bloomberg Indexes</a>
+<a href="http://www.bloombergsef.com">Bloomberg SEF</a>
+<a href="https://service.bloomberg.com/">Service Center</a>
+<a href="http://www.bloomberg.com/professional/systems-support/customer-support/">Customer Support</a>
+<a class="main no-link" href="javascript:void(0);">Enterprise Products</a>
+<a href="http://www.bloomberg.com/enterprise/">Enterprise Solutions</a>
+<a href="http://www.bloomberg.com/trading-solutions/">Trading Solutions</a>
+<a class="main no-link" href="javascript:void(0);">Industry Products</a>
+<a href="http://www.bna.com/">Bloomberg BNA</a>
+<a href="http://about.bgov.com/">Bloomberg Government</a>
+<a href="http://about.bloomberglaw.com/">Bloomberg Law</a>
+<a href="http://www.bloomberglink.com/">Bloomberg Link</a>
+<a href="http://about.bnef.com">Bloomberg New Energy Finance</a>
+<a href="https://www.bloombergsports.com/">Bloomberg Sports</a>
+<a href="http://www.bloomberg.com/content-licensing">Content Licensing</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="https://bba.bloomberg.net/">Bloomberg Anywhere
+
+</a></li>
+<li>
+<a href="http://www.bloomberg.com//mobile/">Mobile Apps
+
+</a></li>
+<li>
+<a href="http://www.bloomberg.com/visual-data/">Bloomberg Visual Data
+
+</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+</div>
+<script>
+  <!-- Chartbeat -->
+  var _sf_async_config={};
+  _sf_async_config.uid = 15087;
+  _sf_async_config.domain = 'bloomberg.com';
+  _sf_async_config.useCanonical = true;
+  _sf_async_config.authors = '';
+  (function(){
+    function loadChartbeat() {
+      window._sf_endpt=(new Date()).getTime();
+      var e = document.createElement("script");
+      e.setAttribute("language", "javascript");
+      e.setAttribute("type", "text/javascript");
+      e.setAttribute('src', '//static.chartbeat.com/js/chartbeat.js');
+      document.body.appendChild(e);
+    }
+    var oldonload = window.onload;
+    window.onload = (typeof window.onload != "function") ?
+      loadChartbeat : function() { oldonload(); loadChartbeat(); };
+  })();
+</script>
+<script>
+  (function() {
+    // Native article pages don't have the correct tracking info until the contents are loaded through
+    // Polar's API call. The tracking is delayed here and will be fired on native article render event.
+    if(Bcom.global_var.IS_NATIVE) {
+      return;
+    }
+    Bcom.Tracker.Page.trackToComScore();
+  })();
+</script>
+<noscript>
+<p>
+<img alt="*" height="1" src="http://b.scorecardresearch.com/p?c1=2&amp;c2=3005059" width="1" />
+</p>
+</noscript>
+<script>
+  window.Utils.AB.setExperimentsChosen();
+  
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11413116-1']);
+  Bcom.Tracker.Page.trackToGoogleAnalytics();
+  _gaq.push(['_trackPageview']);
+  
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<script>
+  $(document).ready(function () {
+    Bcom.Tracker.Events.setupTrackingExternalLinks();
+  });
+</script>
+<!-- START Nielsen Online SiteCensus V6.0 -->
+<!-- COPYRIGHT 2010 Nielsen Online -->
+<script>
+  $(window).load(function () {
+    Bcom.Tracker.Events.trackNielsenEvent('0');
+  });
+</script>
+<noscript>
+<div>
+<img alt="" height="1" src="//secure-us.imrworldwide.com/cgi-bin/m?ci=us-905417h&amp;cg=0&amp;cc=1&amp;ts=noscript" width="1" />
+</div>
+</noscript>
+<!-- END Nielsen Online SiteCensus V6.0 -->
+
+
+</div>
+    
+<script src="http://cdn.gotraffic.net/v/20141217_100804/javascripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
+<script type='text/javascript'>
+  //<![CDATA[
+    (function($) {
+      $('.share_button_container .share').each(function() {
+        $(this).click( function() {
+          var shareButton = $(this);
+          var shareContainer = $(this).closest(".share_button_container").find(".share_container");
+          if(shareButton.hasClass("share_block"))
+          {
+            shareButton.removeClass("share_block");
+            shareContainer.hide();
+          }
+          else
+          {
+            shareButton.addClass("share_block");
+            shareContainer.show();
+            shareContainer.find("input[type=text]").click(function() {
+              $(this).select();
+            });
+            BLOOMBERG.tracker.EVENTTRACK.record('Module Link Tracking', 'social share', window.location.href);
+          }
+          });
+      });
+      $(document).mousedown(function(e){
+        $('.share_button_container .share').each(function() {
+          var shareButton = $(this);
+          var shareContainer = $(this).closest(".share_button_container").find(".share_container");
+          if (shareContainer.has(e.target).length === 0 && !$(e.target).hasClass("share_block"))
+          {
+            shareButton.removeClass("share_block");
+            shareContainer.hide();
+          }
+        });
+      });
+    })(jQuery);
+  //]]>
+</script>
+<script src="http://cdn.gotraffic.net/v/20141217_100804/javascripts/markets/bb_chart_theme-min.js" type="text/javascript"></script>
+<script src="http://cdn.gotraffic.net/v/20141217_100804/javascripts/markets/quote_chart-min.js" type="text/javascript"></script>
+<script src="http://cdn.gotraffic.net/v/20141217_100804/javascripts/jquery-ui-1.8.16.autocomplete.min.js" type="text/javascript"></script>
+<script src="http://cdn.gotraffic.net/v/20141217_100804/javascripts/markets/chart_autocomplete-min.js" type="text/javascript"></script>
+<script src="http://cdn.gotraffic.net/v/20141217_100804/javascripts/markets/main-min.js" type="text/javascript"></script>
+<script src="http://cdn.gotraffic.net/v/20141217_100804/javascripts/markets/bb_chart_theme-min.js" type="text/javascript"></script>
+<script src="http://cdn.gotraffic.net/v/20141217_100804/javascripts/markets/quote_chart-min.js" type="text/javascript"></script>
+        
+
+
+
+<div id="third_party_trackers">
+
+
+
+          <script src="http://cdn.gotraffic.net/v/20141217_100804/onlineopinionOO4S/oo_engine_c_all-min.js" type="text/javascript"></script>  
+  
+
+
+
+        <script type='text/javascript'>
+          var _sf_async_config={};
+          _sf_async_config.uid = 15087;
+          _sf_async_config.domain = 'bloomberg.com';
+          _sf_async_config.sections = 'quotes';
+          _sf_async_config.authors = '';
+          (function(){
+            function loadChartbeat() {
+              window._sf_endpt=(new Date()).getTime();
+              var e = document.createElement('script');
+              e.setAttribute('language', 'javascript');
+              e.setAttribute('type', 'text/javascript');
+              e.setAttribute('src',
+                 (('https:' == document.location.protocol) ? 'https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/' : 'http://static.chartbeat.com/') +
+                 'js/chartbeat.js');
+              document.body.appendChild(e);
+            }
+            var oldonload = window.onload;
+            window.onload = (typeof window.onload != 'function') ?
+               loadChartbeat : function() { oldonload(); loadChartbeat(); };
+          })();
+      </script>
+  
+           <!-- START Nielsen Online SiteCensus V6.0 -->
+        <!-- COPYRIGHT 2010 Nielsen Online -->
+        <script type="text/javascript">
+            //<![CDATA[
+          $(window).load(function () {
+              var d = new Image(1, 1);
+              d.onerror = d.onload = function () {
+               d.onerror = d.onload = null;
+              };
+              d.src = ["//secure-us.imrworldwide.com/cgi-bin/m?ci=us-905417h&cg=0&cc=1&si=", escape(window.location.href), "&rp=", escape(document.referrer), "&ts=compact&rnd=", (new Date()).getTime()].join('');
+          });
+                //]]>
+        </script>
+        <noscript>
+          <div>
+            <img src="//secure-us.imrworldwide.com/cgi-bin/m?ci=us-905417h&amp;cg=0&amp;cc=1&amp;ts=noscript"
+            width="1" height="1" alt="" />
+          </div>
+        </noscript>
+        <!-- END Nielsen Online SiteCensus V6.0 -->
+    
+  </div>
+ <script type="text/javascript">
+ $(Bcom.init);
+ </script>
+
+    
+    <script type="text/javascript">
+      BLOOMBERG.taboola.loadTaboolaLoader({category:'auto'});
+    </script>
+  <script type='text/javascript'>
+  //<![CDATA[
+    BLOOMBERG.taboola.loadTaboolaLoader({category:'auto'});
+  //]]>
+</script>
+
+<!--
+  production
+  0.287651 : 2015-01-08 15:19:44 -0500
+-->
+                    <script charset="windows-1252" src="http://cdn.gotraffic.net/v/20141217_100804/onlineopinionv5/oo_engine_all-min.js" type="text/javascript"></script>    <link href="http://cdn.gotraffic.net/projector/v0.7.91/bvp.css" media="screen" rel="stylesheet" type="text/css" /><script src="http://cdn.gotraffic.net/projector/v0.7.91/video.js" type="text/javascript"></script>     
+    <script src="http://cdn.gotraffic.net/v/20141217_100804/javascripts/foresee/foresee-trigger.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+      BLOOMBERG.taboola.flushTaboola();
+    </script>
+  <script type='text/javascript'>
+  //<![CDATA[
+    BLOOMBERG.taboola.flushTaboola();
+  //]]>
+</script>
+  <script type="text/javascript">
+      (function(w, d) { var a = function() { var a = d.createElement('script'); a.type = 'text/javascript';
+          a.async = 'async'; a.src = '//' + ((w.location.protocol === 'https:') ? 's3.amazonaws.com/cdx-radar/' :
+                  'radar.cedexis.com/') + '01-12403-radar10.min.js'; d.body.appendChild(a); };
+          if (w.addEventListener) { w.addEventListener('load', a, false); }
+          else if (w.attachEvent) { w.attachEvent('onload', a); }
+      }(window, document));
+  </script>
+</body>
+</html>
