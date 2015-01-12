@@ -3,7 +3,7 @@ import calendar
 
 DATE = 0
 HOUR = 1
-TRANSCATION = 2
+TRANSACTION = 2
 STOCK = 3
 MONEY = 4
 SHARE = 5
@@ -32,7 +32,7 @@ class LayoutInit(graphObject):
 				colorMarket = Color_blue
 			else:
 				colorMarket = Color_tan
-			if item[TRANSCATION] == "Acquired":
+			if item[TRANSACTION] == "Acquired":
 				self.setNodeC(item[NODE],x1, y1, colorMarket)
 				self.addLabel(item[NODE],stockShortName,Label_left)
 			else:
@@ -48,7 +48,7 @@ class LayoutInit(graphObject):
 		index = 0
 		NumOfCubesInOneLine = 25
 		for item in matrix:
-			if item[TRANSCATION] == "Acquired":
+			if item[TRANSACTION] == "Acquired":
 				if index < len(dataList):
 					self.setNodeS(item[NODE], cubeSize, cubeSize, Shape_cubeOutlined)
 					if dataList[index] > 0:	
@@ -72,7 +72,7 @@ class LayoutInit(graphObject):
 		index = 0
 	
 		for item in matrix:
-			if item[TRANSCATION] == "Acquired":
+			if item[TRANSACTION] == "Acquired":
 				if index < len(dataList):
 					if choice == 0:
 						nodeInfo = str(dataList[index]) + item[STOCK]
@@ -138,7 +138,7 @@ class LayoutInit(graphObject):
 				lastMonth = item[0][1]
 			self.setNodeS(item[NODE],cubeSize,cubeSize, Shape_cube,2)
 #			self.viewLayout[item[NODE]] = tlp.Coord(x, y,2)
-			if item[TRANSCATION] == 'Acquired':
+			if item[TRANSACTION] == 'Acquired':
 				nodeColor = Color_red
 			else:
 				nodeColor = Color_blue
@@ -173,12 +173,12 @@ class LayoutInit(graphObject):
 		alreadySoldList = []
 		M = len(matrix)
 		for itemIndex in range(M):
-			if matrix[itemIndex][TRANSCATION] == "Acquired":
+			if matrix[itemIndex][TRANSACTION] == "Acquired":
 				tempAcquiredStock = matrix[itemIndex]
 				acquiredNum = tempAcquiredStock[SHARE]
 				for soldIndex in range(itemIndex + 1, M):
 					if matrix[soldIndex][STOCK] == tempAcquiredStock[STOCK]:
-						if matrix[soldIndex][TRANSCATION] == "Sold":
+						if matrix[soldIndex][TRANSACTION] == "Sold":
 							if matrix[soldIndex][SHARE] == acquiredNum:
 								if soldIndex not in alreadySoldList:
 									self.graph.addEdge(matrix[soldIndex][NODE],tempAcquiredStock[NODE])

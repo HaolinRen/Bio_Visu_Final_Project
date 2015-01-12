@@ -2,7 +2,7 @@ from MatrixObject import *
 
 STARTMONEY = 11278
 
-class ProfitsProce(MatrixObject):
+class ProfitsAnalyse(MatrixObject):
 
 	def __init__(self, matrix):
 		self.__profitsList = self.preProcess(matrix)
@@ -23,10 +23,9 @@ class ProfitsProce(MatrixObject):
 		for item in self.__profitsList:
 			liquid += item
 			liquidSum.append(liquid)
-			
 		return liquidSum
 
-	def diffMethod(self, soldStock, acquiredStock):
+	def __diffMethod(self, soldStock, acquiredStock):
 		buyValue = acquiredStock[VALUE]
 		soldValue = soldStock[VALUE]
 		res = (soldValue - buyValue) * soldStock[SHARE]
@@ -40,7 +39,7 @@ class ProfitsProce(MatrixObject):
 		marketHK = [0,0]
 		index = 0
 		for item in matrix:
-			if item[TRANSCATION] == 'Acquired':
+			if item[TRANSACTION] == 'Acquired':
 				if item[MONEY] == 'EUR':
 					marketEU[MARKETPROFITS] += self.__profitsList[index]
 					marketEU[BUYTIMES] += 1
@@ -54,13 +53,10 @@ class ProfitsProce(MatrixObject):
 				if index == len(self.__profitsList):
 					break
 		res = {'USA':marketUS, 'EUROPE':marketEU, 'HK':marketHK}
-		print res
 		return res
 
 	def buyStockRatePercent(self, matrix):
 		result = []
-		
-		buyCost = 0
 		liquidSum = STARTMONEY
 		stockValue = 0
 		day = ''
@@ -68,7 +64,7 @@ class ProfitsProce(MatrixObject):
 			today = '20%i.%i.%i'%(item[0][0],item[0][1],item[0][2])
 			costOrIncome = item[VALUE] * item[SHARE]
 			if day == today:
-				if item[TRANSCATION] == 'Sold':
+				if item[TRANSACTION] == 'Sold':
 					liquidSum += costOrIncome
 				else:
 					liquidSum -= costOrIncome
@@ -80,7 +76,7 @@ class ProfitsProce(MatrixObject):
 					result.append([day,costPercent, liquidPercent])
 					stockValue = 0
 				day = today
-				if item[TRANSCATION] == 'Sold':
+				if item[TRANSACTION] == 'Sold':
 					liquidSum += costOrIncome
 				else:
 					liquidSum -= costOrIncome

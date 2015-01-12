@@ -13,7 +13,7 @@ class MatrixObject(object):
 	def __init__(self):
 		pass
 
-	def preProcess(self, matrix):
+	def __preProcess(self, matrix):
 		diff = []
 		alreadySoldList = []
 		M = len(matrix)
@@ -27,13 +27,13 @@ class MatrixObject(object):
 							if matrix[soldIndex][SHARE] == acquiredNum:
 								if soldIndex not in alreadySoldList:
 									tempSoldStock = matrix[soldIndex]
-									result = self.diffMethod(tempSoldStock,tempAcquiredStock)
+									result = self.__diffMethod(tempSoldStock,tempAcquiredStock)
 									alreadySoldList.append(soldIndex)
 									diff.append(result)
 									break
 		return diff
 
-	def diffMethod(self, soldStock, acquiredStock):
+	def __diffMethod(self, soldStock, acquiredStock):
 		pass
 
 	def clearMatrix(self, matrix):
