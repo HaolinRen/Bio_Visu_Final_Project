@@ -1,4 +1,3 @@
-
 from graphObject import *
 import calendar
 
@@ -12,9 +11,6 @@ VALUE = 6
 NODE = 7
 LEN = 8
 
-cubeSize = 20	
-cubeDistance = cubeSize + cubeSize/3
-NumOfCubesInOneLine = 25
 
 class LayoutInit(graphObject):
 	"""docstring for LayoutInit"""
@@ -23,16 +19,25 @@ class LayoutInit(graphObject):
 
 	def setLayoutInit(self, matrix):	
 		x1 = y1 = 0
-		x2 = 400
+		x2 = 200
 		y2 = 0
 		distX = 1
-		distY = 1
+		distY = 2
 		for item in matrix:
 			self.setNodeS(item[NODE])
-			if item[TRANSCATION] == "Acquired":
-				self.setNodeC(item[NODE],x1, y1, Color_red)
+			stockShortName = self.getStockShortForm(item[STOCK])
+			if item[MONEY] == 'EUR':
+				colorMarket = Color_red
+			elif item[MONEY] == 'HKD':
+				colorMarket = Color_blue
 			else:
-				self.setNodeC(item[NODE],x2, y2, Color_blue)
+				colorMarket = Color_tan
+			if item[TRANSCATION] == "Acquired":
+				self.setNodeC(item[NODE],x1, y1, colorMarket)
+				self.addLabel(item[NODE],stockShortName,Label_left)
+			else:
+				self.setNodeC(item[NODE],x2, y2, colorMarket)
+				self.addLabel(item[NODE],stockShortName,Label_right)
 			x1 += distX
 			x2 += distX
 			y1 += distY
@@ -41,6 +46,7 @@ class LayoutInit(graphObject):
 	def setLayoutIncomeInit(self, matrix, dataList):
 		x = y = 0
 		index = 0
+		NumOfCubesInOneLine = 25
 		for item in matrix:
 			if item[TRANSCATION] == "Acquired":
 				if index < len(dataList):
@@ -61,17 +67,26 @@ class LayoutInit(graphObject):
 				self.setNodeC(item[NODE])
 				self.setNodeS(item[NODE])
 
-	def setLayoutIncomeStick(self, matrix, dataList):
+	def setLayoutIncomeStick(self, matrix, dataList, choice = 0):
 		x = y = 0
 		index = 0
+	
 		for item in matrix:
 			if item[TRANSCATION] == "Acquired":
 				if index < len(dataList):
-					sizeStick = cubeSize * dataList[index]
+					if choice == 0:
+						nodeInfo = str(dataList[index]) + item[STOCK]
+						if dataList[index] < -1000:
+							sizeStick = -600 * cubeSize
+						else:
+							sizeStick = dataList[index] * cubeSize
+					elif choice == 1:
+						nodeInfo = str(round(dataList[index]))
+						sizeStick = dataList[index]
+
 					y = sizeStick / 2
 					self.setNodeC(item[NODE], x, y, Color_green)
 					self.setNodeS(item[NODE], cubeSize, sizeStick, Shape_cubeOutlined)
-					nodeInfo = str(dataList[index]) + item[STOCK]
 					self.addLabel(item[NODE], nodeInfo, Label_top)
 				else:
 					self.setNodeS(item[NODE])
@@ -83,6 +98,7 @@ class LayoutInit(graphObject):
 				self.setNodeS(item[NODE])
 
 	def setLayoutDays(self, matrix):
+
 		self.clearNodes()	
 		self.clearAllEdges()
 		M = len(matrix)
@@ -100,7 +116,7 @@ class LayoutInit(graphObject):
 						cordX = days * cubeDistance
 						
 						tempNode = self.graph.addNode()
-						self.setNodeC(tempNode, cordX, cordY)
+						self.setNodeC(tempNode, cordX, cordY, Color_yellow, -1)
 						self.setNodeS(tempNode, cubeSize, cubeSize, Shape_cube)
 						
 						if cordX == cubeDistance and month == startMonth:
@@ -111,7 +127,6 @@ class LayoutInit(graphObject):
 					if month == 12:
 						startMonth = 1
 						cordY -= cubeDistance
-
 		drawCube()
 		for itemIndex in range(M):
 			item = matrix[itemIndex]
@@ -121,8 +136,13 @@ class LayoutInit(graphObject):
 				if item[0][1] == 1:
 					y -= cubeDistance
 				lastMonth = item[0][1]
-			self.setNodeS(item[NODE],cubeSize,cubeSize, Shape_cube)
-			self.viewLayout[item[NODE]] = tlp.Coord(x, y,2)
+			self.setNodeS(item[NODE],cubeSize,cubeSize, Shape_cube,2)
+#			self.viewLayout[item[NODE]] = tlp.Coord(x, y,2)
+			if item[TRANSCATION] == 'Acquired':
+				nodeColor = Color_red
+			else:
+				nodeColor = Color_blue
+			self.setNodeC(item[NODE],x,y,nodeColor)
 
 	def addStickGraph(self, dic, x):
 		stickX = x
@@ -150,7 +170,6 @@ class LayoutInit(graphObject):
 		tempNode = self.graph.getOneNode()
 		if self.graph.deg(tempNode) != 0:
 			return 0
-
 		alreadySoldList = []
 		M = len(matrix)
 		for itemIndex in range(M):

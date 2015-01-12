@@ -20,6 +20,9 @@ Label_bottom = tlp.LabelPosition.Bottom
 Label_left = tlp.LabelPosition.Left
 Label_right = tlp.LabelPosition.Right
 
+cubeSize = 20	
+cubeDistance = cubeSize + cubeSize/3
+
 class graphObject(object):
 	def __init__(self, graph):
 		self.graph = graph
@@ -49,19 +52,19 @@ class graphObject(object):
 	def clearLabel(self):
 		for node in self.graph.getNodes():
 			self.viewLabel[node] =  ''
-
+			
 	def makeEspace(self):
 		for node in self.graph.getNodes():
 			self.setNodeS(node)
 			self.setNodeC(node)
 
-	def setNodeC(self, node, x=1, y=1, color=Color_yellow):
+	def setNodeC(self, node, x=1, y=1, color=Color_yellow,z = 1):
 		self.viewLayout[node] = tlp.Coord(x, y, 1)
 		self.viewColor[node] = color
 
-	def setNodeS(self, node, SizeX = 1, SizeY = 1, shape = Shape_circle):
+	def setNodeS(self, node, SizeX = 1, SizeY = 1, shape = Shape_circle, SizeZ = 1):
 		self.viewShape[node] = shape
-		self.viewSize[node] = tlp.Size(SizeX, SizeY, 1)
+		self.viewSize[node] = tlp.Size(SizeX, SizeY, SizeZ)
 		
 	def addLabel(self, node, name, position = Label_bottom, color = Color_black, width = 0):
 		self.viewLabelPosition[node] = position		
@@ -75,6 +78,12 @@ class graphObject(object):
 		self.setNodeS(tempNode)
 		self.addLabel(tempNode, info)
 		
+	def getStockShortForm(self, stockName):
+		try:
+			return stockName.split('(')[1].split(')')[0]
+		except:
+			return stockName
+		
 	def addSubgraphEveryYear(self):
 		if self.graph.getSubGraph("Years"):
 			return 0
@@ -87,7 +96,8 @@ class graphObject(object):
 		for node in self.graph.getNodes():
 			if not self.Date.getNodeValue(node):
 				continue
-			year = self.Date.getNodeValue(node).split('/')[0]
+			year = self.Date.getNodeValue(node).split('/')[2]
+			
 			if year == '11':
 				subGraph11.addNode(node)
 			elif year == '12':
@@ -105,6 +115,8 @@ class graphObject(object):
 		subGraphEUR = subGraphMarkets.addSubGraph("EU")
 		subGraphHK = subGraphMarkets.addSubGraph("HK")
 		for node in self.graph.getNodes():
+			if not self.Stock.getNodeValue(node):
+				continue
 			money = self.Money.getNodeValue(node)
 			if money == 'EUR':
 				subGraphEUR.addNode(node)
@@ -116,4 +128,21 @@ class graphObject(object):
 	def delSubGraphs(self):
 		for subGraph in self.graph.getSubGraphs():
 			self.graph.delAllSubGraphs(subGraph)
+			
+	def addSubgraphDifferentStocks(self):
+		if self.graph.getSubGraph('Stocks'):
+			return 0
+		subGraphStocks = self.graph.addSubGraph('Stocks')
+		
+		for node in self.graph.getNodes():
+			if not self.Stock.getNodeValue(node):
+				continue
+			stockName = self.Stock.getNodeValue(node) 
+			try:
+				stockSubgraph = subGraphStocks.getSubGraph(stockName)
+				stockSubgraph.addNode(node)
+			except:
+				stockSubgraph = subGraphStocks.addSubGraph(stockName)
+				stockSubgraph.addNode(node)
+				
 

@@ -1,9 +1,11 @@
-1
+
 from GetGraphData import GetGraphData
 from LayoutInit import LayoutInit
 from ProfitsProce import ProfitsProce
 from StockAnalyse import StockAnalyse
-from webContent import *
+from StockPropertyMatrix import StockPropertyMatrix
+from AnalyseLayout import AnalyseLayout
+
 
 #==================================================================================================#
 #||  Date   ||   Hour   ||  Stock  || Share || Transcation  || Values || money || kind  ||   Sum  ||
@@ -41,11 +43,11 @@ def play(graph):
 	graphData = GetGraphData(graph)
 	myMatrix = graphData.getMatrix()
 	
-	
 	layout1 = LayoutInit(graph)
-
+	
 #	print myMatrix[326]
 #	print myMatrix[327]
+	
 	
 	if choice == '1':
 		layout1.setLayoutInit(myMatrix)	
@@ -57,27 +59,35 @@ def play(graph):
 		profits.netIncome()
 	elif choice == '4':
 		profits = ProfitsProce(myMatrix)
-		layout1.setLayoutIncomeStick(myMatrix, profits.profitsList)
+		layout1.setLayoutIncomeStick(myMatrix, profits.getProfitsList())
 		profits.netIncome()
-		marketProfits = profits.diffMarketIncomeYearly(myMatrix)
-		for key in marketProfits.keys():
-			print key, ': ', marketProfits[key]
+#		marketProfits = profits.diffMarketIncomeYearly(myMatrix)
+#		for key in marketProfits.keys():
+#			print key, ': ', marketProfits[key]
 	elif choice == '5':
-		myStock = StockAnalyse(myMatrix)
-		myStockMatrix = myStock.getStockMatrix()
-		dic = myStock.getMarketsStockNum()
-		print dic
-#		for key in dic.keys():
+		profits = ProfitsProce(myMatrix)
+		layout1.setLayoutIncomeStick(myMatrix, profits.liquidSumList(),1)
+		profits.netIncome()
+#		myStock = StockAnalyse()
+#		myStockMatrix = myStock.formSotckMatrix()
+##		for key in dic.keys():
 #			print key, ' ,', dic[key][0]/dic[key][1]
 #		for item in myStockMatrix.keys():
 #			print myStockMatrix[item]
 	elif choice == '6':
-		myStock = StockAnalyse(myMatrix)
-		myStock.stockKinds()
+		profits = ProfitsProce(myMatrix)
+		percentMatrix  = profits.buyStockRatePercent(myMatrix)
+		percentLayout = AnalyseLayout(graph)
+		percentLayout.costPencentLayout(percentMatrix)
 		
 	elif choice == '7':
+		
 		myStock = StockAnalyse(myMatrix)
-		myStockMatrix = myStock.getStockMatrix()
+		myDict = myStock.getStockTimes()
+		propertyMatrix = StockPropertyMatrix()
+		propertyMatrix.getStockPropertyMatrix(myDict)
+#		myStockMatrix = myStock.formSotckMatrix(myMatrix)
+#		myStock.stockMarketInfo()
 #		searchInfo(myStockMatrix)
 #		f = open('/Users/REN/Documents/test.txt','w')
 #		for key in myStockMatrix:
@@ -85,12 +95,20 @@ def play(graph):
 #			f.write(name + ':')
 #			f.write(myStockMatrix[key][1])
 #			f.write('\n')
-		file = open('/Users/REN/Documents/SearchResults.txt','r')
-		contents = file.readlines()
-		for item in contents:	
-			print filter(str.isalpha, item)
-			
-		file.close()
+#		file = open('/Users/REN/Documents/SearchResults.txt','r')
+#		contents = file.readlines()
+#		for item in contents:	
+#			print filter(str.isalpha, item)
+
+#		myStockMatrix.stockMarketInfo()
+#			
+#		file.close()
+	elif choice == '8':
+		propertyMatrix = StockPropertyMatrix()
+		propertyMatrix.stockMarketInfo()
+	elif choice == '9':
+		mylayout = AnalyseLayout(graph)
+		mylayout.makeEspace()
 	elif choice == 'A':
 		layout1.addEdge(myMatrix)
 	elif choice == 'C':
@@ -104,6 +122,7 @@ def play(graph):
 	elif choice == 'S':	
 		layout1.addSubgraphEveryYear()	
 		layout1.addSubgraphDifferentMarket()
+		layout1.addSubgraphDifferentStocks()
 	elif choice == '0':
 		print 'Thanks'
 	else:
