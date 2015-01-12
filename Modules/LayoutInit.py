@@ -97,7 +97,7 @@ class LayoutInit(graphObject):
 				self.setNodeC(item[NODE])
 				self.setNodeS(item[NODE])
 
-	def setLayoutDays(self, matrix):
+	def setLayoutDays(self, matrix, activityDays):
 
 		self.clearNodes()	
 		self.clearAllEdges()
@@ -109,6 +109,7 @@ class LayoutInit(graphObject):
 			self.addInfo(400, 50, "ADM's Activity")
 			startMonth = lastMonth
 			cordX = cordY = 0
+			Aindex = 0
 			for year in range(2011, 2015):
 				for month in range(startMonth, 13):
 					monthRange = calendar.monthrange(year, month)[1]
@@ -118,6 +119,10 @@ class LayoutInit(graphObject):
 						tempNode = self.graph.addNode()
 						self.setNodeC(tempNode, cordX, cordY, Color_yellow, -1)
 						self.setNodeS(tempNode, cubeSize, cubeSize, Shape_cube)
+						if days == monthRange:
+							if Aindex < len(activityDays):
+								self.addLabel(tempNode, str(activityDays[Aindex]),Label_right)
+								Aindex += 1
 						
 						if cordX == cubeDistance and month == startMonth:
 							self.addLabel(tempNode, str(year) + '. '+str(month)+'  ', Label_left,Color_red)

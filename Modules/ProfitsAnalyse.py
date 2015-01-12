@@ -71,9 +71,8 @@ class ProfitsAnalyse(MatrixObject):
 					stockValue += costOrIncome
 			else:
 				if stockValue != 0:
-					costPercent = float(stockValue) / (liquidSum + stockValue)
-					liquidPercent = float(liquidSum) / STARTMONEY
-					result.append([day,costPercent, liquidPercent])
+					costPercent = float(stockValue) / (liquidSum + stockValue) * 100
+					result.append([day,round(costPercent), liquidSum])
 					stockValue = 0
 				day = today
 				if item[TRANSACTION] == 'Sold':

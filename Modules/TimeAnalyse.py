@@ -90,15 +90,19 @@ class TimeAnalyse(MatrixObject):
 		for item in matrix:
 			day = item[0][2]
 			month = item[0][1]
+			P = (month - lastMonth) % 12
 			if month == lastMonth and day != lastDay:
 				count += 1
 				lastDay = day
-			elif (month - lastMonth) % 12 == 1:
+			elif P == 1:
 				res.append(count)
-				month = lastMonth
-				count = 0
-			else:
-				continue
+				lastMonth = month
+				lastDay = day
+				count = 1
+			elif P > 1:
+				for i in range(P - 1):
+					res.append(0)
+				
 
 
 	
