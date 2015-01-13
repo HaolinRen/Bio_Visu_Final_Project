@@ -1,38 +1,45 @@
 from MatrixObject import *
 
-class StockAnalyse(MatrixObject):
+class StockAnalyse(StockPropertyMatrix):
 	def __init__(self,matrix):
-		self.stockCostDict = self.formSotckCostDict(matrix)
-
-	def formSotckCostDict(self, matrix):
-		res = {}
-		for item in matrix:
-			if item[TRANSACTION] == 'Acquired':
-				stockName = item[STOCK]
-				stockCost = item[SHARE] * item[VALUE]
-				if stockName not in res.keys():
-					oneStock = [stockCost]
-					res[stockName] = oneStock
-				else:
-					res[stockName].append(stockCost)
-		return res
+		StockPropertyMatrix(self, matrix)
+		self.__stockTimes = self.getStockTimes()
 		
 	def getStockDict(self):
-		return self.stockCostDict
-		
+		return self.__stockCostDict
+
+	def getMarketTimes(self):
+		return self.__getTimes()
+
+	def getSectorTimes(slef):
+		return self.__getTimes(2)
+	#get a dict of item and times
+	#initial choice is market
+	#dict = {'NewYork':23,...}
+	def __getTimes(self,choice = 1):
+		result = {}
+		for key in self.__stockTimes.keys():
+			stockPropertyList = self.__stockTimes[key]
+			select = stockPropertyList[choice]
+			if select not in result:
+				result[select] = stockPropertyList[0]
+			else:
+				result[select] += stockPropertyList[0]
+		return result
+
+
+	# get a dict of sotck times and properties
+	#dict = {stockName: [times,market,sector]}
 	def getStockTimes(self):
 		result = {}
-		for stockName in self.stockCostDict:
-			buyTimes = len(self.stockCostDict[stockName])
-			result[stockName] = buyTimes
+		for stock in self.__propertyMatrix:
+			if stock[0] not in result:
+				stockPList = [1,stock[1][0],stock[1][2]]
+				result[stock] = stockPList
+			else:
+				result[stock][0] += 1
 		return result
-		
-	def getStockSumCost(self):
-		result = {}
-		for stockName in self.stockCostDict:
-			buyCost = sum(self.stockCostDict[stockName])
-			result[stockName] = buyCost
-		return result
+
 
 
 

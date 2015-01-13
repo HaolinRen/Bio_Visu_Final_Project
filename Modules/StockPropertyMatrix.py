@@ -35,6 +35,8 @@ class StockPropertyMatrix(MatrixObject):
 				propertyMatrix.append(oneStockProperty)
 		return propertyMatrix
 
+	def get
+
 	def stockMarketInfo(self, index):
 		stockProperty = []
 		for item in ExchangeProperties.keys():
