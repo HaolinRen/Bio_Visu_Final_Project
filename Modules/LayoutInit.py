@@ -50,19 +50,22 @@ class LayoutInit(graphObject):
 		for item in matrix:
 			if item[TRANSACTION] == "Acquired":
 				if index < len(dataList):
+					stockID = self.getStockShortForm(item[STOCK])
+					self.addLabel(item[NODE],stockID,Label_center)
 					self.setNodeS(item[NODE], cubeSize, cubeSize, Shape_cubeOutlined)
 					if dataList[index] > 0:	
 						self.setNodeC(item[NODE],x, y, Color_red)
 					else:
 						self.setNodeC(item[NODE],x, y, Color_green)
 					index += 1
+					x += cubeDistance
+					if x > NumOfCubesInOneLine * cubeDistance:
+						x = 0
+						y -= cubeDistance
 				else:
 					self.setNodeC(item[NODE])
 					self.setNodeS(item[NODE])
-				x += cubeDistance
-				if x > NumOfCubesInOneLine * cubeDistance:
-					x = 0
-					y -= cubeDistance
+
 			else:
 				self.setNodeC(item[NODE])
 				self.setNodeS(item[NODE])
@@ -151,7 +154,7 @@ class LayoutInit(graphObject):
 
 	def addStickGraph(self, dic, x):
 		stickX = x
-		sumsOfHeight = 10 * cubeSize
+		sumsOfHeight = 5 * cubeSize
 		sumsOfDic = 0
 		for key in dic.keys():
 			sumsOfDic += dic[key]
@@ -165,14 +168,14 @@ class LayoutInit(graphObject):
 			self.setNodeS(tempNode, cubeSize, hight, Shape_cubeOutlined)
 			labelInfo = str(percent)[0:4] + '%'
 			self.addLabel(tempNode,labelInfo, Label_center)
-			idNode = self.graph.addNode()
-			self.setNodeC(idNode, stickX, 0)
-			self.setNodeS(idNode)
-			self.addLabel(idNode, key, Label_bottom)
+			self.addInfo(stickX,0,key)
 			stickX += cubeDistance
 			
 	def addEdge(self, matrix):
 		tempNode = self.graph.getOneNode()
+		if not self.Stock.getNodeValue(tempNode):
+			print 'Clear the nodes firt!'
+			return 0
 		if self.graph.deg(tempNode) != 0:
 			return 0
 		alreadySoldList = []
