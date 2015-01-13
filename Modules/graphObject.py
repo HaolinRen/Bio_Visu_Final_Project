@@ -33,6 +33,7 @@ class graphObject(object):
 		self.Money = self.graph.getStringProperty("money")
 		self.Date = self.graph.getStringProperty("Date")
 		self.Stock = self.graph.getStringProperty("Stock")
+		self.Transaction = self.graph.getStringProperty("Transaction")
 		self.viewLabel = self.graph.getStringProperty("viewLabel")
 		self.viewLabelPosition = self.graph.getIntegerProperty("viewLabelPosition")
 		self.viewLabelColor = self.graph.getColorProperty("viewLabelColor")
@@ -124,6 +125,8 @@ class graphObject(object):
 				subGraphHK.addNode(node)
 			else:
 				subGraphUSA.addNode(node)
+		else:
+			print 'Added the subgraph of different markets.'
 
 	def delSubGraphs(self):
 		for subGraph in self.graph.getSubGraphs():
@@ -144,5 +147,22 @@ class graphObject(object):
 			except:
 				stockSubgraph = subGraphStocks.addSubGraph(stockName)
 				stockSubgraph.addNode(node)
-				
+		else:
+			print 'Added the subgraphs of differents stocks.'
+			
+	def addSubgraphTransaction(self):
+		if self.graph.getSubGraph('Transaction'):
+			return 0
+		subGraphTransaction = self.graph.addSubGraph('Transaction')
+		subGraphSold = subGraphTransaction.addSubGraph('Sold')
+		subGraphAcquired = subGraphTransaction.addSubGraph('Acquired')
+		for node in self.graph.getNodes():
+			if not self.Transaction.getNodeValue(node):
+				continue
+			if self.Transaction.getNodeValue(node) == 'Sold':
+				subGraphSold.addNode(node)
+			else:
+				subGraphAcquired.addNode(node)
+		else:
+			print 'Added the subgraphs based on transaction.'
 
