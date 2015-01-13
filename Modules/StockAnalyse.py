@@ -7,7 +7,7 @@ class StockAnalyse(MatrixObject):
 	def formSotckCostDict(self, matrix):
 		res = {}
 		for item in matrix:
-			if item[TRANSCATION] == 'Acquired':
+			if item[TRANSACTION] == 'Acquired':
 				stockName = item[STOCK]
 				stockCost = item[SHARE] * item[VALUE]
 				if stockName not in res.keys():
