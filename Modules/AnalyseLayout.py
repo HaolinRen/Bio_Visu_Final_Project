@@ -28,7 +28,7 @@ class AnalyseLayout(graphObject):
 			self.addLabel(costNode, str(costPercent)+'%', Label_top)
 			x += cubeDistance
 
-	
+
 	def addStickGraph(self, dic, x):
 		stickX = x
 		sumsOfHeight = 5 * cubeSize
@@ -79,6 +79,14 @@ class AnalyseLayout(graphObject):
 							self.addLabel(tempNode, str(year) + '. '+str(month)+'  ', Label_left,Color_red)
 						elif cordX == cubeDistance:
 							self.addLabel(tempNode, str(month) + '  ', Label_left)
+
+						subGraphUSA = self.graph.getSubGraph('USA')
+						subGraphHK = self.graph.getSubGraph('HK')
+						subGraphEU = self.graph.getSubGraph('EU')
+						subGraphEU.addNode(tempNode)
+						subGraphHK.addNode(tempNode)
+						subGraphUSA.addNode(tempNode)
+						
 					cordY -= cubeDistance
 					if month == 12:
 						startMonth = 1
