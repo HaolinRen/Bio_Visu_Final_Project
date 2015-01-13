@@ -7,14 +7,15 @@ PERCETN_PROPER = 2
 class AnalyseLayout(graphObject):
 	def __init__(self,graph):
 		graphObject.__init__(self, graph)
-		self.makeEspace()
 		
 	def costPencentLayout(self, costRateMatrix):
+		self.makeEspace()
+		self.clearNodes()
 		totalHeight = 100 * cubeSize
 		x = y = 0
 		for item in costRateMatrix:
 			properHeight = totalHeight * item[PERCETN_PROPER]
-			costPercent = round(item[PERCENT_COST]*100)
+			costPercent = item[PERCENT_COST]
 			costHeight = properHeight * item[PERCENT_COST]
 			liquidHeight = properHeight - costHeight
 			costNode = self.graph.addNode()
@@ -27,3 +28,7 @@ class AnalyseLayout(graphObject):
 			self.addLabel(costNode, str(costPercent)+'%', Label_top)
 			x += cubeDistance
 		
+
+
+
+

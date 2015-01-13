@@ -1,7 +1,7 @@
 
 DATE = 0
 HOUR = 1
-TRANSCATION = 2
+TRANSACTION = 2
 STOCK = 3
 MONEY = 4
 SHARE = 5
@@ -18,12 +18,12 @@ class MatrixObject(object):
 		alreadySoldList = []
 		M = len(matrix)
 		for itemIndex in range(M):
-			if matrix[itemIndex][TRANSCATION] == "Acquired":
+			if matrix[itemIndex][TRANSACTION] == "Acquired":
 				tempAcquiredStock = matrix[itemIndex]
 				acquiredNum = tempAcquiredStock[SHARE]
 				for soldIndex in range(itemIndex + 1, M):
 					if matrix[soldIndex][STOCK] == tempAcquiredStock[STOCK]:
-						if matrix[soldIndex][TRANSCATION] == "Sold":
+						if matrix[soldIndex][TRANSACTION] == "Sold":
 							if matrix[soldIndex][SHARE] == acquiredNum:
 								if soldIndex not in alreadySoldList:
 									tempSoldStock = matrix[soldIndex]
