@@ -29,7 +29,7 @@ class AnalyseLayout(graphObject):
 			x += cubeDistance
 
 
-	def addStickGraph(self, dic, x):
+	def addStickGraph(self, dic, x = 0, y = 0):
 		stickX = x
 		sumsOfHeight = 5 * cubeSize
 		sumsOfDic = 0
