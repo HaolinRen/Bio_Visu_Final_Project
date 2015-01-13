@@ -80,13 +80,14 @@ class AnalyseLayout(graphObject):
 						elif cordX == cubeDistance:
 							self.addLabel(tempNode, str(month) + '  ', Label_left)
 
-						subGraphUSA = self.graph.getSubGraph('USA')
-						subGraphHK = self.graph.getSubGraph('HK')
-						subGraphEU = self.graph.getSubGraph('EU')
+						marketsSubGraph = self.graph.getSubGraph('Markets')
+						subGraphUSA = marketsSubGraph.getSubGraph('USA')
+						subGraphHK = marketsSubGraph.getSubGraph('HK')
+						subGraphEU = marketsSubGraph.getSubGraph('EU')
 						subGraphEU.addNode(tempNode)
 						subGraphHK.addNode(tempNode)
 						subGraphUSA.addNode(tempNode)
-						
+
 					cordY -= cubeDistance
 					if month == 12:
 						startMonth = 1
