@@ -1,6 +1,6 @@
 
-
 from tulip import *
+import random
 
 Shape_cube = tlp.NodeShape.Cube 
 Shape_cubeOutlined = tlp.NodeShape.CubeOutlined
@@ -59,6 +59,19 @@ class graphObject(object):
 		for node in self.graph.getNodes():
 			self.setNodeS(node)
 			self.setNodeC(node)
+
+	def giveRandomColor(self):
+		c1 = random.randint(0,255)
+		c2 = random.randint(0,255)
+		c3 = random.randint(0,255)
+		rColor = tlp.Color(c1,c2,c3)
+		return rColor
+
+	def giveSimColor(self,originColor):
+		c1 = originColor[0] + random.randint(-5,5)
+		c2 = originColor[0] + random.randint(-5,5)
+		c3 = originColor[0] + random.randint(-5,5)
+		return [c1, c2, c3]
 
 	def setNodeC(self, node, x=1, y=1, color=Color_yellow,z = 1):
 		self.viewLayout[node] = tlp.Coord(x, y, 1)

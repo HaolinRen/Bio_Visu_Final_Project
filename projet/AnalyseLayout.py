@@ -28,8 +28,9 @@ class AnalyseLayout(graphObject):
 			self.addLabel(costNode, str(costPercent)+'%', Label_top)
 			x += cubeDistance
 
-	def addStickGraph(self, dic, x = 0, y = 0):
-		stickX = x
+	def addStickGraph(self, dic):
+		stickX = 0
+
 		sumsOfHeight = 5 * cubeSize
 		sumsOfDic = 0
 		for key in dic.keys():
@@ -47,8 +48,7 @@ class AnalyseLayout(graphObject):
 			self.addInfo(stickX,0,key)
 			stickX += cubeDistance
 
-	def setLayoutDays(self, matrix, activityDays):
-
+	def setLayoutDays(self, matrix):
 		self.clearNodes()	
 		self.clearAllEdges()
 		M = len(matrix)
@@ -69,10 +69,6 @@ class AnalyseLayout(graphObject):
 						tempNode = self.graph.addNode()
 						self.setNodeC(tempNode, cordX, cordY, Color_yellow, -1)
 						self.setNodeS(tempNode, cubeSize, cubeSize, Shape_cube)
-						if days == monthRange:
-							if Aindex < len(activityDays):
-								self.addLabel(tempNode, str(activityDays[Aindex]),Label_right)
-								Aindex += 1
 						
 						if cordX == cubeDistance and month == startMonth:
 							self.addLabel(tempNode, str(year) + '. '+str(month)+'  ', Label_left,Color_red)

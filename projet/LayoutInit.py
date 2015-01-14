@@ -11,7 +11,6 @@ VALUE = 6
 NODE = 7
 LEN = 8
 
-
 class LayoutInit(graphObject):
 	"""docstring for LayoutInit"""
 	def __init__(self,graph):
@@ -24,7 +23,7 @@ class LayoutInit(graphObject):
 		distX = 1
 		distY = 2
 		for item in matrix:
-			self.setNodeS(item[NODE])
+			self.setNodeS(item[NODE],3,3)
 			stockShortName = self.getStockShortForm(item[STOCK])
 			if item[MONEY] == 'EUR':
 				colorMarket = Color_red
@@ -42,6 +41,26 @@ class LayoutInit(graphObject):
 			x2 += distX
 			y1 += distY
 			y2 += distY
+
+	def setLayoutInit(self, matrix):
+		lastDay = ''
+		cordX = 0
+		for item in matrix:
+			if item[MONEY] == 'HKD':
+				color = Color_red
+			elif item[MONEY] == 'EUR':
+				color = Color_green
+			else:
+				color = Color_tan
+
+			today = matrix[DATE][2]
+			hour = int(matrix[HOUR][0:2])
+			cordY = hour * cubeSize
+			
+
+			if lastDay != today:
+				cordX += sizeX
+				lastDay = today
 
 	def setLayoutIncomeInit(self, matrix, dataList):
 		x = y = 0
@@ -70,6 +89,7 @@ class LayoutInit(graphObject):
 				self.setNodeC(item[NODE])
 				self.setNodeS(item[NODE])
 
+	#full data
 	def setLayoutIncomeStick(self, matrix, dataList, choice = 0):
 		x = y = 0
 		index = 0
@@ -99,7 +119,7 @@ class LayoutInit(graphObject):
 				self.setNodeC(item[NODE])
 				self.setNodeS(item[NODE])
 
-			
+	
 	def addEdge(self, matrix):
 		tempNode = self.graph.getOneNode()
 		if not self.Stock.getNodeValue(tempNode):
@@ -121,6 +141,5 @@ class LayoutInit(graphObject):
 									self.graph.addEdge(matrix[soldIndex][NODE],tempAcquiredStock[NODE])
 									alreadySoldList.append(soldIndex)
 									break
-def main(graph):
-	print 'a'
+
 	
