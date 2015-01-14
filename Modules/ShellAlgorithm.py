@@ -59,7 +59,6 @@ class ShellAlgorithm(object):
 			return True
 
 	def calThirdCircleCord(self, circleST, circleED, radiusRD):
-		print circleST,' ',circleED
 		x1 = circleST[0]
 		y1 = circleST[1]
 		r1 = circleST[2]
