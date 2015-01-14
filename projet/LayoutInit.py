@@ -53,13 +53,18 @@ class LayoutInit(graphObject):
 			else:
 				color = Color_tan
 
+			if item[TRANSACTION] == 'Sold':
+				shapeNode = Shape_triangle
+			else:
+				shapeNode = Shape_circle 
+
 			today = matrix[DATE][2]
 			hour = int(matrix[HOUR][0:2])
 			cordY = hour * cubeSize
-			
-
+			self.setNodeS(item[NODE],cordX,cordY,color)
+			self.setNodeC(item[NODE],1,1,shapeNode)
 			if lastDay != today:
-				cordX += sizeX
+				cordX += cubeDistance
 				lastDay = today
 
 	def setLayoutIncomeInit(self, matrix, dataList):
@@ -119,7 +124,6 @@ class LayoutInit(graphObject):
 				self.setNodeC(item[NODE])
 				self.setNodeS(item[NODE])
 
-	
 	def addEdge(self, matrix):
 		tempNode = self.graph.getOneNode()
 		if not self.Stock.getNodeValue(tempNode):

@@ -32,8 +32,8 @@ class ShellAlgorithm(object):
 				if index1 == len(self.__shellQueue):
 					del self.__shellQueue[0]
 					calCircle2 = self.__shellQueue[-index2]
-					index += 1
-
+					index2 += 1
+					index1 = 0
 			self.__shellQueue.append(thirdCircle)
 			result.append(thirdCircle)
 			calCircle2 = thirdCircle

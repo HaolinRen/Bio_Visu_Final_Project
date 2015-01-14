@@ -5,6 +5,7 @@ import random
 Shape_cube = tlp.NodeShape.Cube 
 Shape_cubeOutlined = tlp.NodeShape.CubeOutlined
 Shape_circle = tlp.NodeShape.Circle
+Shape_triangle = tlp.NodeShape.Triangle
 
 Color_red = tlp.Color.Red
 Color_black = tlp.Color.Black
