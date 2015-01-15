@@ -194,4 +194,27 @@ class graphObject(object):
 				subGraphAcquired.addNode(node)
 		else:
 			print 'Added the subgraphs based on transaction.'
+			
+	def addStickGraph(self, dic):
+		self.makeEspace()
+		self.clearNodes()
+		stickX = 0
+		sumsOfHeight = 100 * cubeSize
+		sumsOfDic = 0
+		for key in dic.keys():
+			sumsOfDic += dic[key]
+		width = sumsOfHeight / (len(dic.keys())*2)
+		#add meta node
+		for key in dic.keys():
+			tempNode = self.graph.addNode()
+			percent = float(dic[key]) / sumsOfDic
+			hight = percent * sumsOfHeight
+			stickY = hight / 2
+			color = self.giveRandomColor()
+			self.setNodeC(tempNode, stickX, stickY, color)
+			self.setNodeS(tempNode, width, hight, Shape_cubeOutlined)
+			labelInfo = str(percent*100)[0:4] + '%'
+			self.addLabel(tempNode,labelInfo, Label_center)
+			self.addInfo(stickX,0,key)
+			stickX += width
 
