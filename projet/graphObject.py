@@ -88,11 +88,11 @@ class graphObject(object):
 		self.viewLabelColor[node] = color
 		self.viewLabelBorderWidth[node] = width
 	
-	def addInfo(self, x, y, info):
+	def addInfo(self, x, y, info, position):
 		tempNode = self.graph.addNode()
 		self.setNodeC(tempNode, x, y)
 		self.setNodeS(tempNode)
-		self.addLabel(tempNode, info)
+		self.addLabel(tempNode, info, position)
 		self.addToAllSubgraph(tempNode)
 		
 	def getStockShortForm(self, stockName):
@@ -194,27 +194,28 @@ class graphObject(object):
 				subGraphAcquired.addNode(node)
 		else:
 			print 'Added the subgraphs based on transaction.'
-			
-	def addStickGraph(self, dic):
+
+	def addStickGraph(self, dic, fullsize):
 		self.makeEspace()
 		self.clearNodes()
 		stickX = 0
-		sumsOfHeight = 100 * cubeSize
+		stickY = -50
+		fullWidth = fullsize
 		sumsOfDic = 0
 		for key in dic.keys():
 			sumsOfDic += dic[key]
-		width = sumsOfHeight / (len(dic.keys())*2)
-		#add meta node
+		height = fullWidth / len(dic.keys())
 		for key in dic.keys():
 			tempNode = self.graph.addNode()
 			percent = float(dic[key]) / sumsOfDic
-			hight = percent * sumsOfHeight
-			stickY = hight / 2
+			width = percent * sumsOfHeight
+			stickX = width / 2
 			color = self.giveRandomColor()
 			self.setNodeC(tempNode, stickX, stickY, color)
-			self.setNodeS(tempNode, width, hight, Shape_cubeOutlined)
+			self.setNodeS(tempNode, width, height, Shape_cubeOutlined)
 			labelInfo = str(percent*100)[0:4] + '%'
 			self.addLabel(tempNode,labelInfo, Label_center)
-			self.addInfo(stickX,0,key)
-			stickX += width
+			self.addInfo(stickX,0,key,Label_left)
+			stickY -= height
+
 
