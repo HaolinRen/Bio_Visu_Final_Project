@@ -122,6 +122,9 @@ class graphObject(object):
 				subGraph13.addNode(node)
 			else:
 				subGraph14.addNode(node)
+			
+		print ''
+		print 'Subgraphs of years are added.'
 	
 	def addSubgraphDifferentMarket(self):
 		if self.graph.getSubGraph("Markets"):
@@ -146,6 +149,16 @@ class graphObject(object):
 	def delSubGraphs(self):
 		for subGraph in self.graph.getSubGraphs():
 			self.graph.delAllSubGraphs(subGraph)
+					
+	def addToAllSubgraph(self, node):
+		try:
+			subgraphs = self.graph.getSubGraphs()
+			for subgraph in subgraphs:
+				subs = subgraph.getSubGraphs()
+				for sub in subs:
+					sub.addNode(node)
+		except:
+			print 'You need add subgraphs first!'
 			
 	def addSubgraphDifferentStocks(self):
 		if self.graph.getSubGraph('Stocks'):

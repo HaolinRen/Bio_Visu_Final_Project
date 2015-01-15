@@ -45,24 +45,26 @@ class LayoutInit(graphObject):
 	def setLayoutInit2(self, matrix):
 		lastDay = ''
 		cordX = 0
+		colorTestDict = {}
 		for item in matrix:
-			if item[MONEY] == 'HKD':
-				color = Color_red
-			elif item[MONEY] == 'EUR':
-				color = Color_green
+			if item[STOCK] not in colorTestDict.keys():
+				color = self.giveRandomColor()
+				colorTestDict[item[STOCK]] = color
 			else:
-				color = Color_tan
+				color = colorTestDict[item[STOCK]]
 
 			if item[TRANSACTION] == 'Sold':
-				shapeNode = Shape_triangle
+				shapeNode = Shape_circle
 			else:
-				shapeNode = Shape_circle 
+				shapeNode = Shape_cubeOutlined
 
-			today = matrix[DATE][2]
-			hour = int(matrix[HOUR][0:2])
-			cordY = hour * cubeSize
-			self.setNodeS(item[NODE],cordX,cordY,color)
-			self.setNodeC(item[NODE],1,1,shapeNode)
+			today = item[DATE][2]
+			hours = int(item[HOUR][0:2])
+			minutes = int(item[HOUR][3:5])
+			cordY = hours * cubeSize * 13 + minutes * cubeSize
+			size = item[VALUE] * item[SHARE] / 10
+			self.setNodeS(item[NODE],size,size,shapeNode)
+			self.setNodeC(item[NODE],cordX,cordY,color)
 			if lastDay != today:
 				cordX += cubeDistance
 				lastDay = today
@@ -89,18 +91,12 @@ class LayoutInit(graphObject):
 						tempNode = self.graph.addNode()
 						self.setNodeC(tempNode, cordX, cordY, Color_yellow, -1)
 						self.setNodeS(tempNode, cubeSize, cubeSize, Shape_cube)
-						
 						if cordX == cubeDistance and month == startMonth:
 							self.addLabel(tempNode, str(year) + '. '+str(month)+'  ', Label_left,Color_red)
 						elif cordX == cubeDistance:
 							self.addLabel(tempNode, str(month) + '  ', Label_left)
 
-						subgraphs = self.graph.getSubGraphs()
-						for subgraph in subgraphs:
-							sub = subgraph.getSubGraphs()
-							for isub in sub:
-								isub.addNode(tempNode)
-
+						self.addToAllSubgraph(tempNode)
 					cordY -= cubeDistance
 					if month == 12:
 						startMonth = 1
@@ -143,3 +139,4 @@ class LayoutInit(graphObject):
 									self.graph.addEdge(matrix[soldIndex][NODE],tempAcquiredStock[NODE])
 									alreadySoldList.append(soldIndex)
 									break
+		

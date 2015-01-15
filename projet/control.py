@@ -20,7 +20,10 @@ def controlInfo():
 	print 'E_mpty subgraphs'
 	print 'H_ide nodes'
 	print 'L_ables clear'
-	print 'S_ubgraphs'
+	print 'S_ubgraphsL:'
+	print '    S1: add subgraph of years'
+	print '    S2: add subgraph of money kinds'
+	print '    S3: add subgraph of transcation'
 
 def play(graph):
 
@@ -43,6 +46,8 @@ def play(graph):
 			print 'You need add the subgraphs first'
 			return 0
 		layout1.setLayoutDays(myMatrix)
+	elif choice == '3':
+		layout1.setLayoutInit2(myMatrix)
 
 	elif choice == 'A':
 		layout1.addEdge(myMatrix)
@@ -56,9 +61,11 @@ def play(graph):
 		layout1.makeEspace()
 	elif choice == 'L':
 		layout1.clearLabel()
-	elif choice == 'S':	
-		layout1.addSubgraphEveryYear()	
+	elif choice == 'S1':	
+		layout1.addSubgraphEveryYear()
+	elif choice == 'S2':
 		layout1.addSubgraphDifferentMarket()
+	elif choice == 'S3':
 		layout1.addSubgraphTransaction()
 	elif choice == '0':
 		print 'Thanks'
