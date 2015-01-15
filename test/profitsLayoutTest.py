@@ -2,7 +2,7 @@ from graphObject import *
 
 PERCENT_DATE = 0
 PERCENT_COST = 1
-PERCENT_PROPER = 2
+PERCETN_PROPER = 2
 
 class AnalyseLayout(graphObject):
 	def __init__(self,graph):
@@ -11,10 +11,12 @@ class AnalyseLayout(graphObject):
 	def costPencentLayout(self, costRateMatrix):
 		self.makeEspace()
 		self.clearNodes()
+		totalHeight = 100 * cubeSize
 		x = y = 0
 		for item in costRateMatrix:
-			properHeight = cubeSize * item[PERCENT_PROPER]
-			costHeight = properHeight * item[PERCENT_COST] / 100
+			properHeight = totalHeight * item[PERCETN_PROPER]
+			costPercent = item[PERCENT_COST]
+			costHeight = properHeight * item[PERCENT_COST]
 			liquidHeight = properHeight - costHeight
 			costNode = self.graph.addNode()
 			liquideNode = self.graph.addNode()
@@ -23,8 +25,27 @@ class AnalyseLayout(graphObject):
 			self.addLabel(liquideNode, item[PERCENT_DATE])
 			self.setNodeC(costNode, x, y + liquidHeight + costHeight/2, Color_red)
 			self.setNodeS(costNode, cubeSize, costHeight, Shape_cube)
-			self.addLabel(costNode, str(item[PERCENT_COST])+'%', Label_top)
+			self.addLabel(costNode, str(costPercent)+'%', Label_top)
 			x += cubeDistance
+
+	def addStickGraph(self, dic):
+		stickX = 0
+		sumsOfHeight = 5 * cubeSize
+		sumsOfDic = 0
+		for key in dic.keys():
+			sumsOfDic += dic[key]
+		#add meta node
+		for key in dic.keys():
+			tempNode = self.graph.addNode()
+			percent = dic[key] / sumsOfDic * 100 
+			hight = percent * sumsOfHeight
+			stickY = hight / 2
+			self.setNodeC(tempNode, stickX, stickY)
+			self.setNodeS(tempNode, cubeSize, hight, Shape_cubeOutlined)
+			labelInfo = str(percent)[0:4] + '%'
+			self.addLabel(tempNode,labelInfo, Label_center)
+			self.addInfo(stickX,0,key)
+			stickX += cubeDistance
 
 	def setLayoutIncomeInit(self, matrix, dataList):
 		x = y = 0
@@ -61,22 +82,25 @@ class AnalyseLayout(graphObject):
 				if index < len(dataList):
 					if choice == 0:
 						nodeInfo = str(dataList[index]) + item[STOCK]
+						if dataList[index] < -1000:
+							sizeStick = -600 * cubeSize
+						else:
+							sizeStick = dataList[index] * cubeSize
+					elif choice == 1:
+						nodeInfo = str(round(dataList[index]))
 						sizeStick = dataList[index]
-						y = sizeStick / 2
-						self.setNodeC(item[NODE], x, y, Color_green)
-					else:
-						nodeInfo = str(int(dataList[index]))
-						sizeStick = dataList[index] / 50
-						y = 0
-						self.setNodeC(item[NODE], x, y + sizeStick/2, Color_green)
-					
-					self.setNodeS(item[NODE], 1, sizeStick, Shape_cubeOutlined)
+
+					y = sizeStick / 2
+					self.setNodeC(item[NODE], x, y, Color_green)
+					self.setNodeS(item[NODE], cubeSize, sizeStick, Shape_cubeOutlined)
 					self.addLabel(item[NODE], nodeInfo, Label_top)
 				else:
 					self.setNodeS(item[NODE])
 					self.setNodeC(item[NODE])
 				index += 1
-				x += 1
+				x += cubeDistance
 			else:
 				self.setNodeC(item[NODE])
 				self.setNodeS(item[NODE])
+
+	

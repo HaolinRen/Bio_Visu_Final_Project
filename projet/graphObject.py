@@ -93,6 +93,7 @@ class graphObject(object):
 		self.setNodeC(tempNode, x, y)
 		self.setNodeS(tempNode)
 		self.addLabel(tempNode, info)
+		self.addToAllSubgraph(tempNode)
 		
 	def getStockShortForm(self, stockName):
 		try:

@@ -46,6 +46,8 @@ class LayoutInit(graphObject):
 		lastDay = ''
 		cordX = 0
 		colorTestDict = {}
+		hourTestList = []
+		daysTestList = []
 		for item in matrix:
 			if item[STOCK] not in colorTestDict.keys():
 				color = self.giveRandomColor()
@@ -59,9 +61,18 @@ class LayoutInit(graphObject):
 				shapeNode = Shape_cubeOutlined
 
 			today = item[DATE][2]
+			todayDetail = '20%i.%i'%(item[DATE][0],item[DATE][1])
 			hours = int(item[HOUR][0:2])
 			minutes = int(item[HOUR][3:5])
 			cordY = hours * cubeSize * 13 + minutes * cubeSize
+			if hours not in hourTestList:
+				hourTestList.append(hours)
+				hoursInfo = item[HOUR][0:5]
+				self.addInfo(0, cordY,hoursInfo)
+			if todayDetail not in daysTestList:
+				daysTestList.append(todayDetail)
+				self.addInfo(cordX,0, todayDetail)
+
 			size = item[VALUE] * item[SHARE] / 10
 			self.setNodeS(item[NODE],size,size,shapeNode)
 			self.setNodeC(item[NODE],cordX,cordY,color)

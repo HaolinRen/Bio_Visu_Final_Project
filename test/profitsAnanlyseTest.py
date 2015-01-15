@@ -1,4 +1,5 @@
 from MatrixObject import *
+
 STARTMONEY = 11278
 
 class ProfitsAnalyse(MatrixObject):
@@ -24,7 +25,7 @@ class ProfitsAnalyse(MatrixObject):
 			liquidSum.append(liquid)
 		return liquidSum
 
-	def diffMethod(self, soldStock, acquiredStock):
+	def __diffMethod(self, soldStock, acquiredStock):
 		buyValue = acquiredStock[VALUE]
 		soldValue = soldStock[VALUE]
 		res = (soldValue - buyValue) * soldStock[SHARE]
@@ -51,11 +52,8 @@ class ProfitsAnalyse(MatrixObject):
 				index += 1
 				if index == len(self.__profitsList):
 					break
-		print 'In USA markets %i times transaction are made.'%(marketUS[BUYTIMES])
 		print 'USA markets profits %i'%(marketUS[MARKETPROFITS])
-		print 'In EUROPE markets %i times transaction are made.'%(marketEU[BUYTIMES])
 		print 'EUROPE markets profits %i'%(marketEU[MARKETPROFITS])
-		print 'In HK markets %i times transaction are made.'%(marketHK[BUYTIMES])		
 		print 'HK markets profits %i'%(marketHK[MARKETPROFITS])
 		res = {'USA':marketUS[BUYTIMES], 'EUROPE':marketEU[BUYTIMES], 'HK':marketHK[BUYTIMES]}
 		return res
@@ -87,3 +85,11 @@ class ProfitsAnalyse(MatrixObject):
 					liquidSum -= costOrIncome
 					stockValue += costOrIncome
 		return result
+
+
+
+
+
+
+
+

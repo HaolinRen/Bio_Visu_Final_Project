@@ -14,6 +14,13 @@ from LayoutInit import LayoutInit
 
 
 def controlInfo():
+	print '1 layout intial'
+	print '2 layout daily activity'
+	print '3 layout composite'
+	print '4 layout income intial'
+	print '5 stock buy ratio layout'
+	print '6 stocks profits layout'
+	print "7 sum of ADM's property"
 	print 'A_dd edge'
 	print 'C_lear nodes'
 	print 'D_elete edges'
@@ -37,7 +44,8 @@ def play(graph):
 	
 #	print myMatrix[326]
 #	print myMatrix[327]
-	
+
+
 	
 	if choice == '1':
 		layout1.setLayoutInit(myMatrix)	
@@ -48,7 +56,26 @@ def play(graph):
 		layout1.setLayoutDays(myMatrix)
 	elif choice == '3':
 		layout1.setLayoutInit2(myMatrix)
-
+	elif choice == '4':
+		myProfits = ProfitsAnalyse(myMatrix)
+		profitsList = myProfits.getProfitsList()
+		profitsLayout = AnalyseLayout(graph)
+		profitsLayout.setLayoutIncomeInit(myMatrix,profitsList)	
+	elif choice == '5':
+		myProfits = ProfitsAnalyse(myMatrix)
+		res2 = myProfits.buyStockRatePercent(myMatrix)	
+		profitsLayout = AnalyseLayout(graph)
+		profitsLayout.costPencentLayout(res2)
+	elif choice == '6':
+		myProfits = ProfitsAnalyse(myMatrix)
+		profitsList = myProfits.getProfitsList()	
+		profitsLayout = AnalyseLayout(graph)
+		profitsLayout.setLayoutIncomeStick(myMatrix,profitsList)
+	elif choice == '7':
+		myProfits = ProfitsAnalyse(myMatrix)
+		liquideSumList = myProfits.liquidSumList()	
+		profitsLayout = AnalyseLayout(graph)
+		profitsLayout.setLayoutIncomeStick(myMatrix,liquideSumList, 1)
 	elif choice == 'A':
 		layout1.addEdge(myMatrix)
 	elif choice == 'C':
