@@ -52,7 +52,10 @@ class ProfitsAnalyse(MatrixObject):
 				index += 1
 				if index == len(self.__profitsList):
 					break
-		res = {'USA':marketUS, 'EUROPE':marketEU, 'HK':marketHK}
+		print 'USA markets profits %i'%(marketUS[MARKETPROFITS])
+		print 'EUROPE markets profits %i'%(marketEU[MARKETPROFITS])
+		print 'HK markets profits %i'%(marketHK[MARKETPROFITS])
+		res = {'USA':marketUS[BUYTIMES], 'EUROPE':marketEU[BUYTIMES], 'HK':marketHK[BUYTIMES]}
 		return res
 
 	def buyStockRatePercent(self, matrix):
