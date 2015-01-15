@@ -1,6 +1,8 @@
 
 from GetGraphData import GetGraphData
 from LayoutInit import LayoutInit
+from TimeAnalyse import TimeAnalyse
+
 
 #==================================================================================================#
 #||  Date   ||   Hour   ||  Stock  || Share || Transcation  || Values || money || kind  ||   Sum  ||
@@ -31,6 +33,7 @@ def controlInfo():
 	print '    S1: add subgraph of years'
 	print '    S2: add subgraph of money kinds'
 	print '    S3: add subgraph of transcation'
+	print 'T_ime to get the time percent information.'
 
 def play(graph):
 
@@ -41,14 +44,14 @@ def play(graph):
 	myMatrix = graphData.getMatrix()
 	
 	layout1 = LayoutInit(graph)
+	myTime = TimeAnalyse(graph, myMatrix)
 	
 #	print myMatrix[326]
 #	print myMatrix[327]
-
-
 	
 	if choice == '1':
 		layout1.setLayoutInit(myMatrix)	
+		
 	elif choice == '2':
 		if not graph.getSubGraph('Years'):
 			print 'You need add the subgraphs first'
@@ -82,6 +85,8 @@ def play(graph):
 		layout1.clearNodes()
 	elif choice == 'D':
 		layout1.clearAllEdges()
+	elif choice == 'DA':
+		myTime.handingTimeCalcul()
 	elif choice == 'E':
 		layout1.delSubGraphs()
 	elif choice == 'H':
@@ -94,6 +99,8 @@ def play(graph):
 		layout1.addSubgraphDifferentMarket()
 	elif choice == 'S3':
 		layout1.addSubgraphTransaction()
+	elif choice == 'T':
+		myTime.calHourPercent()
 	elif choice == '0':
 		print 'Thanks'
 	else:
