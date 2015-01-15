@@ -30,7 +30,6 @@ class AnalyseLayout(graphObject):
 
 	def addStickGraph(self, dic):
 		stickX = 0
-
 		sumsOfHeight = 5 * cubeSize
 		sumsOfDic = 0
 		for key in dic.keys():
@@ -48,63 +47,60 @@ class AnalyseLayout(graphObject):
 			self.addInfo(stickX,0,key)
 			stickX += cubeDistance
 
-	def setLayoutDays(self, matrix):
-		self.clearNodes()	
-		self.clearAllEdges()
-		M = len(matrix)
-		lastMonth = matrix[0][0][1]
+	def setLayoutIncomeInit(self, matrix, dataList):
 		x = y = 0
-		
-		def drawCube():
-			self.addInfo(400, 50, "ADM's Activity")
-			startMonth = lastMonth
-			cordX = cordY = 0
-			Aindex = 0
-			for year in range(2011, 2015):
-				for month in range(startMonth, 13):
-					monthRange = calendar.monthrange(year, month)[1]
-					for days in range(1, monthRange + 1):
-						cordX = days * cubeDistance
-						
-						tempNode = self.graph.addNode()
-						self.setNodeC(tempNode, cordX, cordY, Color_yellow, -1)
-						self.setNodeS(tempNode, cubeSize, cubeSize, Shape_cube)
-						
-						if cordX == cubeDistance and month == startMonth:
-							self.addLabel(tempNode, str(year) + '. '+str(month)+'  ', Label_left,Color_red)
-						elif cordX == cubeDistance:
-							self.addLabel(tempNode, str(month) + '  ', Label_left)
+		index = 0
+		NumOfCubesInOneLine = 25
+		for item in matrix:
+			if item[TRANSACTION] == "Acquired":
+				if index < len(dataList):
+					stockID = self.getStockShortForm(item[STOCK])
+					self.addLabel(item[NODE],stockID,Label_center)
+					self.setNodeS(item[NODE], cubeSize, cubeSize, Shape_cubeOutlined)
+					if dataList[index] > 0:	
+						self.setNodeC(item[NODE],x, y, Color_red)
+					else:
+						self.setNodeC(item[NODE],x, y, Color_green)
+					index += 1
+					x += cubeDistance
+					if x > NumOfCubesInOneLine * cubeDistance:
+						x = 0
+						y -= cubeDistance
+				else:
+					self.setNodeC(item[NODE])
+					self.setNodeS(item[NODE])
 
-						marketsSubGraph = self.graph.getSubGraph('Markets')
-						subGraphUSA = marketsSubGraph.getSubGraph('USA')
-						subGraphHK = marketsSubGraph.getSubGraph('HK')
-						subGraphEU = marketsSubGraph.getSubGraph('EU')
-						subGraphEU.addNode(tempNode)
-						subGraphHK.addNode(tempNode)
-						subGraphUSA.addNode(tempNode)
-
-					cordY -= cubeDistance
-					if month == 12:
-						startMonth = 1
-						cordY -= cubeDistance
-		drawCube()
-		for itemIndex in range(M):
-			item = matrix[itemIndex]
-			x = item[0][2] * cubeDistance
-			if item[0][1] != lastMonth:
-				y -= cubeDistance
-				if item[0][1] == 1:
-					y -= cubeDistance
-				lastMonth = item[0][1]
-			self.setNodeS(item[NODE],cubeSize,cubeSize, Shape_cube,2)
-#			self.viewLayout[item[NODE]] = tlp.Coord(x, y,2)
-			if item[TRANSACTION] == 'Acquired':
-				nodeColor = Color_red
 			else:
-				nodeColor = Color_blue
-			self.setNodeC(item[NODE],x,y,nodeColor)
-		
+				self.setNodeC(item[NODE])
+				self.setNodeS(item[NODE])
 
+	def setLayoutIncomeStick(self, matrix, dataList, choice = 0):
+		x = y = 0
+		index = 0
+		for item in matrix:
+			if item[TRANSACTION] == "Acquired":
+				if index < len(dataList):
+					if choice == 0:
+						nodeInfo = str(dataList[index]) + item[STOCK]
+						if dataList[index] < -1000:
+							sizeStick = -600 * cubeSize
+						else:
+							sizeStick = dataList[index] * cubeSize
+					elif choice == 1:
+						nodeInfo = str(round(dataList[index]))
+						sizeStick = dataList[index]
 
+					y = sizeStick / 2
+					self.setNodeC(item[NODE], x, y, Color_green)
+					self.setNodeS(item[NODE], cubeSize, sizeStick, Shape_cubeOutlined)
+					self.addLabel(item[NODE], nodeInfo, Label_top)
+				else:
+					self.setNodeS(item[NODE])
+					self.setNodeC(item[NODE])
+				index += 1
+				x += cubeDistance
+			else:
+				self.setNodeC(item[NODE])
+				self.setNodeS(item[NODE])
 
-
+	
