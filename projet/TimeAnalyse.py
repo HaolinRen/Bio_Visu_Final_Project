@@ -53,6 +53,8 @@ class TimeAnalyse(MatrixObject):
 	def __getHourInfo(self):
 		timeDict = {}
 		for node in self.graph.getNodes():
+			if not self.Hour.getNodeValue(node):
+				continue
 			hourInfo = self.Hour.getNodeValue(node)[0:5]
 			if hourInfo not in timeDict.keys():
 				timeDict[hourInfo] = 1
@@ -60,6 +62,7 @@ class TimeAnalyse(MatrixObject):
 				timeDict[hourInfo] += 1
 		return timeDict
 
+	#full data
 	def diffMethod(self, soldStock, acquiredStock):
 		buyTime = acquiredStock[DATE]
 		soldTime = soldStock[DATE]
