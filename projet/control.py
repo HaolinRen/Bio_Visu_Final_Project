@@ -33,6 +33,8 @@ def controlInfo():
 	print '    S1: add subgraph of years'
 	print '    S2: add subgraph of money kinds'
 	print '    S3: add subgraph of transcation'
+	print '    S4: add subgraphs of stocks'
+	print '       S4D: delete subgraphs of stocks'
 	print 'T_ime to get the time percent information.'
 
 def play(graph):
@@ -99,6 +101,10 @@ def play(graph):
 		layout1.addSubgraphDifferentMarket()
 	elif choice == 'S3':
 		layout1.addSubgraphTransaction()
+	elif choice == 'S4':
+		layotu1.addSubgraphDifferentStocks()
+	elif choice == 'S4D':
+		layotu1.deleteSubgraphsOfStocks()
 	elif choice == 'T':
 		myTime.calHourPercent()
 	elif choice == '0':

@@ -150,4 +150,85 @@ class LayoutInit(graphObject):
 									self.graph.addEdge(matrix[soldIndex][NODE],tempAcquiredStock[NODE])
 									alreadySoldList.append(soldIndex)
 									break
+
+
+	def addSubgraphEveryYear(self):
+		if self.graph.getSubGraph("Years"):
+			return 0
+		subGraphYears = self.graph.addSubGraph("Years")
+		subGraph11 = subGraphYears.addSubGraph("2011")
+		subGraph12 = subGraphYears.addSubGraph("2012")		
+		subGraph13 = subGraphYears.addSubGraph("2013")
+		subGraph14 = subGraphYears.addSubGraph("2014")
+
+		for node in self.graph.getNodes():
+			if not self.Date.getNodeValue(node):
+				continue
+			year = self.Date.getNodeValue(node).split('/')[2]
+			
+			if year == '11':
+				subGraph11.addNode(node)
+			elif year == '12':
+				subGraph12.addNode(node)
+			elif year == '13':
+				subGraph13.addNode(node)
+			else:
+				subGraph14.addNode(node)
+			
+		print 'Added the subgraphs of years.'
+
+	def addSubgraphDifferentMarket(self):
+		if self.graph.getSubGraph("Markets"):
+			return 0
+		subGraphMarkets = self.graph.addSubGraph("Markets")
+		subGraphUSA = subGraphMarkets.addSubGraph("US")
+		subGraphEUR = subGraphMarkets.addSubGraph("EU")
+		subGraphHK = subGraphMarkets.addSubGraph("HK")
+		for node in self.graph.getNodes():
+			if not self.Stock.getNodeValue(node):
+				continue
+			money = self.Money.getNodeValue(node)
+			if money == 'EUR':
+				subGraphEUR.addNode(node)
+			elif money == 'HKD':
+				subGraphHK.addNode(node)
+			else:
+				subGraphUSA.addNode(node)
+		else:
+			print 'Added the subgraph of different markets.'
+
+	def addSubgraphDifferentStocks(self):
+		if self.graph.getSubGraph('Stocks'):
+			return 0
+		subGraphStocks = self.graph.addSubGraph('Stocks')
 		
+		for node in self.graph.getNodes():
+			if not self.Stock.getNodeValue(node):
+				continue
+			stockName = self.Stock.getNodeValue(node) 
+			try:
+				stockSubgraph = subGraphStocks.getSubGraph(stockName)
+				stockSubgraph.addNode(node)
+			except:
+				stockSubgraph = subGraphStocks.addSubGraph(stockName)
+				stockSubgraph.addNode(node)
+		else:
+			print 'Added the subgraphs of differents stocks.'
+
+	def addSubgraphTransaction(self):
+		if self.graph.getSubGraph('Transaction'):
+			return 0
+		subGraphTransaction = self.graph.addSubGraph('Transaction')
+		subGraphSold = subGraphTransaction.addSubGraph('Sold')
+		subGraphAcquired = subGraphTransaction.addSubGraph('Acquired')
+		for node in self.graph.getNodes():
+			if not self.Transaction.getNodeValue(node):
+				continue
+			if self.Transaction.getNodeValue(node) == 'Sold':
+				subGraphSold.addNode(node)
+			else:
+				subGraphAcquired.addNode(node)
+		else:
+			print 'Added the subgraphs based on transaction.'
+
+
