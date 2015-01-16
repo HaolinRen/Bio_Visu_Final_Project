@@ -6,6 +6,9 @@ class TimeAnalyse(MatrixObject):
 		self.__daysList = self.preProcess(matrix)
 		self.graph = graph
 		self.Hour = self.graph.getStringProperty('Hour')
+		startDay = datetime(matrix[0][DATE][0],matrix[0][DATE][1],matrix[0][DATE][2])
+		lastDay =  datetime(matrix[-1][DATE][0],matrix[-1][DATE][1],matrix[-1][DATE][2])
+		self.existDays = (lastDay - startDay).days
 
 	def getDaysList(self):
 		return self.__daysList

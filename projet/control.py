@@ -2,7 +2,8 @@
 from GetGraphData import GetGraphData
 from LayoutInit import LayoutInit
 from TimeAnalyse import TimeAnalyse
-
+from AnalyseLayout import AnalyseLayout
+from ProfitsAnalyse	import ProfitsAnalyse
 
 #==================================================================================================#
 #||  Date   ||   Hour   ||  Stock  || Share || Transcation  || Values || money || kind  ||   Sum  ||
@@ -23,6 +24,7 @@ def controlInfo():
 	print '5 stock buy ratio layout'
 	print '6 stocks profits layout'
 	print "7 sum of ADM's property"
+	print '	7D for more property detail'
 	print 'A_dd edge'
 	print 'C_lear nodes'
 	print 'D_elete edges'
@@ -30,11 +32,11 @@ def controlInfo():
 	print 'H_ide nodes'
 	print 'L_ables clear'
 	print 'S_ubgraphsL:'
-	print '    S1: add subgraph of years'
-	print '    S2: add subgraph of money kinds'
-	print '    S3: add subgraph of transcation'
-	print '    S4: add subgraphs of stocks'
-	print '       S4D: delete subgraphs of stocks'
+	print '	S1: add subgraph of years'
+	print '	S2: add subgraph of money kinds'
+	print '	S3: add subgraph of transcation'
+	print '	S4: add subgraphs of stocks'
+	print '	   S4D: delete subgraphs of stocks'
 	print 'T_ime to get the time percent information.'
 
 def play(graph):
@@ -63,6 +65,7 @@ def play(graph):
 		layout1.setLayoutInit2(myMatrix)
 	elif choice == '4':
 		myProfits = ProfitsAnalyse(myMatrix)
+		myProfits.netIncome(1)
 		profitsList = myProfits.getProfitsList()
 		profitsLayout = AnalyseLayout(graph)
 		profitsLayout.setLayoutIncomeInit(myMatrix,profitsList)	
@@ -74,6 +77,8 @@ def play(graph):
 	elif choice == '6':
 		myProfits = ProfitsAnalyse(myMatrix)
 		profitsList = myProfits.getProfitsList()	
+		myProfits.netIncome()
+		myProfits.diffMarketIncomeYearly(myMatrix)
 		profitsLayout = AnalyseLayout(graph)
 		profitsLayout.setLayoutIncomeStick(myMatrix,profitsList)
 	elif choice == '7':
@@ -81,18 +86,29 @@ def play(graph):
 		liquideSumList = myProfits.liquidSumList()	
 		profitsLayout = AnalyseLayout(graph)
 		profitsLayout.setLayoutIncomeStick(myMatrix,liquideSumList, 1)
+	elif choice == '7D':
+		existDay = myTime.existDays
+		print 'The ADM8 has been running %i days for lost 1519 $.'%(existDay)
+		print 'The orginal money is 11278 $.'
+		print 'It would be able to run for 11278 / 1519 * 1164 = %i days'%(round(11278/1519 * existDay))	
+		print 'Exchange rate of euro and dollar of 2011.8.31 is 1.37 : 1.'
+		print 'It means the start money is 11278 / 1.44 = %i euro'%(round(11278.0/1.37))	
+		print 'Exchange rate of euro and dollar of 2014.11.31 is 1.25 : 1.'
+		print 'It means ADM own (11278 - 1519) / 1.25 = %i euro.'%(round((11278 - 1519) / 1.25))
+		print 'If as the euro to calcule the profits, it would lost 8232 - 7807 = %i euro'%(8232-7807)
+		print 'From this, we can calcule it would be running for 8232 / 425 * 1164 = %i days.'%(8232/425 * 1164)
 	elif choice == 'A':
 		layout1.addEdge(myMatrix)
 	elif choice == 'C':
 		layout1.clearNodes()
 	elif choice == 'D':
 		layout1.clearAllEdges()
-	elif choice == 'DA':
-		myTime.handingTimeCalcul()
 	elif choice == 'E':
 		layout1.delSubGraphs()
 	elif choice == 'H':
 		layout1.makeEspace()
+	elif choice == 'HD':
+		myTime.handingTimeCalcul()
 	elif choice == 'L':
 		layout1.clearLabel()
 	elif choice == 'S1':	
@@ -115,22 +131,22 @@ def play(graph):
 		
 
 def writeToFile(StockMatrix):
-		myStock.stockMarketInfo()
-		searchInfo(myStockMatrix)
-		f = open('/Users/REN/Documents/test.txt','w')
-		for key in myStockMatrix:
-			name = key.split('(')[1].split(')')[0]
-			f.write(name + ':')
-			f.write(myStockMatrix[key][1])
-			f.write('\n')
-		file = open('/Users/REN/Documents/SearchResults.txt','r')
-		contents = file.readlines()
-		for item in contents:	
-			print filter(str.isalpha, item)
+	myStock.stockMarketInfo()
+	searchInfo(myStockMatrix)
+	f = open('/Users/REN/Documents/test.txt','w')
+	for key in myStockMatrix:
+		name = key.split('(')[1].split(')')[0]
+		f.write(name + ':')
+		f.write(myStockMatrix[key][1])
+		f.write('\n')
+	file = open('/Users/REN/Documents/SearchResults.txt','r')
+	contents = file.readlines()
+	for item in contents:	
+		print filter(str.isalpha, item)
 
-		myStockMatrix.stockMarketInfo()
-			
-		file.close()	
+	myStockMatrix.stockMarketInfo()
+		
+	file.close()	
 	
 
 def main(graph):
@@ -138,4 +154,4 @@ def main(graph):
 	play(graph)
 	
 if __name__ == 'main':
-	print 'a'
+	print 'This is main.'

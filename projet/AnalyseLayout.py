@@ -4,6 +4,16 @@ PERCENT_DATE = 0
 PERCENT_COST = 1
 PERCENT_PROPER = 2
 
+DATE = 0
+HOUR = 1
+TRANSACTION = 2
+STOCK = 3
+MONEY = 4
+SHARE = 5
+VALUE = 6
+NODE = 7
+LEN = 8
+
 class AnalyseLayout(graphObject):
 	def __init__(self,graph):
 		graphObject.__init__(self, graph)
@@ -12,7 +22,9 @@ class AnalyseLayout(graphObject):
 		self.makeEspace()
 		self.clearNodes()
 		x = y = 0
+		ratesSum = 0
 		for item in costRateMatrix:
+			ratesSum += item[PERCENT_COST]
 			properHeight = cubeSize * item[PERCENT_PROPER]
 			costHeight = properHeight * item[PERCENT_COST] / 100
 			liquidHeight = properHeight - costHeight
@@ -25,6 +37,8 @@ class AnalyseLayout(graphObject):
 			self.setNodeS(costNode, cubeSize, costHeight, Shape_cube)
 			self.addLabel(costNode, str(item[PERCENT_COST])+'%', Label_top)
 			x += cubeDistance
+			
+		print 'Average stock purchase proportion of cash ratio is %i'%(round(ratesSum/len(costRateMatrix))),'%'
 
 	def setLayoutIncomeInit(self, matrix, dataList):
 		x = y = 0
@@ -54,6 +68,7 @@ class AnalyseLayout(graphObject):
 				self.setNodeS(item[NODE])
 
 	def setLayoutIncomeStick(self, matrix, dataList, choice = 0):
+		self.clearNodes()
 		x = y = 0
 		index = 0
 		for item in matrix:
