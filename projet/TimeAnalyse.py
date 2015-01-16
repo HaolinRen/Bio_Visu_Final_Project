@@ -10,50 +10,49 @@ class TimeAnalyse(MatrixObject):
 	def getDaysList(self):
 		return self.__daysList
 	
-	def calHourPercent(self):
-		hourDict = self.getHourInfo()
-		hourKeys = hourDict.keys()
-		sumHourTimes = 0
-		top1Hour = hourKeys[0]
-		top2Hour = hourKeys[0]
-		top3Hour = hourKeys[0]
-
-		for key in hourKeys:
-			sumHourTimes += hourDict[key]
-			if hourDict[key] > hourDict[top1Hour]:
-				top1Hour = key
-			else:
-				if hourDict[key] > hourDict[top2Hour]:
-					top2Hour = key
-				else:
-					if hourDict[key] > hourDict[top3Hour]:
-						top3Hour = key
-		def cg(hour):
-			 return hour+ ':00 - ' + str(int(hour) + 1) + ':00'
-			 
-		print 'The most active time of is: %s; %s; %s.'%(cg(top1Hour),cg(top2Hour),cg(top3Hour))
-		top1Times = hourDict[top1Hour]
-		top2Times = hourDict[top2Hour]
-		top3Times = hourDict[top3Hour]
-
-		ratio = float(top1Times + top2Times + top3Times) / sumHourTimes * 100
-		print 'They occupy ratio is %s.'%(str(round(ratio))) + '%.'
-		return hourDict
-	
-	def getHourInfo(self, choice = 0):
-		timeDict = {}
+	def getHourInfo(self):
+		hourDict = {}
 		for node in self.graph.getNodes():
 			if not self.Hour.getNodeValue(node):
 				continue
-			if choice == 0:
-				hourInfo = self.Hour.getNodeValue(node)[0:2]
+			hour = self.Hour.getNodeValue(node)[0:2]
+			hourInfo = hour + ':00 - ' + hour + ':59'
+			if hourInfo not in hourDict.keys():
+				hourDict[hourInfo] = 1
 			else:
-				hourInfo = self.Hour.getNodeValue(node)[0:5]
-			if hourInfo not in timeDict.keys():
-				timeDict[hourInfo] = 1
-			else:
-				timeDict[hourInfo] += 1
-		return timeDict
+				hourDict[hourInfo] += 1
+
+		hourKeys = hourDict.keys()
+		sumHourTimes = 0
+		hourValues = hourDict.values()
+		hourValues.sort()
+		top1Hour = hourValues[-1]
+		top2Hour = hourValues[-2]
+		top3Hour = hourValues[-3]
+
+		for key in hourKeys:
+			sumHourTimes += hourDict[key]
+			if hourDict[key] == top1Hour:
+				top1Hour = key
+			elif hourDict[key] == top2Hour:
+				top2Hour = key
+			elif hourDict[key] == top3Hour:
+				top3Hour = key
+
+		def ratio(times):
+			res = float(times) / sumHourTimes * 100
+			return str(round(res)) + '%'
+		
+		top1Times = hourDict[top1Hour]
+		top2Times = hourDict[top2Hour]
+		top3Times = hourDict[top3Hour] 
+		print 'The most active times of are:'
+		print top1Hour,', ',ratio(top1Times)
+		print top2Hour,', ',ratio(top2Times)
+		print top3Hour,', ',ratio(top3Times)
+		print 'They occupy ratio is %s.'%(ratio(top1Times+top2Times+top3Times))
+		
+		return hourDict
 
 	#full data
 	def diffMethod(self, soldStock, acquiredStock):

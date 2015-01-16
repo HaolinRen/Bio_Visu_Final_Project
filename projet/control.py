@@ -102,11 +102,12 @@ def play(graph):
 	elif choice == 'S3':
 		layout1.addSubgraphTransaction()
 	elif choice == 'S4':
-		layotu1.addSubgraphDifferentStocks()
+		layout1.addSubgraphDifferentStocks()
 	elif choice == 'S4D':
-		layotu1.deleteSubgraphsOfStocks()
+		layout1.deleteSubgraphsOfStocks()
 	elif choice == 'T':
-		myTime.calHourPercent()
+		hourStickInfo = myTime.getHourInfo()
+		layout1.addStickGraph(hourStickInfo, 10000)
 	elif choice == '0':
 		print 'Thanks'
 	else:

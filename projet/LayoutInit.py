@@ -16,7 +16,8 @@ class LayoutInit(graphObject):
 	def __init__(self,graph):
 		graphObject.__init__(self, graph)
 
-	def setLayoutInit(self, matrix):	
+	def setLayoutInit(self, matrix):
+		self.clearNodes()	
 		x1 = y1 = 0
 		x2 = 200
 		y2 = 0
@@ -43,6 +44,7 @@ class LayoutInit(graphObject):
 			y2 += distY
 
 	def setLayoutInit2(self, matrix):
+		self.clearNodes()
 		lastDay = ''
 		cordX = 0
 		colorTestDict = {}

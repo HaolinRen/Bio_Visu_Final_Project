@@ -68,6 +68,19 @@ class graphObject(object):
 		rColor = tlp.Color(c1,c2,c3)
 		return rColor
 
+	def giveRandomColorList(self):
+		c1 = random.randint(0,255)
+		c2 = random.randint(0,255)
+		c3 = random.randint(0,255)
+		return [c1,c2,c3]
+
+	def giveTheColorOfList(self, colorList):
+		c1 = colorList[0]
+		c2 = colorList[1]
+		c3 = colorList[2]
+		colorOfList = tlp.Color(c1,c2,c3)
+		return colorOfList
+
 	def giveSimColor(self,originColor):
 		c1 = originColor[0] + random.randint(-5,5)
 		c2 = originColor[0] + random.randint(-5,5)
@@ -122,11 +135,10 @@ class graphObject(object):
 		except:
 			print 'You need add subgraphs first!'	
 	
-	def addStickGraph(self, dic, fullsize):
-		self.makeEspace()
+	def addStickGraph(self, dic,fullsize,startX = 0, startY =0):
 		self.clearNodes()
-		stickX = 0
-		stickY = -50
+		stickX = startX
+		stickY = startY
 		fullWidth = fullsize
 		sumsOfDic = 0
 		for key in dic.keys():
@@ -135,14 +147,14 @@ class graphObject(object):
 		for key in dic.keys():
 			tempNode = self.graph.addNode()
 			percent = float(dic[key]) / sumsOfDic
-			width = percent * sumsOfHeight
+			width = percent * fullWidth
 			stickX = width / 2
 			color = self.giveRandomColor()
 			self.setNodeC(tempNode, stickX, stickY, color)
 			self.setNodeS(tempNode, width, height, Shape_cubeOutlined)
 			labelInfo = str(percent*100)[0:4] + '%'
 			self.addLabel(tempNode,labelInfo, Label_center)
-			self.addInfo(stickX,0,key,Label_left)
+			self.addInfo(-10,stickY,key,Label_left)
 			stickY -= height
 
 

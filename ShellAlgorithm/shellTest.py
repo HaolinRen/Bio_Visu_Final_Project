@@ -54,20 +54,20 @@ def main(graph):
 	viewTgtAnchorShape =  graph.getIntegerProperty("viewTgtAnchorShape")
 	viewTgtAnchorSize =  graph.getSizeProperty("viewTgtAnchorSize")
 
-	testList = []
-	for i in range(10):
-		testList.append(random.randint(5,20))
+
+	graph.delNodes(graph.getNodes())
+	testList = [20,2,2,2,2,2,2,2,2,2,2,2,2,2,22,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,]
 
 	
 	myShell = ShellAlgorithm()
 	res = myShell.getShellCord(testList)
 	index = 0
 	
-	graph.delNodes(graph.getNodes())
+	
 	for i in range(len(testList)):
-		c1 = random.randint(200,225)
-		c2 = random.randint(200,225)
-		c3 = random.randint(200,225)
+		c1 = random.randint(0,225)
+		c2 = random.randint(0,225)
+		c3 = random.randint(0,225)
 		tempNode = graph.addNode()	
 		viewColor[tempNode] = tlp.Color(c1,c2,c3)
 	
@@ -80,8 +80,8 @@ def main(graph):
 		viewSize[node] = tlp.Size(size,size,1)
 		viewShape[node] = tlp.NodeShape.Circle
 		viewLayout[node] = tlp.Coord(x,y,1)
-		sleep(0.05)
-		updateVisualization()
+		sleep(0.1)
+		updateVisualization(True)
 		index += 1	
 	
 	
