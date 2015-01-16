@@ -41,6 +41,7 @@ class AnalyseLayout(graphObject):
 		print 'Average stock purchase proportion of cash ratio is %i'%(round(ratesSum/len(costRateMatrix))),'%'
 
 	def setLayoutIncomeInit(self, matrix, dataList):
+		self.clearNodes()
 		x = y = 0
 		index = 0
 		NumOfCubesInOneLine = 25

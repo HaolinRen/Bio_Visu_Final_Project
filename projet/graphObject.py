@@ -59,7 +59,7 @@ class graphObject(object):
 	def makeEspace(self):
 		for node in self.graph.getNodes():
 			self.setNodeS(node)
-			self.setNodeC(node)
+			self.setNodeC(node,0,0,Color_black,-3)
 
 	def giveRandomColor(self):
 		c1 = random.randint(0,255)
@@ -85,7 +85,8 @@ class graphObject(object):
 		c1 = originColor[0] + random.randint(-5,5)
 		c2 = originColor[0] + random.randint(-5,5)
 		c3 = originColor[0] + random.randint(-5,5)
-		return [c1, c2, c3]
+		color = tlp.Color(c1,c2,c3)
+		return color
 
 	def setNodeC(self, node, x=1, y=1, color=Color_yellow,z = 1):
 		self.viewLayout[node] = tlp.Coord(x, y, 1)
@@ -101,9 +102,9 @@ class graphObject(object):
 		self.viewLabelColor[node] = color
 		self.viewLabelBorderWidth[node] = width
 	
-	def addInfo(self, x, y, info, position = Label_bottom):
+	def addInfo(self, x, y, info, position = Label_bottom,color = Color_black):
 		tempNode = self.graph.addNode()
-		self.setNodeC(tempNode, x, y)
+		self.setNodeC(tempNode, x, y, color)
 		self.setNodeS(tempNode)
 		self.addLabel(tempNode, info, position)
 		self.addToAllSubgraph(tempNode)

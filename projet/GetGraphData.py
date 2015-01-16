@@ -54,7 +54,7 @@ class GetGraphData():
 
 			oneShare.append(float(self.Shares.getNodeValue(node).replace(',','.')))
 			value = float(self.Value.getNodeValue(node).replace(',','.'))
-			oneShare.append(self.exchangeToDollar(moneyKind, value))
+			oneShare.append(self.__exchangeToDollar(moneyKind, value))
 			
 			oneShare.append(node)
 			
@@ -64,7 +64,7 @@ class GetGraphData():
 	def getMatrix(self):
 		return self.__Matrix
 		
-	def exchangeToDollar(self, moneyKind, value):
+	def __exchangeToDollar(self, moneyKind, value):
 		if moneyKind == "EUR":
 			return value * EURTODOLLAR
 		elif moneyKind == "HKD":

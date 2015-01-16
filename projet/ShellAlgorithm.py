@@ -23,9 +23,9 @@ class ShellAlgorithm(object):
 		for sizeInfo in sizeList[2:M]:
 			index2 = 1
 			thirdCircle = self.calThirdCircleCord(calCircle1,calCircle2,sizeInfo)
-			while not self.testValidCord(thirdCircle):
+			while not self.testValidCord(thirdCircle, calCircle1):
 				calCircle1 = self.__shellQueue[index1]
-				if testValidTriangle(calCircle1,calCircle2,sizeInfo):
+				if self.testValidTriangle(calCircle1,calCircle2,sizeInfo):
 					thirdCircle = self.calThirdCircleCord(calCircle1,calCircle2,sizeInfo)
 				if index1 < len(self.__shellQueue):
 					index1 += 1
@@ -34,11 +34,28 @@ class ShellAlgorithm(object):
 					calCircle2 = self.__shellQueue[-index2]
 					index2 += 1
 					index1 = 0
+			
 			self.__shellQueue.append(thirdCircle)
+			
 			result.append(thirdCircle)
 			calCircle2 = thirdCircle
 		
 		return result	
+		
+	def testDistance(self, circleST, circleRD):
+		x1 = circleST[0]
+		y1 = circleST[1]
+		x2 = circleRD[0]
+		y2 = circleRD[1]
+		c1 = self.calDist(x1,y1)
+		c2 = self.calDist(x2,y2)
+		if c2 < c1:
+			return False
+		else:
+			return True
+		
+	def calDist(self, x1, y1, x2 = 0, y2 = 0):
+		return math.sqrt(float(x1-x2)*(x1-x2) + (y1-y2)*(y1-y2))
 		
 	def testValidTriangle(self, circleST, circleED, radiusRD):
 		x1 = circleST[0]
@@ -47,15 +64,17 @@ class ShellAlgorithm(object):
 		x2 = circleED[0]
 		y2 = circleED[1]
 		r2 = circleED[2]
-		C = math.sqrt(float(x1-x2)*(x1-x2) + (y1-y2)*(y1-y2))
+		C = self.calDist(x1,y1,x2,y2)
 		B = r1 + radiusRD
 		A = r2 + radiusRD
-		if C > A + B:
+		if C > A + B or C == 0:
 			return False
 		else:
 			return True
 
-	def testValidCord(self, thirdCircle):
+	def testValidCord(self, thirdCircle, calCircle1):
+		if not self.testDistance(calCircle1,thirdCircle):
+			return False
 		for circle in self.__shellQueue:
 			if not self.isValidCord(thirdCircle, circle):
 				return False
@@ -68,7 +87,7 @@ class ShellAlgorithm(object):
 		x2 = existCircle[0]
 		y2 = existCircle[1]
 		r2 = existCircle[2]
-		dist = math.ceil(math.sqrt(float(x1-x2)*(x1-x2) + (y1-y2)*(y1-y2)))
+		dist = math.ceil(self.calDist(x1,y1,x2,y2))
 		if dist < r1 + r2:
 			return False
 		else:
@@ -81,13 +100,15 @@ class ShellAlgorithm(object):
 		x2 = circleED[0]
 		y2 = circleED[1]
 		r2 = circleED[2]
-		C = math.sqrt(float(x1-x2)*(x1-x2) + (y1-y2)*(y1-y2))
+		C = self.calDist(x1,y1,x2,y2)
 		B = r1 + radiusRD
 		A = r2 + radiusRD
 		x3 = y3 = 0
-
-		cosA = float(C*C + B*B - A*A) / (2 * B * C)
-		
+		try:
+			cosA = float(C*C + B*B - A*A) / (2 * B * C)
+		except:
+			print "It's not a triangle"
+			return 0
 		width = x2 - x1
 		
 		height = y2 - y1

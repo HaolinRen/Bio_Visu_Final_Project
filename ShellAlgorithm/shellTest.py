@@ -56,9 +56,9 @@ def main(graph):
 
 
 	graph.delNodes(graph.getNodes())
-	testList = [20,2,2,2,2,2,2,2,2,2,2,2,2,2,22,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,]
-
-	
+	testList = []
+	for i in range(2,200):	
+		testList.append(1)
 	myShell = ShellAlgorithm()
 	res = myShell.getShellCord(testList)
 	index = 0
