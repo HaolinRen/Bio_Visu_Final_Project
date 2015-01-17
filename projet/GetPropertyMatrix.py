@@ -22,9 +22,7 @@ class GetPropertyMatrix(GetGraphData):
 		self.__propertyDict = self.getNameNodeDict()
 		self.myShell = ShellAlgorithm()
 		
-	def getPropertyDict(self):
-		return self.__propertyDict
-
+	#[stockID,[propertyList],[node..]]
 	def getNameNodeDict(self):
 		nameNodeDict = {}
 		sectorCount = {}

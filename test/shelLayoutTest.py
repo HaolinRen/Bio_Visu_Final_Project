@@ -429,7 +429,6 @@ class GetPropertyMatrix(GetGraphData):
 			query = query.replace(' ','/')
 		elif query == 'MT':
 			query = 'MT:NA'
-
 		for key in ExchangeProperties.keys():
 			if query in key:
 				res = [key] + ExchangeProperties[key]
@@ -492,18 +491,71 @@ class PropertyLayout(graphObject):
 					subgraphDict[bourse].addNode(node)
 		else:	
 			print 'Subgraph of stock markets added.'
-#		for node in self.graph.getNodes():
-#			if not self.Stock.getNodeValue(node):
-#				continue
-#			stockName = self.Stock.getNodeValue(node)
-#			stockMarket = stockMarketDict[stockName]
-#			if stockMarket not in subgraphDict.keys():
-#				subgraph = bourseGraph.addSubGraph(stockMarket)
-#				subgraphDict[stockMarket] = subgraph
-#			else:
-#				subgraphDict[stockMarket].addNode(node)
-#		else:
 			
+#	def addCircleEdge(self, nodeList):
+#		M = len(nodeList)
+#		if M == 0:
+#			return 0
+#		for index in range(M - 1):
+#			self.graph.addEdge(nodeList[index],nodeList[index+1])
+#		
+	
+	#propertyList = [bourse, sector, industry, subindusty]	
+	def treePropertyLayout(self, stockMarketDict, choice = 0):
+		self.clearNodes()
+		self.clearAllEdges()
+		existDict = {}
+
+		bourseNodeDict = {}
+		sectorNodeDict = {}
+		industryNodeDict = {}
+		subIndustyNodeDict = {}
+
+		for key in stockMarketDict.keys():
+			oneBourse = stockMarketDict[key]
+			propertyList = oneBourse[0]
+			nodes = oneBourse[1]
+			bourseName = propertyList[0] 
+			if bourseName not in existDict.keys():
+				bourseNode = self.graph.addNode()
+				bourseNodeDict[bourseName] = bourseNode
+				existDict[bourseName] = {}
+			else:
+				sectorName = propertyList[1]
+				sectorStr = bourseName + sectorName
+				if sectorName not in existDict[bourseName].keys():
+					sectorNode = self.graph.addNode()
+					self.graph.addEdge(sectorNode,bourseNodeDict[bourseName])
+					sectorNodeDict[sectorStr] = sectorNode
+					existDict[bourseName][sectorName] = {}
+				else:
+					industryName = propertyList[2]
+					industryStr = sectorStr + industryName
+					if industryName not in existDict[bourseName][sectorName].keys():
+						industryNode = self.graph.addNode()
+						industryNodeDict[industryStr] = industryNode
+						self.graph.addEdge(industryNode, sectorNodeDict[sectorStr])
+						existDict[bourseName][sectorName][industryName] = {}
+					else:
+						subIndustryName = propertyList[3]
+						subIndustyStr = industryStr + subIndustryName
+						if subIndustryName not in existDict[bourseName][sectorName][industryName].keys():
+							subIndustryNode = self.graph.addNode()
+							self.graph.addEdge(subIndustryNode,industryNodeDict[industryStr])
+							subIndustyNodeDict[subIndustyStr] = subIndustryNode
+							existDict[bourseName][sectorName][industryName][subIndustryName] = subIndustryNode
+							for node in nodes:
+								self.graph.addEdge(subIndustryNode,node)
+						else:
+							subRootNode = existDict[bourseName][sectorName][industryName][subIndustryName]
+							for node in nodes:
+								self.graph.addEdge(node, subRootNode)
+
+#		self.addCircleEdge(bourseNodeDict.values())
+#		self.addCircleEdge(sectorNodeDict.values())
+#		self.addCircleEdge(industryNodeDict.values())
+#		self.addCircleEdge(subIndustyNodeDict.values())
+		print existDict
 			
 		
 def proInfo():
@@ -515,9 +567,10 @@ def main(graph):
 	myProMatrix = GetPropertyMatrix(graph)
 	myPDict = myProMatrix.getNameNodeDict()
 	myId = myProMatrix.getPropertyDict()
+	sums = 0
 	
 #	myProMatrix.stockInfoIntro()
 #	myShell = myProMatrix.getShellMatrix()
 	myLayout = PropertyLayout(graph)
-	myLayout.addSubgraphOfStockMarkets(myId)
+	myLayout.treePropertyLayout(myId)
 ##	myLayout.stockPropertyLayout(myShell)
