@@ -1,6 +1,6 @@
-from textToP_StockInfo import ExchangeProperties
 from GetGraphData import *
 from ShellAlgorithm import ShellAlgorithm
+from textToP_StockInfo import ExchangeProperties
 
 #ExchangeProperties = {'ID':['PLACE','SECTOR','INDUSTRY','SubIndustry']}
 #propertyMatrix: {name:[[propertyList],[NodeList]]...}
@@ -16,11 +16,14 @@ NODELIST = 1
 
 class GetPropertyMatrix(GetGraphData):
 	def __init__(self, graph):
-		GetGraphData.__init__(self, graph)
 		self.__sectorsDict = {}
 		self.__marketDict = {}
+		GetGraphData.__init__(self, graph)
 		self.__propertyDict = self.getNameNodeDict()
 		self.myShell = ShellAlgorithm()
+		
+	def getPropertyDict(self):
+		return self.__propertyDict
 
 	def getNameNodeDict(self):
 		nameNodeDict = {}
@@ -46,10 +49,12 @@ class GetPropertyMatrix(GetGraphData):
 				nameNodeDict[stockID][NODELIST].append(node)
 		self.__sectorsDict = sectorCount
 		self.__marketDict = marketCount
+#		print self.__sectorsDict
+#		print self.__marketDict
 		return nameNodeDict
 
 	#{name:[propertyList, cord, size]}
-	#return [[id, sector,node,[cord]]...]
+	#return [[id,[property list],node,[cord]]...]
 	def getShellMatrix(self):
 		result = []
 		forShellList = []
@@ -62,8 +67,7 @@ class GetPropertyMatrix(GetGraphData):
 		myShellList = self.myShell.getShellCord(forShellList)
 		for index in range(len(result)):
 			result[index].append(myShellList[index])
-
-		print 'ADM8 totally buy %i stocks in those 4 years.'%(len(reslut))
+		print 'ADM8 totally buy %i stocks in thoese 4 years.'%(len(result))
 		return result
 
 	def stockMarketInfo(self, index):
@@ -85,7 +89,6 @@ class GetPropertyMatrix(GetGraphData):
 			if i == 5:
 				print ''
 
-	#return [stockID, place, sector, industry..]
 	def getStockPropertyList(self, stockName):
 		res = []
 		query = stockName.split('(')[1].split(')')[0]
@@ -97,17 +100,9 @@ class GetPropertyMatrix(GetGraphData):
 			query = 'FP:FP'
 		elif ' ' in query:
 			query = query.replace(' ','/')
-
+		elif query == 'MT':
+			query = 'MT:NA'
 		for key in ExchangeProperties.keys():
 			if query in key:
 				res = [key] + ExchangeProperties[key]
 		return res
-
-	def getTreeStruture(self, choice = 0):
-		treeDict = []
-		for key in ExchangeProperties.keys():
-			res = ExchangeProperties[key][choice:]
-			if res not in treeDict:
-				treeDict.append(res)
-		return treeDict
-

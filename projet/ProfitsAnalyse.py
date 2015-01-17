@@ -24,6 +24,7 @@ class ProfitsAnalyse(MatrixObject):
 		else:
 			print 'Earn money %i times'%(earn)
 			print 'Lost money %i times'%(lost)
+			print 'Forecast accuracy is %s'%str((float(earn)/(earn+lost)*100))[:5], '%.'
 		return res	
 		
 	def liquidSumList(self):
