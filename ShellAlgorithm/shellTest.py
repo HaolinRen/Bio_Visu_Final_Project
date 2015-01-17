@@ -81,7 +81,7 @@ def main(graph):
 		viewShape[node] = tlp.NodeShape.Circle
 		viewLayout[node] = tlp.Coord(x,y,1)
 		sleep(0.1)
-		updateVisualization(True)
+		updateVisualization()
 		index += 1	
 	
 	

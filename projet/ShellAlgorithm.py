@@ -22,6 +22,9 @@ class ShellAlgorithm(object):
 		index1 = 0
 		for sizeInfo in sizeList[2:M]:
 			index2 = 1
+			while not self.testValidTriangle(calCircle1, calCircle2,sizeInfo):
+				index1 += 1
+				calCircle1 = self.__shellQueue[index1]
 			thirdCircle = self.calThirdCircleCord(calCircle1,calCircle2,sizeInfo)
 			while not self.testValidCord(thirdCircle, calCircle1):
 				calCircle1 = self.__shellQueue[index1]
@@ -36,7 +39,6 @@ class ShellAlgorithm(object):
 					index1 = 0
 			
 			self.__shellQueue.append(thirdCircle)
-			
 			result.append(thirdCircle)
 			calCircle2 = thirdCircle
 		
@@ -67,7 +69,7 @@ class ShellAlgorithm(object):
 		C = self.calDist(x1,y1,x2,y2)
 		B = r1 + radiusRD
 		A = r2 + radiusRD
-		if C > A + B or C == 0:
+		if C > A + B or C == 0 or A > B + C or B > A + C:
 			return False
 		else:
 			return True
@@ -88,7 +90,7 @@ class ShellAlgorithm(object):
 		y2 = existCircle[1]
 		r2 = existCircle[2]
 		dist = math.ceil(self.calDist(x1,y1,x2,y2))
-		if dist < r1 + r2:
+		if dist < r1 + r2 or dist == 0:
 			return False
 		else:
 			return True
@@ -104,11 +106,7 @@ class ShellAlgorithm(object):
 		B = r1 + radiusRD
 		A = r2 + radiusRD
 		x3 = y3 = 0
-		try:
-			cosA = float(C*C + B*B - A*A) / (2 * B * C)
-		except:
-			print "It's not a triangle"
-			return 0
+		cosA = float(C*C + B*B - A*A) / (2 * B * C)
 		width = x2 - x1
 		
 		height = y2 - y1
@@ -121,7 +119,6 @@ class ShellAlgorithm(object):
 				degreeAB = 2 * math.pi - math.acos(width / C)
 		else:
 			degreeAB = math.acos(width / C)
-
 		degreeAC = math.acos(cosA) + degreeAB
 		x3 = B * math.cos(degreeAC) + x1
 		y3 = B * math.sin(degreeAC) + y1

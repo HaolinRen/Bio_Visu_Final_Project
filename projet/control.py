@@ -4,6 +4,7 @@ from LayoutInit import LayoutInit
 from TimeAnalyse import TimeAnalyse
 from AnalyseLayout import AnalyseLayout
 from ProfitsAnalyse	import ProfitsAnalyse
+from GetPropertyMatrix import GetPropertyMatrix
 
 #==================================================================================================#
 #||  Date   ||   Hour   ||  Stock  || Share || Transcation  || Values || money || kind  ||   Sum  ||
@@ -46,7 +47,6 @@ def play(graph):
 	
 	graphData = GetGraphData(graph)
 	myMatrix = graphData.getMatrix()
-	
 	layout1 = LayoutInit(graph)
 	myTime = TimeAnalyse(graph, myMatrix)
 	
@@ -55,7 +55,6 @@ def play(graph):
 	
 	if choice == '1':
 		layout1.setLayoutInit(myMatrix)	
-		
 	elif choice == '2':
 		if not graph.getSubGraph('Years'):
 			print 'You need add the subgraphs first'
@@ -97,6 +96,12 @@ def play(graph):
 		print 'It means ADM own (11278 - 1519) / 1.25 = %i euro.'%(round((11278 - 1519) / 1.25))
 		print 'If as the euro to calcule the profits, it would lost 8232 - 7807 = %i euro'%(8232-7807)
 		print 'From this, we can calcule it would be running for 8232 / 425 * 1164 = %i days.'%(8232/425 * 1164)
+	elif choice == '8':
+		myPropertyLayout = PropertyLayout(graph)
+		myPropertyMatrix = GetPropertyMatrix(graph)
+		shellMatrix = myPropertyMatrix.getShellMatrix()
+		myPropertyLayout.stockPropertyShellLayout(shellMatrix)
+		
 	elif choice == 'A':
 		layout1.addEdge(myMatrix)
 	elif choice == 'C':

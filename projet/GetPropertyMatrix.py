@@ -47,9 +47,27 @@ class GetPropertyMatrix(GetGraphData):
 				nameNodeDict[stockID][NODELIST].append(node)
 		self.__sectorsDict = sectorCount
 		self.__marketDict = marketCount
-#		print self.__sectorsDict
-#		print self.__marketDict
+
 		return nameNodeDict
+
+	def getSectorInfo(self):
+		sumSectors = 0
+		for key in self.__sectorsDict.keys():
+			sumSectors += self.__sectorsDict[key]
+		print 'Thoese %i stocks are from 6 exchange bourses.'%(sumSectors)
+		for key in self.__sectorsDict.keys():
+			times = self.__sectorsDict[key]
+			print 'ADM8 operate %i times from %s, '%(times,key),' for %s '%(str(float(times)/sumSectors*100)[:5]),'%.'
+
+	def getBourseInfo(self):
+		sumSectors = 0
+		for key in self.__marketDict.keys():
+			sumSectors += self.__marketDict[key]
+		print 'Thoese %i stocks are from 6 exchange bourses.'%(sumSectors)
+		for key in self.__marketDict.keys():
+			times = self.__marketDict[key]
+			print 'ADM8 operate %i times from %s, '%(times,key),' for %s '%(str(float(times)/sumSectors*100)[:5]),'%.'		
+	
 
 	#{name:[propertyList, cord, size]}
 	#return [[id,[property list],node,[cord]]...]
@@ -73,8 +91,8 @@ class GetPropertyMatrix(GetGraphData):
 		for item in ExchangeProperties.keys():
 			if ExchangeProperties[item][index] not in stockProperty:
 				stockProperty.append(ExchangeProperties[item][index])
-		return stockProperty
-		
+		return stockProperty		
+	
 	def stockInfoIntro(self):
 		stockProperties = [[],[],[],[]]
 		for i in range(4):
@@ -86,6 +104,7 @@ class GetPropertyMatrix(GetGraphData):
 			print i+1,' ',stockProperties[1][i], ', ',
 			if i == 5:
 				print ''
+		print ''
 
 	def getStockPropertyList(self, stockName):
 		res = []
