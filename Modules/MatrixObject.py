@@ -27,13 +27,13 @@ class MatrixObject(object):
 							if matrix[soldIndex][SHARE] == acquiredNum:
 								if soldIndex not in alreadySoldList:
 									tempSoldStock = matrix[soldIndex]
-									result = self.__diffMethod(tempSoldStock,tempAcquiredStock)
+									result = self.diffMethod(tempSoldStock,tempAcquiredStock)
 									alreadySoldList.append(soldIndex)
 									diff.append(result)
 									break
 		return diff
 
-	def __diffMethod(self, soldStock, acquiredStock):
+	def diffMethod(self, soldStock, acquiredStock):
 		pass
 
 	def clearMatrix(self, matrix):

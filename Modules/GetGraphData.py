@@ -1,4 +1,5 @@
 from tulip import *
+from ExchangeRate import *
 
 #==================================================================================================#
 #||  Date   ||   Hour   ||  Stock  || Share || Transcation  || Values || money || kind  ||   Sum  ||
@@ -9,8 +10,6 @@ from tulip import *
 #===================================================================================================
 ##Matrix := [[[year, month, day],Transcation,Stock,money,Shares,Values,node],...]
 
-EURTODOLLAR = 1.3
-HKDTODOLLAR = 0.1289
 
 class GetGraphData():
 	def __init__(self, graph):
@@ -37,11 +36,11 @@ class GetGraphData():
 			if not self.Stock.getNodeValue(node):
 				continue
 			oneShare = []
-
+			tiem = self.Date.getNodeValue(node)
 			tempDateList = self.Date.getNodeValue(node).split('/')
 			tempDateList = self.__getDateList(tempDateList)
 			oneShare.append(tempDateList)
-
+			
 			hour = self.Hour.getNodeValue(node)[0:5]
 			oneShare.append(hour)
 
@@ -54,7 +53,7 @@ class GetGraphData():
 
 			oneShare.append(float(self.Shares.getNodeValue(node).replace(',','.')))
 			value = float(self.Value.getNodeValue(node).replace(',','.'))
-			oneShare.append(self.exchangeToDollar(moneyKind, value))
+			oneShare.append(self.__exchangeToDollar(moneyKind, value,tempDateList))
 			
 			oneShare.append(node)
 			
@@ -64,13 +63,29 @@ class GetGraphData():
 	def getMatrix(self):
 		return self.__Matrix
 		
-	def exchangeToDollar(self, moneyKind, value):
-		if moneyKind == "EUR":
-			return value * EURTODOLLAR
-		elif moneyKind == "HKD":
-			return value * HKDTODOLLAR
+	def dateListToString(self,dateList):
+		date = '20' + str(dateList[0]) + '.' + str(dateList[1]) + '.'
+		if dateList[2] < 10:
+			day = '0' + str(dateList[2])
+		else:
+			day = str(dateList[2])
+		date += day
+		return date			
+		
+	def __exchangeToDollar(self, moneyKind, value, tempDateList):
+		if moneyKind == "HKD":
+			exchangeRate = 0.129
+		elif moneyKind == "EUR":	
+			try:
+				date = self.dateListToString(tempDateList)
+				rateDict = EUR_USD_Rate_Dict
+				exchangeRate = rateDict[date]
+			except:
+				exchangeRate = 0.3746
+				
 		else:
 			return value 
+		return exchangeRate * value
 
 
 

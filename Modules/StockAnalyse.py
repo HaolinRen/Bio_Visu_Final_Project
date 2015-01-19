@@ -1,45 +1,68 @@
-from StockPropertyMatrix import *
+from graphObject import *
+from ExchangeRate import *
+from GetPropertyMatrix import *
 
-class StockAnalyse(StockPropertyMatrix):
-	def __init__(self,matrix):
-		StockPropertyMatrix(self, matrix)
-		self.__stockTimes = self.getStockTimes()
+DATE = 0
+HOUR = 1
+TRANSACTION = 2
+STOCK = 3
+MONEY = 4
+SHARE = 5
+VALUE = 6
+NODE = 7
+LEN = 8
+
+class StockAnalyse(graphObject):
+	def __init__(self,graph):
+		graphObject.__init__(self,graph)
+	
+	def getMostBuyStock(self, nameDict):
+		res = {}
+		for key in nameDict.keys():
+			if len(nameDict[key][1]) >19:
+				res[key] = nameDict[key][1]
+		print 'There %i stocks bought more then 10 times.'%(len(res))
+		return res
+	
+	def addSubgraphMostBuy(self, nameDict):	
 		
-	def getStockDict(self):
-		return self.__stockCostDict
-
-	def getMarketTimes(self):
-		return self.__getTimes()
-
-	def getSectorTimes(slef):
-		return self.__getTimes(2)
-	#get a dict of item and times
-	#initial choice is market
-	#dict = {'NewYork':23,...}
-	def __getTimes(self,choice = 1):
-		result = {}
-		for key in self.__stockTimes.keys():
-			stockPropertyList = self.__stockTimes[key]
-			select = stockPropertyList[choice]
-			if select not in result:
-				result[select] = stockPropertyList[0]
+		if self.graph.getSubGraph('MostBuy'):
+			return 0
+		nodeDict = self.getMostBuyStock(nameDict)
+		subGraph = self.graph.addSubGraph('MostBuy')
+		for key in nodeDict.keys():
+			tempSub = subGraph.addSubGraph(key)
+			for node in nodeDict[key]:
+				tempSub.addNode(node)
+		else:
+			print '"MostBuy" subgraph added.' 				
+		
+	def mostBuylayout(self, matrix):
+		if len(matrix) > 50:
+			print 'Need operate in most buy subgraph'
+			return 0
+		self.clearNodes()
+		self.makeEspace()
+		self.clearAllEdges()
+		x = y = 0
+		totalHeight = 14
+		initialHeight = matrix[0][SHARE]
+		nodeList = []
+		for item in matrix:
+			y = item[VALUE]
+			if item[TRANSACTION] == 'Sold':
+				color = Color_red
 			else:
-				result[select] += stockPropertyList[0]
-		return result
-
-
-	# get a dict of sotck times and properties
-	#dict = {stockName: [times,market,sector]}
-	def getStockTimes(self):
-		result = {}
-		for stock in self.__propertyMatrix:
-			if stock[0] not in result:
-				stockPList = [1,stock[1][0],stock[1][2]]
-				result[stock] = stockPList
-			else:
-				result[stock][0] += 1
-		return result
-
-
-
-
+				color = Color_blue
+			nodeList.append(item[NODE])
+			height = float(item[SHARE]) /initialHeight * totalHeight
+			self.setNodeS(item[NODE],1,height,Shape_cubeOutlined)
+			self.setNodeC(item[NODE],x,y,color)
+			if color == Color_red:
+				x += 3		
+			x += 1
+		
+		for i in range(len(nodeList) - 1):
+			self.graph.addEdge(nodeList[i],nodeList[i+1])
+		
+		

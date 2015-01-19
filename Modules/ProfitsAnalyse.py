@@ -1,5 +1,4 @@
 from MatrixObject import *
-
 STARTMONEY = 11278
 
 class ProfitsAnalyse(MatrixObject):
@@ -10,11 +9,22 @@ class ProfitsAnalyse(MatrixObject):
 	def getProfitsList(self):
 		return self.__profitsList
 
-	def netIncome(self):
+	def netIncome(self, choice = 0):
 		res = 0
+		earn = lost = 0
 		for item in self.__profitsList:
 			res += item
-		print "All these years's profits is ", res
+			if item > 0:
+				earn += 1
+			else:
+				lost += 1
+		print ' '
+		if choice == 0:
+			print "All these years's profits is %i $"%(res)
+		else:
+			print 'Earn money %i times'%(earn)
+			print 'Lost money %i times'%(lost)
+			print 'Forecast accuracy is %s'%str((float(earn)/(earn+lost)*100))[:5], '%.'
 		return res	
 		
 	def liquidSumList(self):
@@ -23,9 +33,10 @@ class ProfitsAnalyse(MatrixObject):
 		for item in self.__profitsList:
 			liquid += item
 			liquidSum.append(liquid)
+		print 'Compared with the original, lost %i $.'%(STARTMONEY - liquidSum[-1])
 		return liquidSum
 
-	def __diffMethod(self, soldStock, acquiredStock):
+	def diffMethod(self, soldStock, acquiredStock):
 		buyValue = acquiredStock[VALUE]
 		soldValue = soldStock[VALUE]
 		res = (soldValue - buyValue) * soldStock[SHARE]
@@ -52,7 +63,13 @@ class ProfitsAnalyse(MatrixObject):
 				index += 1
 				if index == len(self.__profitsList):
 					break
-		res = {'USA':marketUS, 'EUROPE':marketEU, 'HK':marketHK}
+		print 'In USA markets %i times transaction are made.'%(marketUS[BUYTIMES])
+		print 'USA markets profits %i $'%(marketUS[MARKETPROFITS])
+		print 'In EUROPE markets %i times transaction are made.'%(marketEU[BUYTIMES])
+		print 'EUROPE markets profits %i $'%(marketEU[MARKETPROFITS])
+		print 'In HK markets %i times transaction are made.'%(marketHK[BUYTIMES])		
+		print 'HK markets profits %i $'%(marketHK[MARKETPROFITS])
+		res = {'USA':marketUS[BUYTIMES], 'EUROPE':marketEU[BUYTIMES], 'HK':marketHK[BUYTIMES]}
 		return res
 
 	def buyStockRatePercent(self, matrix):
@@ -82,11 +99,3 @@ class ProfitsAnalyse(MatrixObject):
 					liquidSum -= costOrIncome
 					stockValue += costOrIncome
 		return result
-
-
-
-
-
-
-
-
