@@ -21,9 +21,10 @@ def searchEnergy(query):
 		resList.append(res)
 
 	return resList
-
-searchEnergy()
-fileWrite = open('/Users/REN/Documents/rateEUR_USDSearchResults.txt','w')
+try:
+	fileWrite = open('/Users/REN/Documents/rateEUR_USDSearchResults.txt','w')
+except:
+	print "Can't open the file"
 
 lastYear = 2010
 for index in range(2013,2014):
