@@ -57,8 +57,8 @@ def main(graph):
 
 	graph.delNodes(graph.getNodes())
 	testList = []
-	for i in range(2,200):	
-		testList.append(1)
+	for i in range(2,202):
+		testList.append(i)
 	myShell = ShellAlgorithm()
 	res = myShell.getShellCord(testList)
 	index = 0
@@ -69,7 +69,10 @@ def main(graph):
 		c2 = random.randint(0,225)
 		c3 = random.randint(0,225)
 		tempNode = graph.addNode()	
-		viewColor[tempNode] = tlp.Color(c1,c2,c3)
+		
+#		viewColor[tempNode] = tlp.Color(c1,c2,c3)
+#	
+		viewColor[tempNode] = tlp.Color(225,255,255)
 	
 	for node in graph.getNodes():
 		if index == len(res):
@@ -78,7 +81,7 @@ def main(graph):
 		y = res[index][1]
 		size = res[index][2] * 2
 		viewSize[node] = tlp.Size(size,size,1)
-		viewShape[node] = tlp.NodeShape.Circle
+		viewShape[node] = tlp.NodeShape.CubeOutlined
 		viewLayout[node] = tlp.Coord(x,y,1)
 		sleep(0.1)
 		updateVisualization()
